@@ -3,6 +3,9 @@ import logoWeb from '../assets/logo/Web.svg';
 import arrowDown from '../assets/icons/arrow down.svg';
 import fileIcon from '../assets/icons/file_24.svg';
 import arrowRight from '../assets/icons/arrow-right.svg';
+import educationIcon from '../assets/icons/education_32.svg';
+import clockIcon from '../assets/icons/clock2.svg';
+import searchIcon from '../assets/icons/search.svg';
 
 const MainPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -19,9 +22,9 @@ const MainPage: React.FC = () => {
   const menuItems = ['Главная', 'Договоры', 'Отчёты', 'Сервис'];
 
   const contractCards = [
-    { title: 'Учебный портал продаж', icon: '📚' },
-    { title: 'Пролонгация\nдоговора', icon: '🔄' },
-    { title: 'Поиск\nдоговора', icon: '🔍' },
+    { title: 'Учебный портал продаж', icon: educationIcon },
+    { title: 'Пролонгация\nдоговора', icon: clockIcon },
+    { title: 'Поиск\nдоговора', icon: searchIcon },
   ];
 
   const reportCards = [
@@ -134,7 +137,7 @@ const MainPage: React.FC = () => {
                 {contractCards.map((card, index) => (
                   <div key={index} className="flex-1 min-w-[140px] sm:min-w-[180px] h-[120px] sm:h-[140px] px-2 sm:px-3 py-4 sm:py-6 border border-[#cccccc] rounded bg-white flex flex-col justify-center items-start gap-2 sm:gap-3 cursor-pointer hover:shadow-md transition-shadow">
                     <div className="flex flex-col gap-2 sm:gap-3">
-                      <div className="w-6 sm:w-8 h-6 sm:h-8 bg-[#c4703e] rounded" />
+                      <img src={card.icon} alt={card.title} className="w-8 h-8" />
                       <div className="text-sm sm:text-lg lg:text-xl font-normal text-black leading-tight tracking-wide">
                         {card.title.split('\n').map((line, i) => (
                           <React.Fragment key={i}>
