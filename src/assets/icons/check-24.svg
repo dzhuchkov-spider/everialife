@@ -1,0 +1,27 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="none_doc_24">
+<g id="Union">
+</g>
+<path id="Rectangle 61" d="M4 2.33333C4 1.78105 4.44772 1.33333 5 1.33333H27C27.5523 1.33333 28 1.78105 28 2.33333V28.7981C28 29.1325 27.8329 29.4447 27.5547 29.6302L24.5547 31.6302C24.2188 31.8541 23.7812 31.8541 23.4453 31.6302L20.5547 29.7031C20.2188 29.4792 19.7812 29.4792 19.4453 29.7031L16.5547 31.6302C16.2188 31.8541 15.7812 31.8541 15.4453 31.6302L12.5547 29.7031C12.2188 29.4792 11.7812 29.4792 11.4453 29.7031L8.5547 31.6302C8.2188 31.8541 7.7812 31.8541 7.4453 31.6302L4.4453 29.6302C4.1671 29.4447 4 29.1325 4 28.7981V2.33333Z" fill="var(--fill-0, #C4703E)"/>
+<g id="Rectangle 62">
+<rect x="12" y="4" width="8" height="2.66667" rx="1" fill="var(--fill-0, white)"/>
+<rect x="12" y="4" width="8" height="2.66667" rx="1" fill="var(--fill-1, white)"/>
+<rect x="12" y="4" width="8" height="2.66667" rx="1" fill="var(--fill-2, white)"/>
+</g>
+<g id="Rectangle 63">
+<rect x="8" y="10.6667" width="16" height="2.66667" rx="1" fill="var(--fill-0, white)"/>
+<rect x="8" y="10.6667" width="16" height="2.66667" rx="1" fill="var(--fill-1, white)"/>
+<rect x="8" y="10.6667" width="16" height="2.66667" rx="1" fill="var(--fill-2, white)"/>
+</g>
+<g id="Rectangle 67">
+<rect x="8" y="17.3333" width="16" height="2.66667" rx="1" fill="var(--fill-0, white)"/>
+<rect x="8" y="17.3333" width="16" height="2.66667" rx="1" fill="var(--fill-1, white)"/>
+<rect x="8" y="17.3333" width="16" height="2.66667" rx="1" fill="var(--fill-2, white)"/>
+</g>
+<g id="Rectangle 65">
+<rect x="18.6667" y="24" width="5.33333" height="2.66667" rx="1" fill="var(--fill-0, white)"/>
+<rect x="18.6667" y="24" width="5.33333" height="2.66667" rx="1" fill="var(--fill-1, white)"/>
+<rect x="18.6667" y="24" width="5.33333" height="2.66667" rx="1" fill="var(--fill-2, white)"/>
+</g>
+</g>
+</svg>
