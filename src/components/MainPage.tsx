@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import logoWeb from '../assets/logo/Web.svg';
 
 const MainPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -43,9 +44,7 @@ const MainPage: React.FC = () => {
           <div className="flex items-center justify-between px-4 sm:px-6 lg:px-10 py-4 sm:py-[30px] border-b border-[#f2f2f2]">
             {/* Logo */}
             <div className="relative w-[210px] sm:w-[320px] lg:w-[421px] h-[32px] sm:h-[46px]">
-              <div className="w-full sm:w-[210px] h-full bg-white rounded flex items-center justify-center font-bold text-base sm:text-lg text-[#386df7]">
-                KAPLIFE
-              </div>
+              <img src={logoWeb} alt="KAPLIFE" className="w-full h-full object-contain" />
             </div>
             
             {/* User actions */}
