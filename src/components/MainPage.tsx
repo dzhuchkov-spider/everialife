@@ -6,6 +6,8 @@ import arrowRight from '../assets/icons/arrow-right.svg';
 import educationIcon from '../assets/icons/education_32.svg';
 import clockIcon from '../assets/icons/clock2.svg';
 import searchIcon from '../assets/icons/search.svg';
+import copyIcon from '../assets/icons/copy.svg';
+import pdfIcon from '../assets/icons/pdf.svg';
 
 const MainPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -28,8 +30,8 @@ const MainPage: React.FC = () => {
   ];
 
   const reportCards = [
-    { title: 'Дубликат\nполиса', icon: '📄' },
-    { title: 'Сформированные\nзаказы', icon: '📋' },
+    { title: 'Дубликат\nполиса', icon: copyIcon },
+    { title: 'Сформированные\nзаказы', icon: pdfIcon },
   ];
 
   const serviceCards = [
@@ -179,9 +181,9 @@ const MainPage: React.FC = () => {
             </h2>
             <div className="w-full sm:w-full lg:w-[666px] flex gap-4 sm:gap-6 lg:gap-8 flex-wrap">
               {reportCards.map((report, index) => (
-                <div key={index} className="flex-1 min-w-[140px] sm:min-w-[200px] lg:w-[316px] lg:flex-none p-4 sm:p-6 border border-[#cccccc] rounded bg-white flex flex-col gap-3 sm:gap-4 cursor-pointer hover:shadow-md transition-shadow">
+                <div key={index} className="flex-1 min-w-[140px] sm:min-w-[200px] lg:w-[316px] lg:flex-none w-[316px] h-[316px] p-4 sm:p-6 border border-[#cccccc] rounded bg-white flex flex-col justify-center items-start gap-3 sm:gap-4 cursor-pointer hover:shadow-md transition-shadow">
                   <div className="flex flex-col gap-3 sm:gap-4">
-                    <div className="w-10 sm:w-[60px] h-10 sm:h-[60px] bg-[#c4703e] rounded" />
+                    <img src={report.icon} alt={report.title} className="w-[60px] h-[60px]" />
                     <div className="text-sm sm:text-lg lg:text-xl font-normal text-black leading-tight tracking-wide">
                       {report.title.split('\n').map((line, i) => (
                         <React.Fragment key={i}>
