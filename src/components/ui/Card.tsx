@@ -1,4 +1,5 @@
 import React from 'react';
+import infoIcon from '../../assets/icons/info_24.svg';
 
 export interface CardProps {
   className?: string;
@@ -15,11 +16,12 @@ const Card: React.FC<CardProps> = ({
   variant = 'services-smol',
   onClick,
 }) => {
+  // Figma variables: border-radius: 4px, background: #fafafa
   const baseClasses = 'relative flex flex-col items-start justify-center rounded overflow-hidden transition-all duration-200';
   const cursorClass = onClick ? 'cursor-pointer hover:-translate-y-0.5 hover:shadow-lg' : 'cursor-default';
   
   const variantClasses = variant === 'services-smol'
-    ? 'bg-[#fafafa] w-[200px] h-[140px] px-3 py-6'
+    ? 'bg-[#fafafa] w-[200px] h-[140px] pl-6 pr-3 py-6'
     : 'bg-[#fafafa] w-[200px] h-[140px] p-4';
 
   const renderIcon = () => {
@@ -31,12 +33,10 @@ const Card: React.FC<CardProps> = ({
       );
     }
 
-    // Default info icon
+    // Default info icon from Figma (info_24)
     return (
       <div className="w-8 h-8 flex items-center justify-center mb-3 flex-shrink-0">
-        <svg className="w-8 h-8 rotate-180" viewBox="0 0 24 24" fill="none">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="#666"/>
-        </svg>
+        <img src={infoIcon} alt="info" className="w-full h-full rotate-180" />
       </div>
     );
   };
