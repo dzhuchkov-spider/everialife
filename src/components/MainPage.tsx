@@ -215,9 +215,9 @@ const MainPage: React.FC = () => {
             </h2>
             <div className="w-full sm:w-full lg:w-[664px] flex gap-4 sm:gap-6 lg:gap-8 flex-wrap">
               {serviceCards.map((service, index) => (
-                <div key={index} className="w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] lg:w-[200px] h-[120px] sm:h-[140px] px-2 sm:px-3 py-4 sm:py-6 bg-[#fafafa] rounded flex flex-col justify-center items-start gap-2 sm:gap-3 cursor-pointer hover:shadow-md transition-shadow">
-                  <div className="flex flex-col gap-2 sm:gap-3">
-                    <img src={service.icon} alt={service.title} className="w-8 h-8" />
+                <div key={index} className="w-full sm:w-[calc(33.333%-16px)] lg:w-[200px] h-auto sm:h-[140px] px-2 sm:px-3 py-4 sm:py-6 bg-[#fafafa] rounded flex flex-row sm:flex-col justify-start sm:justify-center items-start gap-2 sm:gap-3 cursor-pointer hover:shadow-md transition-shadow">
+                  <div className="flex flex-row sm:flex-col gap-2 sm:gap-3">
+                    <img src={service.icon} alt={service.title} className="w-8 h-8 flex-shrink-0" />
                     <div className="text-sm sm:text-lg lg:text-xl font-normal text-black leading-tight tracking-wide">
                       {service.title.split('\n').map((line, i) => (
                         <React.Fragment key={i}>
