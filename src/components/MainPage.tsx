@@ -15,6 +15,8 @@ import eyeIcon from '../assets/icons/eye.svg';
 import checkIcon from '../assets/icons/check_24.svg';
 import importIcon from '../assets/icons/import_24.svg';
 import groupIcon from '../assets/icons/Group.svg';
+import heroImage from '../assets/img/hero-image.png';
+import newDocIcon from '../assets/icons/New_doc_72.svg';
 
 const MainPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -164,10 +166,10 @@ const MainPage: React.FC = () => {
 
           {/* Right Column - Create Contract */}
           <div className="w-full xl:w-[664px] h-auto min-h-[200px] sm:h-[286px] relative overflow-hidden bg-[#fafafa] rounded">
-            <img className="hidden sm:block w-[150px] lg:w-[206px] h-auto lg:h-[268px] absolute left-4 lg:left-9 top-4 lg:top-[18px]" src="https://placehold.co/206x268" alt="Contract illustration" />
+            <img className="hidden sm:block w-[150px] lg:w-[206px] h-auto lg:h-[268px] absolute left-4 lg:left-9 top-4 lg:top-[18px]" src={heroImage} alt="Contract illustration" />
             <div className="static sm:absolute left-0 sm:left-[200px] lg:left-[313px] top-0 sm:top-[31px] border border-[#fff9ef] rounded p-4 sm:p-6 bg-white flex flex-col gap-4 sm:gap-6 m-4 sm:m-0">
               <div className="flex flex-col gap-2 sm:gap-3">
-                <div className="w-12 sm:w-[72px] h-12 sm:h-[72px] bg-[#999999] rounded" />
+                <img src={newDocIcon} alt="New document" className="w-12 sm:w-[72px] h-12 sm:h-[72px]" />
                 <div className="text-xl sm:text-2xl lg:text-[32px] font-normal text-black leading-tight tracking-wide">
                   Ввод договора
                 </div>
