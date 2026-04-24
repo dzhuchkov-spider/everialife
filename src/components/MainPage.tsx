@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import logoWeb from '../assets/logo/Web.svg';
 import arrowDown from '../assets/icons/arrow down.svg';
+import fileIcon from '../assets/icons/file_24.svg';
+import arrowRight from '../assets/icons/arrow-right.svg';
 
 const MainPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -112,9 +114,9 @@ const MainPage: React.FC = () => {
               </h2>
               
               {/* Contract info card */}
-              <div className="w-full sm:w-full lg:w-[663px] h-auto min-h-[114px] p-4 sm:p-6 lg:p-8 bg-[#fafafa] border border-[#f2f2f2] rounded flex items-center justify-between">
+              <div className="w-full sm:w-full lg:w-[663px] h-auto min-h-[114px] p-4 sm:p-6 lg:p-8 bg-[#fafafa] rounded flex items-center justify-between">
                 <div className="flex items-center gap-3 sm:gap-4">
-                  <div className="w-6 sm:w-8 h-6 sm:h-8 bg-[#c4703e] rounded flex-shrink-0" />
+                  <img src={fileIcon} alt="file" className="w-8 h-8 flex-shrink-0" />
                   <div className="min-w-0">
                     <div className="text-base sm:text-lg lg:text-xl font-normal text-black leading-tight">
                       Договоры в работе
@@ -124,9 +126,7 @@ const MainPage: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <svg className="w-5 sm:w-6 h-5 sm:h-6 flex-shrink-0" viewBox="0 0 24 24" fill="none">
-                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="#c4703e"/>
-                </svg>
+                <img src={arrowRight} alt="arrow right" className="w-6 h-6 flex-shrink-0" />
               </div>
 
               {/* Contract cards */}
