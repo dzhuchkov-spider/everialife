@@ -17,6 +17,7 @@ import importIcon from '../assets/icons/import_24.svg';
 import groupIcon from '../assets/icons/Group.svg';
 import heroImage from '../assets/img/hero-image.png';
 import newDocIcon from '../assets/icons/New_doc_72.svg';
+import addIcon from '../assets/icons/add.svg';
 
 const MainPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -167,14 +168,15 @@ const MainPage: React.FC = () => {
           {/* Right Column - Create Contract */}
           <div className="w-full xl:w-[664px] h-auto min-h-[200px] sm:h-[286px] relative overflow-hidden bg-[#fafafa] rounded">
             <img className="hidden sm:block w-[150px] lg:w-[206px] h-auto lg:h-[268px] absolute left-4 lg:left-9 top-4 lg:top-[18px]" src={heroImage} alt="Contract illustration" />
-            <div className="static sm:absolute left-0 sm:left-[200px] lg:left-[313px] top-0 sm:top-[31px] border border-[#fff9ef] rounded p-4 sm:p-6 bg-white flex flex-col gap-4 sm:gap-6 m-4 sm:m-0">
+            <div className="static sm:absolute left-0 sm:left-[200px] lg:left-[313px] top-0 sm:top-[31px] border border-[#fff9ef] rounded p-4 sm:p-6 flex flex-col gap-4 sm:gap-6 m-4 sm:m-0">
               <div className="flex flex-col gap-2 sm:gap-3">
                 <img src={newDocIcon} alt="New document" className="w-12 sm:w-[72px] h-12 sm:h-[72px]" />
                 <div className="text-xl sm:text-2xl lg:text-[32px] font-normal text-black leading-tight tracking-wide">
                   Ввод договора
                 </div>
               </div>
-              <button className="h-12 sm:h-16 px-4 sm:px-8 bg-[#386df7] text-white rounded flex items-center justify-center cursor-pointer text-sm sm:text-base font-normal tracking-wide hover:bg-[#2459e3] transition-colors">
+              <button className="h-12 sm:h-16 px-4 sm:px-8 bg-[#386df7] text-white rounded flex items-center justify-center gap-2 cursor-pointer text-sm sm:text-base font-normal tracking-wide hover:bg-[#2459e3] transition-colors">
+                <img src={addIcon} alt="Add" className="w-6 h-6" />
                 Создать договор
               </button>
             </div>
