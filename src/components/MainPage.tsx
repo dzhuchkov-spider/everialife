@@ -120,14 +120,13 @@ const MainPage: React.FC = () => {
       {/* Main Content */}
       <main className="flex-1 flex flex-col gap-6 sm:gap-8 lg:gap-10 p-4 sm:p-6 lg:p-10">
         {/* Hero Section */}
-        <div className="flex flex-col xl:flex-row gap-6 sm:gap-8 items-start xl:items-end">
-          {/* Left Column - Contracts */}
-          <div className="flex flex-col gap-4 sm:gap-6 w-full xl:w-auto">
-            <div className="flex flex-col gap-4 sm:gap-6">
-              <h2 className="text-xl sm:text-2xl lg:text-[32px] font-normal text-black tracking-wide leading-tight m-0">
-                Договоры
-              </h2>
-              
+        <div className="flex flex-col gap-4 sm:gap-6">
+          <h2 className="text-xl sm:text-2xl lg:text-[32px] font-normal text-black tracking-wide leading-tight m-0">
+            Договоры
+          </h2>
+          <div className="flex flex-col xl:flex-row gap-8 items-stretch">
+            {/* Left Column - Contracts */}
+            <div className="flex flex-col gap-4 sm:gap-6 flex-1">
               {/* Contract info card */}
               <div className="w-full sm:w-full lg:w-[663px] h-auto min-h-[114px] p-4 sm:p-6 lg:p-8 bg-[#fafafa] rounded flex items-center justify-between">
                 <div className="flex items-center gap-3 sm:gap-4">
@@ -163,10 +162,9 @@ const MainPage: React.FC = () => {
                 ))}
               </div>
             </div>
-          </div>
 
           {/* Right Column - Create Contract */}
-          <div className="w-full xl:w-[664px] h-auto min-h-[200px] sm:h-[286px] relative overflow-hidden bg-[#fafafa] rounded">
+          <div className="w-full xl:flex-1 h-auto min-h-[200px] sm:h-[286px] relative overflow-hidden bg-[#fafafa] rounded">
             <img className="hidden sm:block w-[150px] lg:w-[206px] h-auto lg:h-[268px] absolute left-4 lg:left-9 top-4 lg:top-[18px]" src={heroImage} alt="Contract illustration" />
             <div className="static sm:absolute left-0 sm:left-[200px] lg:left-[313px] top-0 sm:top-[31px] border border-[#fff9ef] rounded p-4 sm:p-6 flex flex-col gap-4 sm:gap-6 m-4 sm:m-0">
               <div className="flex flex-col gap-2 sm:gap-3">
@@ -182,11 +180,12 @@ const MainPage: React.FC = () => {
             </div>
           </div>
         </div>
+        </div>
 
         {/* Reports and Services */}
-        <div className="flex flex-col xl:flex-row gap-6 sm:gap-8 items-start">
+        <div className="flex flex-col xl:flex-row gap-6 sm:gap-8 items-stretch">
           {/* Reports Section */}
-          <div className="flex flex-col gap-4 sm:gap-6 w-full xl:w-auto">
+          <div className="flex flex-col gap-4 sm:gap-6 flex-1">
             <h2 className="text-xl sm:text-2xl lg:text-[32px] font-normal text-black tracking-wide leading-tight m-0">
               Отчёты
             </h2>
@@ -210,7 +209,7 @@ const MainPage: React.FC = () => {
           </div>
 
           {/* Services Section */}
-          <div className="flex flex-col gap-4 sm:gap-6 bg-white w-full xl:w-auto">
+          <div className="flex flex-col gap-4 sm:gap-6 bg-white flex-1">
             <h2 className="text-xl sm:text-2xl lg:text-[32px] font-normal text-black tracking-wide leading-tight m-0">
               Сервисы
             </h2>
