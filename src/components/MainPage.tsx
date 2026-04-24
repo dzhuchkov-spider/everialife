@@ -8,6 +8,12 @@ import clockIcon from '../assets/icons/clock2.svg';
 import searchIcon from '../assets/icons/search.svg';
 import copyIcon from '../assets/icons/copy.svg';
 import pdfIcon from '../assets/icons/pdf.svg';
+import infoIcon from '../assets/icons/info_24.svg';
+import lockIcon from '../assets/icons/lock_24.svg';
+import supportIcon from '../assets/icons/support_24.svg';
+import eyeIcon from '../assets/icons/eye.svg';
+import checkIcon from '../assets/icons/check_24.svg';
+import importIcon from '../assets/icons/import_24.svg';
 
 const MainPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -35,12 +41,12 @@ const MainPage: React.FC = () => {
   ];
 
   const serviceCards = [
-    { title: 'Инфо.\nматериалы', icon: 'ℹ️' },
-    { title: 'Сменить\nпароль', icon: '🔑' },
-    { title: 'Техническая\nподдержка', icon: '📞' },
-    { title: 'Просмотреть реестр', icon: '👁️' },
-    { title: 'Создать реестр\nна оплату', icon: '📝' },
-    { title: 'Импорт реестра договоров', icon: '📥' },
+    { title: 'Инфо.\nматериалы', icon: infoIcon },
+    { title: 'Сменить\nпароль', icon: lockIcon },
+    { title: 'Техническая\nподдержка', icon: supportIcon },
+    { title: 'Просмотреть реестр', icon: eyeIcon },
+    { title: 'Создать реестр\nна оплату', icon: checkIcon },
+    { title: 'Импорт реестра договоров', icon: importIcon },
   ];
 
   return (
@@ -207,7 +213,7 @@ const MainPage: React.FC = () => {
               {serviceCards.map((service, index) => (
                 <div key={index} className="w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] lg:w-[200px] h-[120px] sm:h-[140px] px-2 sm:px-3 py-4 sm:py-6 bg-[#fafafa] rounded flex flex-col justify-center items-start gap-2 sm:gap-3 cursor-pointer hover:shadow-md transition-shadow">
                   <div className="flex flex-col gap-2 sm:gap-3">
-                    <div className="w-6 sm:w-8 h-6 sm:h-8 bg-[#c4703e] rounded" />
+                    <img src={service.icon} alt={service.title} className="w-8 h-8" />
                     <div className="text-sm sm:text-lg lg:text-xl font-normal text-black leading-tight tracking-wide">
                       {service.title.split('\n').map((line, i) => (
                         <React.Fragment key={i}>
