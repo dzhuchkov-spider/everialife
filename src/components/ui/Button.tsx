@@ -1,12 +1,10 @@
 import React from 'react';
-import { theme } from '../../theme';
 
 export interface ButtonProps {
   children?: React.ReactNode;
   className?: string;
   variant?: 'contained' | 'outlined' | 'ghost';
   size?: 'normal' | 'large';
-  state?: 'resting' | 'hovered' | 'focused' | 'pressed' | 'disabled';
   disabled?: boolean;
   leadingIcon?: React.ReactNode;
   trailingIcon?: React.ReactNode;
@@ -18,181 +16,52 @@ const Button: React.FC<ButtonProps> = ({
   className = '',
   variant = 'contained',
   size = 'normal',
-  state = 'resting',
   disabled = false,
   leadingIcon,
   trailingIcon,
   onClick,
 }) => {
-  const actualState = disabled ? 'disabled' : state;
+  const baseClasses = 'flex items-center justify-center rounded overflow-hidden transition-all duration-200 font-normal text-base tracking-wide';
   
-  const getButtonStyles = () => {
-    const baseStyles = {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: size === 'large' ? '8px' : '4px',
-      borderRadius: '4px',
-      border: 'none',
-      cursor: actualState === 'disabled' ? 'not-allowed' : 'pointer',
-      fontFamily: theme.typography.fontFamily.helveticaNeueCyr,
-      fontSize: '16px',
-      fontWeight: 400,
-      lineHeight: '20.8px',
-      letterSpacing: '0.3px',
-      transition: 'all 0.2s ease',
-      overflow: 'hidden',
-      position: 'relative' as const,
-      ...theme.textStyles.button,
-    };
+  const sizeClasses = size === 'large' 
+    ? 'h-16 px-8 py-4 gap-2' 
+    : 'h-10 px-4 py-2 gap-1';
 
-    const sizeStyles = {
-      height: size === 'large' ? '64px' : '40px',
-      paddingLeft: size === 'large' ? '32px' : '16px',
-      paddingRight: size === 'large' ? '32px' : '16px',
-      paddingTop: size === 'large' ? '16px' : '8px',
-      paddingBottom: size === 'large' ? '16px' : '8px',
-    };
-
-    let variantStyles: React.CSSProperties = {};
-
-    if (variant === 'contained') {
-      switch (actualState) {
-        case 'resting':
-          variantStyles = {
-            backgroundColor: '#386df7',
-            color: 'white',
-          };
-          break;
-        case 'hovered':
-          variantStyles = {
-            backgroundColor: '#386fe9',
-            color: 'white',
-          };
-          break;
-        case 'focused':
-          variantStyles = {
-            backgroundColor: '#2e64e6',
-            color: 'white',
-          };
-          break;
-        case 'pressed':
-          variantStyles = {
-            backgroundColor: '#2459e3',
-            color: 'white',
-          };
-          break;
-        case 'disabled':
-          variantStyles = {
-            backgroundColor: '#939393',
-            color: 'white',
-            opacity: 1,
-          };
-          break;
-      }
-    } else if (variant === 'outlined') {
-      variantStyles = {
-        border: '1px solid #386df7',
-        backgroundColor: 'rgba(255, 255, 255, 0)',
-        color: '#386df7',
-      };
-      
-      switch (actualState) {
-        case 'hovered':
-          variantStyles.backgroundColor = 'rgba(56, 109, 247, 0.06)';
-          break;
-        case 'focused':
-          variantStyles.backgroundColor = 'rgba(56, 109, 247, 0.12)';
-          break;
-        case 'pressed':
-          variantStyles.backgroundColor = 'rgba(56, 109, 247, 0.22)';
-          break;
-        case 'disabled':
-          variantStyles.opacity = 0.5;
-          break;
-      }
-    } else if (variant === 'ghost') {
-      variantStyles = {
-        backgroundColor: 'rgba(255, 255, 255, 0)',
-        color: '#386df7',
-      };
-      
-      switch (actualState) {
-        case 'hovered':
-          variantStyles.backgroundColor = 'rgba(56, 109, 247, 0.06)';
-          break;
-        case 'focused':
-          variantStyles.backgroundColor = 'rgba(56, 109, 247, 0.12)';
-          break;
-        case 'pressed':
-          variantStyles.backgroundColor = 'rgba(56, 109, 247, 0.22)';
-          break;
-        case 'disabled':
-          variantStyles.opacity = 0.5;
-          break;
-      }
-    }
-
-    return { ...baseStyles, ...sizeStyles, ...variantStyles };
+  const variantClasses = {
+    contained: disabled 
+      ? 'bg-[#939393] text-white cursor-not-allowed' 
+      : 'bg-[#386df7] text-white hover:bg-[#2459e3] cursor-pointer',
+    outlined: disabled
+      ? 'border border-[#386df7] bg-transparent text-[#386df7] opacity-50 cursor-not-allowed'
+      : 'border border-[#386df7] bg-transparent text-[#386df7] hover:bg-[rgba(56,109,247,0.06)] cursor-pointer',
+    ghost: disabled
+      ? 'bg-transparent text-[#386df7] opacity-50 cursor-not-allowed'
+      : 'bg-transparent text-white hover:bg-white/10 cursor-pointer',
   };
 
-  const getIconSize = () => {
-    return size === 'large' ? '24px' : '20px';
-  };
-
-  const renderLeadingIcon = () => {
-    if (!leadingIcon) return null;
-    
-    return (
-      <div style={{ 
-        width: getIconSize(), 
-        height: getIconSize(), 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center',
-        overflow: 'hidden',
-        flexShrink: 0
-      }}>
-        {leadingIcon}
-      </div>
-    );
-  };
-
-  const renderTrailingIcon = () => {
-    if (!trailingIcon) return null;
-    
-    return (
-      <div style={{ 
-        width: getIconSize(), 
-        height: getIconSize(), 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center',
-        overflow: 'hidden',
-        flexShrink: 0
-      }}>
-        {trailingIcon}
-      </div>
-    );
-  };
+  const iconSize = size === 'large' ? 'w-6 h-6' : 'w-5 h-5';
 
   return (
     <button
-      className={className}
-      style={getButtonStyles()}
-      onClick={actualState !== 'disabled' ? onClick : undefined}
-      disabled={actualState === 'disabled'}
+      className={`${baseClasses} ${sizeClasses} ${variantClasses[variant]} ${className}`}
+      onClick={disabled ? undefined : onClick}
+      disabled={disabled}
     >
-      {renderLeadingIcon()}
+      {leadingIcon && (
+        <div className={`${iconSize} flex items-center justify-center overflow-hidden flex-shrink-0`}>
+          {leadingIcon}
+        </div>
+      )}
       {children && (
-        <span style={{ 
-          whiteSpace: 'nowrap',
-          flexShrink: 0
-        }}>
+        <span className="whitespace-nowrap flex-shrink-0">
           {children}
         </span>
       )}
-      {renderTrailingIcon()}
+      {trailingIcon && (
+        <div className={`${iconSize} flex items-center justify-center overflow-hidden flex-shrink-0`}>
+          {trailingIcon}
+        </div>
+      )}
     </button>
   );
 };

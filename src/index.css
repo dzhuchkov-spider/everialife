@@ -1,15 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  /* Custom colors based on Figma design */
+  --color-primary: #386df7;
+  --color-primary-dark: #2459e3;
+  --color-primary-light: #5d9ef8;
+  --color-accent: #c4703e;
+  --color-content-default: #191919;
+  --color-content-medium: #666666;
+  --color-content-light: #b3b3b3;
+  --color-bg-white: #ffffff;
+  --color-bg-light: #fafafa;
+  --color-bg-gray: #f2f2f2;
+  --color-border-light: #cccccc;
+  --color-border-default: #b3b3b3;
+  --color-warning-bg: #fff9ef;
+  
+  /* Font family */
+  --font-helvetica: 'Helvetica Neue Cyrillic', system-ui, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Custom font sizes */
+  --font-size-h1: 96px;
+  --font-size-h2: 60px;
+  --font-size-h3: 48px;
+  --font-size-h4: 32px;
+  --font-size-h5: 20px;
+  --font-size-body: 16px;
+  --font-size-body-sm: 14px;
+  --font-size-caption: 12px;
+  
+  /* Custom spacing */
+  --spacing-18: 72px;
+  --spacing-15: 60px;
+  --spacing-12: 48px;
+  --spacing-10: 40px;
+  --spacing-8: 32px;
+  --spacing-6: 24px;
+  --spacing-5: 20px;
+  --spacing-4: 16px;
+  --spacing-3: 12px;
+  --spacing-2: 8px;
+}
+
+/* Font face declarations */
 @font-face {
   font-family: 'Helvetica Neue Cyrillic';
   src: url('./assets/fonts/HelveticaNeueCyr-UltraLight.ttf') format('truetype');
   font-weight: 100;
   font-style: normal;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue Cyrillic';
-  src: url('./assets/fonts/HelveticaNeueCyr-UltraLightItalic.ttf') format('truetype');
-  font-weight: 100;
-  font-style: italic;
 }
 
 @font-face {
@@ -21,23 +59,9 @@
 
 @font-face {
   font-family: 'Helvetica Neue Cyrillic';
-  src: url('./assets/fonts/HelveticaNeueCyr-ThinItalic.ttf') format('truetype');
-  font-weight: 200;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue Cyrillic';
   src: url('./assets/fonts/HelveticaNeueCyr-Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue Cyrillic';
-  src: url('./assets/fonts/HelveticaNeueCyr-LightItalic.ttf') format('truetype');
-  font-weight: 300;
-  font-style: italic;
 }
 
 @font-face {
@@ -49,23 +73,9 @@
 
 @font-face {
   font-family: 'Helvetica Neue Cyrillic';
-  src: url('./assets/fonts/HelveticaNeueCyr-Italic.ttf') format('truetype');
-  font-weight: 400;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue Cyrillic';
   src: url('./assets/fonts/HelveticaNeueCyr-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue Cyrillic';
-  src: url('./assets/fonts/HelveticaNeueCyr-MediumItalic.ttf') format('truetype');
-  font-weight: 500;
-  font-style: italic;
 }
 
 @font-face {
@@ -77,23 +87,9 @@
 
 @font-face {
   font-family: 'Helvetica Neue Cyrillic';
-  src: url('./assets/fonts/HelveticaNeueCyr-BoldItalic.ttf') format('truetype');
-  font-weight: 700;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue Cyrillic';
   src: url('./assets/fonts/HelveticaNeueCyr-Heavy.ttf') format('truetype');
   font-weight: 800;
   font-style: normal;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue Cyrillic';
-  src: url('./assets/fonts/HelveticaNeueCyr-HeavyItalic.ttf') format('truetype');
-  font-weight: 800;
-  font-style: italic;
 }
 
 @font-face {
@@ -103,269 +99,46 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'Helvetica Neue Cyrillic';
-  src: url('./assets/fonts/HelveticaNeueCyr-BlackItalic.ttf') format('truetype');
-  font-weight: 900;
-  font-style: italic;
-}
-
-:root {
-  /* Figma Design System Colors */
-  --color-content-default: #191919;
-  --color-content-medium: #666666;
-  --color-background-default-light: #ffffff;
-  --color-action-outline-neutral-default-light: #f2f2f2;
-  --color-accent: #b70d18;
-
-  /* Legacy colors for compatibility */
-  --text: var(--color-content-default);
-  --text-h: var(--color-content-default);
-  --bg: var(--color-background-default-light);
-  --border: var(--color-action-outline-neutral-default-light);
-  --code-bg: #f4f3ec;
-  --accent: var(--color-accent);
-  --accent-bg: rgba(183, 13, 24, 0.1);
-  --accent-border: rgba(183, 13, 24, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  /* Typography */
-  --font-family-helvetica-neue-cyr: 'Helvetica Neue Cyrillic', system-ui, 'Segoe UI', Roboto, sans-serif;
-  --sans: var(--font-family-helvetica-neue-cyr);
-  --heading: var(--font-family-helvetica-neue-cyr);
-  --mono: ui-monospace, Consolas, monospace;
-
-  /* Font Sizes */
-  --font-size-h1: 96px;
-  --font-size-h2: 60px;
-  --font-size-h3: 48px;
-  --font-size-h4: 32px;
-  --font-size-body1: 16px;
-  --font-size-body2: 14px;
-  --font-size-subtitle: 14px;
-  --font-size-button: 16px;
-  --font-size-caption: 12px;
-  --font-size-overline: 10px;
-
-  /* Line Heights */
-  --line-height-h1: 117px;
-  --line-height-h2: 78px;
-  --line-height-h3: 56px;
-  --line-height-h4: 42px;
-  --line-height-body1: 22.4px;
-  --line-height-body2: 19.6px;
-  --line-height-subtitle: 16px;
-  --line-height-button: 20.8px;
-  --line-height-caption: 16px;
-  --line-height-overline: 12px;
-
-  /* Letter Spacing */
-  --letter-spacing-h1: -0.5px;
-  --letter-spacing-h2: -0.5px;
-  --letter-spacing-h3: 0px;
-  --letter-spacing-h4: 0.2px;
-  --letter-spacing-body1: 0.5px;
-  --letter-spacing-body2: 0.2px;
-  --letter-spacing-subtitle: 0.1px;
-  --letter-spacing-button: 0.3px;
-  --letter-spacing-caption: 0.4px;
-  --letter-spacing-overline: 1.2px;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+/* Base styles */
+body {
+  font-family: var(--font-helvetica);
+  margin: 0;
+  padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
+/* Custom utility classes */
+@layer utilities {
+  .text-h4 {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 28.8px;
+    letter-spacing: 0.2px;
   }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-}
-
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
+  
+  .text-h5 {
     font-size: 20px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0.2px;
   }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
-}
-
-/* Figma Text Styles Utility Classes */
-.text-overline {
-  font-family: var(--font-family-helvetica-neue-cyr);
-  font-size: var(--font-size-overline);
-  font-weight: 400;
-  line-height: var(--line-height-overline);
-  letter-spacing: var(--letter-spacing-overline);
-}
-
-.text-h1 {
-  font-family: var(--font-family-helvetica-neue-cyr);
-  font-size: var(--font-size-h1);
-  font-weight: 300;
-  line-height: var(--line-height-h1);
-  letter-spacing: var(--letter-spacing-h1);
-}
-
-.text-h2 {
-  font-family: var(--font-family-helvetica-neue-cyr);
-  font-size: var(--font-size-h2);
-  font-weight: 300;
-  line-height: var(--line-height-h2);
-  letter-spacing: var(--letter-spacing-h2);
-}
-
-.text-h3 {
-  font-family: var(--font-family-helvetica-neue-cyr);
-  font-size: var(--font-size-h3);
-  font-weight: 400;
-  line-height: var(--line-height-h3);
-  letter-spacing: var(--letter-spacing-h3);
-}
-
-.text-h4 {
-  font-family: var(--font-family-helvetica-neue-cyr);
-  font-size: var(--font-size-h4);
-  font-weight: 400;
-  line-height: var(--line-height-h4);
-  letter-spacing: var(--letter-spacing-h4);
-}
-
-.text-body1 {
-  font-family: var(--font-family-helvetica-neue-cyr);
-  font-size: var(--font-size-body1);
-  font-weight: 400;
-  line-height: var(--line-height-body1);
-  letter-spacing: var(--letter-spacing-body1);
-}
-
-.text-body2 {
-  font-family: var(--font-family-helvetica-neue-cyr);
-  font-size: var(--font-size-body2);
-  font-weight: 400;
-  line-height: var(--line-height-body2);
-  letter-spacing: var(--letter-spacing-body2);
-}
-
-.text-subtitle {
-  font-family: var(--font-family-helvetica-neue-cyr);
-  font-size: var(--font-size-subtitle);
-  font-weight: 500;
-  line-height: var(--line-height-subtitle);
-  letter-spacing: var(--letter-spacing-subtitle);
-}
-
-.text-button {
-  font-family: var(--font-family-helvetica-neue-cyr);
-  font-size: var(--font-size-button);
-  font-weight: 400;
-  line-height: var(--line-height-button);
-  letter-spacing: var(--letter-spacing-button);
-}
-
-.text-caption {
-  font-family: var(--font-family-helvetica-neue-cyr);
-  font-size: var(--font-size-caption);
-  font-weight: 400;
-  line-height: var(--line-height-caption);
-  letter-spacing: var(--letter-spacing-caption);
-}
-
-/* Color utility classes */
-.text-content-default {
-  color: var(--color-content-default);
-}
-
-.text-content-medium {
-  color: var(--color-content-medium);
-}
-
-.text-accent {
-  color: var(--color-accent);
-}
-
-.bg-default-light {
-  background-color: var(--color-background-default-light);
-}
-
-.bg-outline-neutral {
-  background-color: var(--color-action-outline-neutral-default-light);
+  
+  .text-body {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22.4px;
+    letter-spacing: 0.5px;
+  }
+  
+  .text-body-sm {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19.6px;
+    letter-spacing: 0.2px;
+  }
+  
+  .gradient-header {
+    background: linear-gradient(90deg, #386df7 0%, #5d9ef8 100%);
+  }
 }

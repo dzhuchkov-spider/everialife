@@ -1,206 +1,7 @@
 import React, { useState } from 'react';
-import { theme } from '../theme';
-import { Button } from './ui';
 
 const MainPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
-
-  const getPageStyles = () => ({
-    width: '100%',
-    minHeight: '100vh',
-    backgroundColor: 'white',
-    fontFamily: theme.typography.fontFamily.helveticaNeueCyr,
-    display: 'flex',
-    flexDirection: 'column' as const,
-  });
-
-  const getHeaderStyles = () => ({
-    background: 'linear-gradient(to right, #386df6, #5d9ef8)',
-    position: 'relative' as const,
-  });
-
-  const getHeaderTopStyles = () => ({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '30px 40px',
-    borderBottom: '1px solid #f2f2f2',
-  });
-
-  const getHeaderMenuStyles = () => ({
-    backgroundColor: 'white',
-    padding: '12px 40px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  });
-
-  const getMenuItemsStyles = () => ({
-    display: 'flex',
-    gap: '80px',
-    alignItems: 'center',
-  });
-
-  const getMainContentStyles = () => ({
-    flex: 1,
-    padding: '40px',
-    display: 'flex',
-    flexDirection: 'column' as const,
-    gap: '40px',
-  });
-
-  const getHeroSectionStyles = () => ({
-    display: 'flex',
-    gap: '31px',
-    alignItems: 'flex-end',
-  });
-
-  const getLeftColumnStyles = () => ({
-    display: 'flex',
-    flexDirection: 'column' as const,
-    gap: '24px',
-  });
-
-  const getContractsSectionStyles = () => ({
-    display: 'flex',
-    flexDirection: 'column' as const,
-    gap: '24px',
-  });
-
-  const getSectionTitleStyles = () => ({
-    fontSize: '32px',
-    fontWeight: 400,
-    lineHeight: '28.8px',
-    letterSpacing: '0.2px',
-    color: '#000000',
-    margin: 0,
-    width: '186px',
-  });
-
-  const getContractInfoCardStyles = () => ({
-    width: '663px',
-    height: '114px',
-    padding: '32px',
-    backgroundColor: '#fafafa',
-    border: '1px solid #f2f2f2',
-    borderRadius: '4px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  });
-
-  const getContractCardsStyles = () => ({
-    width: '666px',
-    display: 'flex',
-    gap: '32px',
-    flexWrap: 'wrap' as const,
-  });
-
-  const getContractCardStyles = () => ({
-    flex: '1 1 0',
-    height: '140px',
-    padding: '24px 12px',
-    border: '1px solid #cccccc',
-    borderRadius: '4px',
-    backgroundColor: 'white',
-    display: 'flex',
-    flexDirection: 'column' as const,
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    gap: '12px',
-    cursor: 'pointer',
-  });
-
-  const getRightColumnStyles = () => ({
-    width: '664px',
-    height: '286px',
-    position: 'relative' as const,
-    overflow: 'hidden' as const,
-    backgroundColor: '#fafafa',
-    borderRadius: '4px',
-  });
-
-  const getRightColumnContentStyles = () => ({
-    position: 'absolute' as const,
-    left: '313px',
-    top: '31px',
-    border: '1px solid #fff9ef',
-    borderRadius: '4px',
-    padding: '24px',
-    backgroundColor: 'white',
-    display: 'flex',
-    flexDirection: 'column' as const,
-    gap: '24px',
-  });
-
-  const getReportsAndServicesStyles = () => ({
-    display: 'flex',
-    gap: '32px',
-    alignItems: 'flex-start',
-  });
-
-  const getReportsSectionStyles = () => ({
-    display: 'flex',
-    flexDirection: 'column' as const,
-    gap: '24px',
-  });
-
-  const getReportCardsStyles = () => ({
-    width: '666px',
-    display: 'flex',
-    gap: '32px',
-    flexWrap: 'wrap' as const,
-  });
-
-  const getReportCardStyles = () => ({
-    width: '316px',
-    padding: '24px',
-    border: '1px solid #cccccc',
-    borderRadius: '4px',
-    backgroundColor: 'white',
-    display: 'flex',
-    flexDirection: 'column' as const,
-    gap: '16px',
-    cursor: 'pointer',
-  });
-
-  const getServicesSectionStyles = () => ({
-    display: 'flex',
-    flexDirection: 'column' as const,
-    gap: '24px',
-    backgroundColor: 'white',
-  });
-
-  const getServiceCardsStyles = () => ({
-    width: '664px',
-    display: 'flex',
-    gap: '32px',
-    flexWrap: 'wrap' as const,
-  });
-
-  const getServiceCardStyles = () => ({
-    width: '200px',
-    height: '140px',
-    padding: '24px 12px',
-    backgroundColor: '#fafafa',
-    borderRadius: '4px',
-    display: 'flex',
-    flexDirection: 'column' as const,
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    gap: '12px',
-    cursor: 'pointer',
-  });
-
-  const getFooterStyles = () => ({
-    borderTop: '1px solid #f2f2f2',
-    backgroundColor: 'white',
-    padding: '16px 40px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    height: '82px',
-  });
 
   const handleLogout = () => {
     console.log('Logout clicked');
@@ -234,111 +35,62 @@ const MainPage: React.FC = () => {
   ];
 
   return (
-    <div style={getPageStyles()}>
+    <div className="w-full min-h-screen bg-white flex flex-col font-[var(--font-helvetica)]">
       {/* Header */}
-      <header style={getHeaderStyles()}>
-        <div style={getHeaderTopStyles()}>
-          {/* Logo */}
-          <div style={{ width: '421px', height: '46px', position: 'relative' }}>
-            <div style={{ 
-              width: '210px', 
-              height: '46px', 
-              backgroundColor: '#fff', 
-              borderRadius: '4px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontWeight: 700,
-              fontSize: '18px',
-              color: '#386df7'
-            }}>
-              KAPLIFE
+      <header className="relative">
+        {/* Top bar with gradient */}
+        <div className="bg-gradient-to-r from-[#386df7] to-[#5d9ef8]">
+          <div className="flex items-center justify-between px-4 sm:px-6 lg:px-10 py-4 sm:py-[30px] border-b border-[#f2f2f2]">
+            {/* Logo */}
+            <div className="relative w-[210px] sm:w-[320px] lg:w-[421px] h-[32px] sm:h-[46px]">
+              <div className="w-full sm:w-[210px] h-full bg-white rounded flex items-center justify-center font-bold text-base sm:text-lg text-[#386df7]">
+                KAPLIFE
+              </div>
             </div>
-          </div>
-          
-          {/* User actions */}
-          <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-            <Button 
-              variant="ghost" 
-              size="normal"
-              onClick={handleLogout}
-            >
-              Выйти
-            </Button>
-            <div style={{
-              backgroundColor: '#437aec',
-              borderRadius: '50%',
-              width: '46px',
-              height: '46px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'white',
-              fontSize: '14px',
-              letterSpacing: '0.2px',
-            }}>
-              AK
+            
+            {/* User actions */}
+            <div className="flex items-center gap-2 sm:gap-5">
+              <button 
+                onClick={handleLogout}
+                className="hidden sm:block px-2 py-2 bg-transparent text-white rounded hover:bg-white/10 transition-all text-sm sm:text-base tracking-wide"
+              >
+                Выйти
+              </button>
+              <div className="w-10 sm:w-[46px] h-10 sm:h-[46px] bg-[#437aec] rounded-full flex items-center justify-center text-white text-xs sm:text-sm tracking-wide">
+                AK
+              </div>
             </div>
           </div>
         </div>
 
         {/* Navigation menu */}
-        <div style={getHeaderMenuStyles()}>
-          <div style={getMenuItemsStyles()}>
+        <div className="bg-white px-4 sm:px-6 lg:px-10 py-3 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 lg:gap-0">
+          <nav className="flex items-center gap-4 sm:gap-10 lg:gap-20 overflow-x-auto w-full lg:w-auto pb-2 lg:pb-0">
             {menuItems.map((item, index) => (
-              <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '2px', cursor: 'pointer' }}>
-                <span style={{
-                  fontSize: '20px',
-                  fontWeight: 400,
-                  lineHeight: '28px',
-                  letterSpacing: '0.2px',
-                  color: index === 0 ? '#191919' : '#191919',
-                }}>
+              <div key={item} className="flex items-center gap-0.5 cursor-pointer flex-shrink-0">
+                <span className="text-base sm:text-xl font-normal text-[#191919] tracking-wide leading-7">
                   {item}
                 </span>
                 {index > 0 && (
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
                     <path d="M7 10l5 5 5-5z" fill="#666"/>
                   </svg>
                 )}
               </div>
             ))}
-          </div>
+          </nav>
 
           {/* Search input */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            border: '1px solid #b3b3b3',
-            borderRadius: '4px',
-            height: '56px',
-            padding: '8px',
-            backgroundColor: 'rgba(255, 255, 255, 0)',
-            width: '393px',
-          }}>
-            <div style={{
-              backgroundColor: '#f2f2f2',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '4px',
-              padding: '4px',
-              borderRadius: '4px',
-              height: '40px',
-            }}>
-              <span style={{
-                fontSize: '14px',
-                color: '#4d4d4d',
-                letterSpacing: '0.2px',
-                padding: '2px 8px',
-              }}>
+          <div className="flex items-center gap-2 border border-[#b3b3b3] rounded h-12 sm:h-14 px-2 w-full sm:w-[320px] lg:w-[393px]">
+            <div className="bg-[#f2f2f2] flex items-center gap-1 px-1 rounded h-10 flex-shrink-0">
+              <span className="text-xs sm:text-sm text-[#4d4d4d] tracking-wide px-2 py-0.5">
                 по номеру
               </span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
                 <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="#666"/>
               </svg>
             </div>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <svg className="w-5 sm:w-6 h-5 sm:h-6 flex-shrink-0" viewBox="0 0 24 24" fill="none">
               <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#666"/>
             </svg>
             <input
@@ -346,55 +98,48 @@ const MainPage: React.FC = () => {
               placeholder="Поиск договора"
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
-              style={{
-                flex: 1,
-                border: 'none',
-                outline: 'none',
-                fontSize: '16px',
-                color: '#666',
-                letterSpacing: '0.5px',
-                fontFamily: theme.typography.fontFamily.helveticaNeueCyr,
-                backgroundColor: 'transparent',
-              }}
+              className="flex-1 border-none outline-none bg-transparent text-sm sm:text-base text-[#666] tracking-wide min-w-0"
             />
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main style={getMainContentStyles()}>
+      <main className="flex-1 flex flex-col gap-6 sm:gap-8 lg:gap-10 p-4 sm:p-6 lg:p-10">
         {/* Hero Section */}
-        <div style={getHeroSectionStyles()}>
+        <div className="flex flex-col xl:flex-row gap-6 sm:gap-8 items-start xl:items-end">
           {/* Left Column - Contracts */}
-          <div style={getLeftColumnStyles()}>
-            <div style={getContractsSectionStyles()}>
-              <h2 style={getSectionTitleStyles()}>Договоры</h2>
+          <div className="flex flex-col gap-4 sm:gap-6 w-full xl:w-auto">
+            <div className="flex flex-col gap-4 sm:gap-6">
+              <h2 className="text-xl sm:text-2xl lg:text-[32px] font-normal text-black tracking-wide leading-tight m-0">
+                Договоры
+              </h2>
               
               {/* Contract info card */}
-              <div style={getContractInfoCardStyles()}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                  <div style={{ width: '32px', height: '32px', backgroundColor: '#c4703e', borderRadius: '4px' }} />
-                  <div>
-                    <div style={{ fontSize: '20px', fontWeight: 400, lineHeight: '26px', color: '#000000' }}>
+              <div className="w-full sm:w-full lg:w-[663px] h-auto min-h-[114px] p-4 sm:p-6 lg:p-8 bg-[#fafafa] border border-[#f2f2f2] rounded flex items-center justify-between">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="w-6 sm:w-8 h-6 sm:h-8 bg-[#c4703e] rounded flex-shrink-0" />
+                  <div className="min-w-0">
+                    <div className="text-base sm:text-lg lg:text-xl font-normal text-black leading-tight">
                       Договоры в работе
                     </div>
-                    <div style={{ fontSize: '14px', color: '#666666', lineHeight: '19.6px', letterSpacing: '0.2px' }}>
+                    <div className="text-xs sm:text-sm text-[#666666] leading-tight tracking-wide">
                       Договоры, находящиеся в процессе ввода или оценки рисков
                     </div>
                   </div>
                 </div>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <svg className="w-5 sm:w-6 h-5 sm:h-6 flex-shrink-0" viewBox="0 0 24 24" fill="none">
                   <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="#c4703e"/>
                 </svg>
               </div>
 
               {/* Contract cards */}
-              <div style={getContractCardsStyles()}>
+              <div className="w-full sm:w-full lg:w-[666px] flex gap-4 sm:gap-6 lg:gap-8 flex-wrap">
                 {contractCards.map((card, index) => (
-                  <div key={index} style={getContractCardStyles()}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                      <div style={{ width: '32px', height: '32px', backgroundColor: '#c4703e', borderRadius: '4px' }} />
-                      <div style={{ fontSize: '20px', fontWeight: 400, lineHeight: '26px', color: '#000000' }}>
+                  <div key={index} className="flex-1 min-w-[140px] sm:min-w-[180px] h-[120px] sm:h-[140px] px-2 sm:px-3 py-4 sm:py-6 border border-[#cccccc] rounded bg-white flex flex-col justify-center items-start gap-2 sm:gap-3 cursor-pointer hover:shadow-md transition-shadow">
+                    <div className="flex flex-col gap-2 sm:gap-3">
+                      <div className="w-6 sm:w-8 h-6 sm:h-8 bg-[#c4703e] rounded" />
+                      <div className="text-sm sm:text-lg lg:text-xl font-normal text-black leading-tight tracking-wide">
                         {card.title.split('\n').map((line, i) => (
                           <React.Fragment key={i}>
                             {line}
@@ -410,46 +155,35 @@ const MainPage: React.FC = () => {
           </div>
 
           {/* Right Column - Create Contract */}
-          <div style={getRightColumnStyles()}>
-            <img style={{ width: '206px', height: '268px', position: 'absolute', left: '36px', top: '18px' }} src="https://placehold.co/206x268" alt="Contract illustration" />
-            <div style={getRightColumnContentStyles()}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                <div style={{ width: '72px', height: '72px', backgroundColor: '#999999', borderRadius: '4px' }} />
-                <div style={{ fontSize: '32px', fontWeight: 400, lineHeight: '38.4px', color: '#000000' }}>
+          <div className="w-full xl:w-[664px] h-auto min-h-[200px] sm:h-[286px] relative overflow-hidden bg-[#fafafa] rounded">
+            <img className="hidden sm:block w-[150px] lg:w-[206px] h-auto lg:h-[268px] absolute left-4 lg:left-9 top-4 lg:top-[18px]" src="https://placehold.co/206x268" alt="Contract illustration" />
+            <div className="static sm:absolute left-0 sm:left-[200px] lg:left-[313px] top-0 sm:top-[31px] border border-[#fff9ef] rounded p-4 sm:p-6 bg-white flex flex-col gap-4 sm:gap-6 m-4 sm:m-0">
+              <div className="flex flex-col gap-2 sm:gap-3">
+                <div className="w-12 sm:w-[72px] h-12 sm:h-[72px] bg-[#999999] rounded" />
+                <div className="text-xl sm:text-2xl lg:text-[32px] font-normal text-black leading-tight tracking-wide">
                   Ввод договора
                 </div>
               </div>
-              <div style={{ 
-                height: '64px', 
-                padding: '16px 32px',
-                background: '#386df7',
-                color: 'white',
-                borderRadius: '4px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                fontSize: '16px',
-                fontWeight: 400,
-                letterSpacing: '0.3px'
-              }}>
+              <button className="h-12 sm:h-16 px-4 sm:px-8 bg-[#386df7] text-white rounded flex items-center justify-center cursor-pointer text-sm sm:text-base font-normal tracking-wide hover:bg-[#2459e3] transition-colors">
                 Создать договор
-              </div>
+              </button>
             </div>
           </div>
         </div>
 
         {/* Reports and Services */}
-        <div style={getReportsAndServicesStyles()}>
+        <div className="flex flex-col xl:flex-row gap-6 sm:gap-8 items-start">
           {/* Reports Section */}
-          <div style={getReportsSectionStyles()}>
-            <h2 style={getSectionTitleStyles()}>Отчёты</h2>
-            <div style={getReportCardsStyles()}>
+          <div className="flex flex-col gap-4 sm:gap-6 w-full xl:w-auto">
+            <h2 className="text-xl sm:text-2xl lg:text-[32px] font-normal text-black tracking-wide leading-tight m-0">
+              Отчёты
+            </h2>
+            <div className="w-full sm:w-full lg:w-[666px] flex gap-4 sm:gap-6 lg:gap-8 flex-wrap">
               {reportCards.map((report, index) => (
-                <div key={index} style={getReportCardStyles()}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                    <div style={{ width: '60px', height: '60px', backgroundColor: '#c4703e', borderRadius: '4px' }} />
-                    <div style={{ fontSize: '20px', fontWeight: 400, lineHeight: '26px', color: '#000000' }}>
+                <div key={index} className="flex-1 min-w-[140px] sm:min-w-[200px] lg:w-[316px] lg:flex-none p-4 sm:p-6 border border-[#cccccc] rounded bg-white flex flex-col gap-3 sm:gap-4 cursor-pointer hover:shadow-md transition-shadow">
+                  <div className="flex flex-col gap-3 sm:gap-4">
+                    <div className="w-10 sm:w-[60px] h-10 sm:h-[60px] bg-[#c4703e] rounded" />
+                    <div className="text-sm sm:text-lg lg:text-xl font-normal text-black leading-tight tracking-wide">
                       {report.title.split('\n').map((line, i) => (
                         <React.Fragment key={i}>
                           {line}
@@ -464,14 +198,16 @@ const MainPage: React.FC = () => {
           </div>
 
           {/* Services Section */}
-          <div style={getServicesSectionStyles()}>
-            <h2 style={getSectionTitleStyles()}>Сервисы</h2>
-            <div style={getServiceCardsStyles()}>
+          <div className="flex flex-col gap-4 sm:gap-6 bg-white w-full xl:w-auto">
+            <h2 className="text-xl sm:text-2xl lg:text-[32px] font-normal text-black tracking-wide leading-tight m-0">
+              Сервисы
+            </h2>
+            <div className="w-full sm:w-full lg:w-[664px] flex gap-4 sm:gap-6 lg:gap-8 flex-wrap">
               {serviceCards.map((service, index) => (
-                <div key={index} style={getServiceCardStyles()}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                    <div style={{ width: '32px', height: '32px', backgroundColor: '#c4703e', borderRadius: '4px' }} />
-                    <div style={{ fontSize: '20px', fontWeight: 400, lineHeight: '26px', color: '#000000' }}>
+                <div key={index} className="w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] lg:w-[200px] h-[120px] sm:h-[140px] px-2 sm:px-3 py-4 sm:py-6 bg-[#fafafa] rounded flex flex-col justify-center items-start gap-2 sm:gap-3 cursor-pointer hover:shadow-md transition-shadow">
+                  <div className="flex flex-col gap-2 sm:gap-3">
+                    <div className="w-6 sm:w-8 h-6 sm:h-8 bg-[#c4703e] rounded" />
+                    <div className="text-sm sm:text-lg lg:text-xl font-normal text-black leading-tight tracking-wide">
                       {service.title.split('\n').map((line, i) => (
                         <React.Fragment key={i}>
                           {line}
@@ -488,18 +224,18 @@ const MainPage: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <footer style={getFooterStyles()}>
-        <div style={{ flex: 1 }}>
-          <p style={{ margin: 0, fontSize: '16px', color: '#313131', lineHeight: '24px' }}>
+      <footer className="border-t border-[#f2f2f2] bg-white px-4 sm:px-6 lg:px-10 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0 h-auto sm:h-[82px]">
+        <div className="flex-1">
+          <p className="text-sm sm:text-base text-[#313131] leading-6 m-0">
             © Портал продаж СК «Эверия Лайф»
           </p>
-          <p style={{ margin: 0, fontSize: '16px', color: '#313131', lineHeight: '24px' }}>
-            Официальный сайт компании – <span style={{ color: '#386df7' }}>everialife.ru</span>
+          <p className="text-sm sm:text-base text-[#313131] leading-6 m-0">
+            Официальный сайт компании – <span className="text-[#386df7]">everialife.ru</span>
           </p>
         </div>
-        <div style={{ width: '64px', height: '50px', display: 'flex', gap: '8px' }}>
-          <div style={{ width: '32px', height: '32px', backgroundColor: '#c4703e', borderRadius: '4px' }} />
-          <div style={{ width: '32px', height: '32px', backgroundColor: '#c4703e', borderRadius: '4px' }} />
+        <div className="flex gap-2">
+          <div className="w-6 sm:w-8 h-6 sm:h-8 bg-[#c4703e] rounded" />
+          <div className="w-6 sm:w-8 h-6 sm:h-8 bg-[#c4703e] rounded" />
         </div>
       </footer>
     </div>

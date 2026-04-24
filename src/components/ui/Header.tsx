@@ -1,5 +1,4 @@
 import React from 'react';
-import { theme } from '../../theme';
 
 export interface HeaderProps {
   className?: string;
@@ -33,45 +32,18 @@ const Header: React.FC<HeaderProps> = ({
   const isMobAndLoginSearch = variant === 'mobile' && mode === 'login-search';
   const isWebAndEnter = variant === 'web' && mode === 'enter';
 
-  const getHeaderStyles = () => {
-    const baseStyles = {
-      position: 'relative' as const,
-      backgroundColor: 'var(--basic/primary/pure, #386df7)',
-      fontFamily: theme.typography.fontFamily.helveticaNeueCyr,
-    };
-
-    if (variant === 'mobile' && ['Enter', 'Login'].includes(mode)) {
-      return {
-        ...baseStyles,
-        height: '64px',
-        width: '320px',
-      };
-    } else if (isMobAndLoginSearch) {
-      return {
-        ...baseStyles,
-        display: 'flex',
-        flexDirection: 'column' as const,
-        alignItems: 'flex-start',
-      };
-    } else {
-      return {
-        ...baseStyles,
-        height: '106px',
-        width: '1440px',
-      };
-    }
-  };
+  const headerClasses = variant === 'mobile' && ['Enter', 'Login'].includes(mode)
+    ? 'relative h-16 w-80 bg-[#386df7]'
+    : isMobAndLoginSearch
+    ? 'relative flex flex-col items-start bg-[#386df7]'
+    : 'relative h-[106px] w-full max-w-[1440px] bg-[#386df7]';
 
   const Logo: React.FC<{ property1?: 'Mob' | 'Web' }> = ({ property1 = 'Mob' }) => {
     const isMob = property1 === 'Mob';
     const isWeb = property1 === 'Web';
 
     return (
-      <div style={{
-        position: 'relative',
-        height: isWeb ? '46px' : '32px',
-        width: isWeb ? '421px' : '210px',
-      }}>
+      <div className={`relative ${isWeb ? 'h-[46px] w-[421px]' : 'h-8 w-[210px]'}`}>
         {isMob && (
           <>
             <div style={{

@@ -1,13 +1,10 @@
 import React from 'react';
-import { theme } from '../../theme';
 
 export interface CardProps {
   className?: string;
   title?: string;
   icon?: React.ReactNode;
   variant?: 'services-smol' | 'default';
-  width?: string;
-  height?: string;
   onClick?: () => void;
 }
 
@@ -16,53 +13,19 @@ const Card: React.FC<CardProps> = ({
   title = 'Информационные материалы',
   icon,
   variant = 'services-smol',
-  width = '200px',
-  height = '140px',
   onClick,
 }) => {
-  const getCardStyles = () => {
-    const baseStyles = {
-      position: 'relative' as const,
-      display: 'flex',
-      flexDirection: 'column' as const,
-      alignItems: 'flex-start',
-      justifyContent: 'center',
-      borderRadius: '4px',
-      fontFamily: theme.typography.fontFamily.helveticaNeueCyr,
-      cursor: onClick ? 'pointer' : 'default',
-      transition: 'all 0.2s ease',
-      overflow: 'hidden',
-    };
-
-    const variantStyles = variant === 'services-smol'
-      ? {
-          backgroundColor: '#fafafa',
-          width: width,
-          height: height,
-          padding: '24px 12px',
-        }
-      : {
-          backgroundColor: '#fafafa',
-          width: width,
-          height: height,
-          padding: '16px',
-        };
-
-    return { ...baseStyles, ...variantStyles };
-  };
+  const baseClasses = 'relative flex flex-col items-start justify-center rounded overflow-hidden transition-all duration-200';
+  const cursorClass = onClick ? 'cursor-pointer hover:-translate-y-0.5 hover:shadow-lg' : 'cursor-default';
+  
+  const variantClasses = variant === 'services-smol'
+    ? 'bg-[#fafafa] w-[200px] h-[140px] px-3 py-6'
+    : 'bg-[#fafafa] w-[200px] h-[140px] p-4';
 
   const renderIcon = () => {
     if (icon) {
       return (
-        <div style={{
-          width: '32px',
-          height: '32px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginBottom: '12px',
-          flexShrink: 0,
-        }}>
+        <div className="w-8 h-8 flex items-center justify-center mb-3 flex-shrink-0">
           {icon}
         </div>
       );
@@ -70,65 +33,24 @@ const Card: React.FC<CardProps> = ({
 
     // Default info icon
     return (
-      <div style={{
-        width: '32px',
-        height: '32px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: '12px',
-        flexShrink: 0,
-      }}>
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" style={{ transform: 'rotate(180deg)' }}>
+      <div className="w-8 h-8 flex items-center justify-center mb-3 flex-shrink-0">
+        <svg className="w-8 h-8 rotate-180" viewBox="0 0 24 24" fill="none">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="#666"/>
         </svg>
       </div>
     );
   };
 
-  const renderTitle = () => (
-    <div style={{
-      fontSize: '20px',
-      fontWeight: 400,
-      lineHeight: '26px',
-      letterSpacing: '0.2px',
-      color: '#000000',
-      minWidth: 'min-content',
-      flexShrink: 0,
-      ...theme.textStyles.h4,
-    }}>
-      {title}
-    </div>
-  );
-
   return (
     <div 
-      className={className}
-      style={getCardStyles()}
+      className={`${baseClasses} ${cursorClass} ${variantClasses} ${className}`}
       onClick={onClick}
-      onMouseEnter={(e) => {
-        if (onClick) {
-          e.currentTarget.style.transform = 'translateY(-2px)';
-          e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
-        }
-      }}
-      onMouseLeave={(e) => {
-        if (onClick) {
-          e.currentTarget.style.transform = 'translateY(0)';
-          e.currentTarget.style.boxShadow = 'none';
-        }
-      }}
     >
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '12px',
-        alignItems: 'flex-start',
-        width: '100%',
-        flexShrink: 0,
-      }}>
+      <div className="flex flex-col gap-3 items-start w-full flex-shrink-0">
         {renderIcon()}
-        {renderTitle()}
+        <div className="text-xl font-normal text-black min-w-min flex-shrink-0 leading-[26px] tracking-wide">
+          {title}
+        </div>
       </div>
     </div>
   );
