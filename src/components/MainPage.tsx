@@ -14,6 +14,7 @@ import supportIcon from '../assets/icons/support_24.svg';
 import eyeIcon from '../assets/icons/eye.svg';
 import checkIcon from '../assets/icons/check_24.svg';
 import importIcon from '../assets/icons/import_24.svg';
+import groupIcon from '../assets/icons/Group.svg';
 
 const MainPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -241,8 +242,7 @@ const MainPage: React.FC = () => {
           </p>
         </div>
         <div className="flex gap-2">
-          <div className="w-6 sm:w-8 h-6 sm:h-8 bg-[#c4703e] rounded" />
-          <div className="w-6 sm:w-8 h-6 sm:h-8 bg-[#c4703e] rounded" />
+          <img src={groupIcon} alt="Group" className="w-16 h-[50px]" />
         </div>
       </footer>
     </div>
