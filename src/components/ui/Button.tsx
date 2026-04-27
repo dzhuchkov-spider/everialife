@@ -10,6 +10,7 @@ export interface ButtonProps {
   state?: 'resting' | 'hovered' | 'focused' | 'pressed' | 'disabled';
   leadingIcon?: React.ReactNode;
   trailingIcon?: React.ReactNode;
+  showTrailingIcon?: boolean;
   onClick?: () => void;
 }
 
@@ -21,6 +22,7 @@ const Button: React.FC<ButtonProps> = ({
   state = 'resting',
   leadingIcon,
   trailingIcon,
+  showTrailingIcon = true,
   onClick,
 }) => {
   const actualState = state === 'disabled' ? 'disabled' : state;
@@ -59,7 +61,7 @@ const Button: React.FC<ButtonProps> = ({
 
   // Default icons from Figma
   const defaultLeadingIcon = leadingIcon || (variant !== 'contained' ? <img src={plusIcon} alt="plus" className="w-full h-full" /> : null);
-  const defaultTrailingIcon = trailingIcon || (variant === 'contained' && size === 'large' && state === 'resting' ? <img src={arrowRightIcon} alt="arrow" className="w-full h-full" /> : null);
+  const defaultTrailingIcon = trailingIcon || (showTrailingIcon && variant === 'contained' && size === 'large' && state === 'resting' ? <img src={arrowRightIcon} alt="arrow" className="w-full h-full" /> : null);
 
   return (
     <button

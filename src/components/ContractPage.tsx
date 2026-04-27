@@ -190,7 +190,7 @@ const ContractPage: React.FC<ContractPageProps> = ({ onBack }) => {
               variant="contained"
               size="large"
               state="resting"
-              trailingIcon={null}
+              showTrailingIcon={false}
               className="w-[200px]"
             >
               Далее
