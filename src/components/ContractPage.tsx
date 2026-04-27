@@ -4,6 +4,7 @@ import InputSelect from './ui/InputSelect';
 import Button from './ui/Button';
 import arrowDown from '../assets/icons/arrow down.svg';
 import groupIcon from '../assets/icons/Group.svg';
+import helpIcon from '../assets/icons/Inputs/Help.svg';
 
 interface ContractPageProps {
   onBack?: () => void;
@@ -146,13 +147,18 @@ const ContractPage: React.FC<ContractPageProps> = ({ onBack }) => {
           {/* Form Fields Container */}
           <div className="bg-[#f2f2f2] px-10 py-8">
             <div className="flex flex-col gap-6">
-              <InputSelect
-                label="Агент"
-                placeholder="Агент"
-                value="Aгент | MAGNUM-С-N007288 | ТЕСТ МАГНУМ ТЕСТ"
-                showTrailingIcon={false}
-                onChange={(value) => console.log('Agent:', value)}
-              />
+              <div className="flex items-center gap-2">
+                <div className="flex-1">
+                  <InputSelect
+                    label="Агент"
+                    placeholder="Агент"
+                    value="Aгент | MAGNUM-С-N007288 | ТЕСТ МАГНУМ ТЕСТ"
+                    showTrailingIcon={false}
+                    onChange={(value) => console.log('Agent:', value)}
+                  />
+                </div>
+                <img src={helpIcon} alt="Help" className="w-6 h-6 flex-shrink-0" />
+              </div>
               <InputSelect
                 label="Продукт"
                 placeholder="Выберите продукт"
@@ -183,7 +189,8 @@ const ContractPage: React.FC<ContractPageProps> = ({ onBack }) => {
             <Button
               variant="contained"
               size="large"
-              state="disabled"
+              state="resting"
+              trailingIcon={null}
               className="w-[200px]"
             >
               Далее
