@@ -1,5 +1,7 @@
 import React from 'react';
 import { Header } from './ui';
+import InputSelect from './ui/InputSelect';
+import Button from './ui/Button';
 import arrowDown from '../assets/icons/arrow down.svg';
 import groupIcon from '../assets/icons/Group.svg';
 
@@ -19,7 +21,7 @@ const ContractPage: React.FC<ContractPageProps> = ({ onBack }) => {
   const steps = [
     { number: 1, label: 'Начало', completed: true, current: false },
     { number: 2, label: 'Расчёт', completed: false, current: true },
-    { number: 3, label: 'Данные', completed: false, current: false },
+    { number: 3, label: 'Страхователь', completed: false, current: false },
     { number: 4, label: 'Завершение', completed: false, current: false },
   ];
 
@@ -131,6 +133,56 @@ const ContractPage: React.FC<ContractPageProps> = ({ onBack }) => {
                 </div>
               </React.Fragment>
             ))}
+          </div>
+        </div>
+
+        {/* Form Section */}
+        <div className="flex flex-col gap-8 w-full max-w-4xl">
+          {/* Form Title */}
+          <h3 className="text-xl sm:text-2xl font-normal text-black tracking-wide leading-tight m-0">
+            Расчёт
+          </h3>
+
+          {/* Form Fields */}
+          <div className="flex flex-col sm:flex-row gap-6">
+            <div className="flex-1 min-w-0">
+              <InputSelect
+                label="Продукт"
+                placeholder="Выберите продукт"
+                value=""
+                required
+                onChange={(value) => console.log('Product:', value)}
+              />
+            </div>
+            <div className="flex-1 min-w-0">
+              <InputSelect
+                label="Канал продаж"
+                placeholder="Банковский"
+                value="Банковский"
+                required
+                onChange={(value) => console.log('Sales Channel:', value)}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Section */}
+        <div className="flex flex-col gap-3 items-end w-full max-w-4xl">
+          {/* Required Fields Note */}
+          <p className="text-sm text-[#666] leading-tight">
+            <span className="text-[#437aec]">*</span> Поля, обязательные к заполнению
+          </p>
+
+          {/* Next Button */}
+          <div className="flex items-center justify-end w-full">
+            <Button
+              variant="contained"
+              size="large"
+              state="disabled"
+              className="w-[200px]"
+            >
+              Далее
+            </Button>
           </div>
         </div>
       </main>
