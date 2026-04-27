@@ -18,9 +18,11 @@ import groupIcon from '../assets/icons/Group.svg';
 import heroImage from '../assets/img/hero-image.png';
 import newDocIcon from '../assets/icons/New_doc_72.svg';
 import addIcon from '../assets/icons/add.svg';
+import ContractsPopup from './ContractsPopup';
 
 const MainPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [isContractsPopupOpen, setIsContractsPopupOpen] = useState(false);
 
   const handleLogout = () => {
     console.log('Logout clicked');
@@ -128,7 +130,10 @@ const MainPage: React.FC = () => {
             {/* Left Column - Contracts */}
             <div className="flex flex-col gap-4 sm:gap-6 flex-1">
               {/* Contract info card */}
-              <div className="w-full sm:w-full lg:w-[663px] h-auto min-h-[114px] p-4 sm:p-6 lg:p-8 bg-[#fafafa] rounded flex items-center justify-between">
+              <div
+                className="w-full sm:w-full lg:w-[663px] h-auto min-h-[114px] p-4 sm:p-6 lg:p-8 bg-[#fafafa] rounded flex items-center justify-between cursor-pointer hover:shadow-md transition-shadow"
+                onClick={() => setIsContractsPopupOpen(true)}
+              >
                 <div className="flex items-center gap-3 sm:gap-4">
                   <img src={fileIcon} alt="file" className="w-8 h-8 flex-shrink-0" />
                   <div className="min-w-0">
@@ -248,6 +253,12 @@ const MainPage: React.FC = () => {
           <img src={groupIcon} alt="Group" className="w-16 h-[50px]" />
         </div>
       </footer>
+
+      {/* Contracts Popup */}
+      <ContractsPopup
+        isOpen={isContractsPopupOpen}
+        onClose={() => setIsContractsPopupOpen(false)}
+      />
     </div>
   );
 };
