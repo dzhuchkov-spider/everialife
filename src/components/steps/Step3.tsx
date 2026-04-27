@@ -1,33 +1,44 @@
 import React from 'react';
 import InputSelect from '../ui/InputSelect';
 import Button from '../ui/Button';
-import helpIcon from '../../assets/icons/Inputs/Help.svg';
 import Layout from '../layout/Layout';
 
 interface Step3Props {
   onBack?: () => void;
   onNext?: () => void;
-  onDataChange?: (data: { fullName?: string; birthDate?: string; gender?: string }) => void;
+  onDataChange?: (data: any) => void;
 }
 
 const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
-  const [fullName, setFullName] = React.useState<string>('');
-  const [birthDate, setBirthDate] = React.useState<string>('');
-  const [selectedGender, setSelectedGender] = React.useState<'male' | 'female' | null>(null);
+  const [insuranceVariant, setInsuranceVariant] = React.useState<string>('');
+  const [contractTerm, setContractTerm] = React.useState<string>('');
+  const [paymentFrequency, setPaymentFrequency] = React.useState<string>('');
+  const [riskName, setRiskName] = React.useState<string>('');
+  const [riskAmount, setRiskAmount] = React.useState<string>('');
 
-  const handleFullNameChange = (value: string) => {
-    setFullName(value);
-    onDataChange?.({ fullName: value, birthDate, gender: selectedGender || undefined });
+  const handleInsuranceVariantChange = (value: string) => {
+    setInsuranceVariant(value);
+    onDataChange?.({ insuranceVariant: value, contractTerm, paymentFrequency, riskName, riskAmount });
   };
 
-  const handleBirthDateChange = (value: string) => {
-    setBirthDate(value);
-    onDataChange?.({ fullName, birthDate: value, gender: selectedGender || undefined });
+  const handleContractTermChange = (value: string) => {
+    setContractTerm(value);
+    onDataChange?.({ insuranceVariant, contractTerm: value, paymentFrequency, riskName, riskAmount });
   };
 
-  const handleGenderChange = (gender: 'male' | 'female') => {
-    setSelectedGender(gender);
-    onDataChange?.({ fullName, birthDate, gender });
+  const handlePaymentFrequencyChange = (value: string) => {
+    setPaymentFrequency(value);
+    onDataChange?.({ insuranceVariant, contractTerm, paymentFrequency: value, riskName, riskAmount });
+  };
+
+  const handleRiskNameChange = (value: string) => {
+    setRiskName(value);
+    onDataChange?.({ insuranceVariant, contractTerm, paymentFrequency, riskName: value, riskAmount });
+  };
+
+  const handleRiskAmountChange = (value: string) => {
+    setRiskAmount(value);
+    onDataChange?.({ insuranceVariant, contractTerm, paymentFrequency, riskName, riskAmount: value });
   };
 
   const steps = [
@@ -46,68 +57,71 @@ const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
     >
       {/* Form Section */}
       <div className="flex flex-col gap-8 w-full">
-        {/* Form Title */}
-        <h3 className="text-xl sm:text-2xl font-normal text-black tracking-wide leading-tight m-0">
-          Застрахованный
-        </h3>
+        {/* Form Title with Currency */}
+        <div className="flex items-center justify-between">
+          <h3 className="text-xl sm:text-2xl font-normal text-black tracking-wide leading-tight m-0">
+            Данные для создания договора
+          </h3>
+          <p className="text-base font-normal text-black tracking-wide">
+            Валюта договора <span style={{ color: '#386DF7' }}>Российский рубль</span>
+          </p>
+        </div>
 
-        {/* Form Fields Container */}
+        {/* Dropdowns Block */}
         <div className="bg-[#f2f2f2] px-10 py-8">
           <div className="flex flex-col gap-6">
-            {/* Full Name */}
-            <div className="flex items-center gap-2">
-              <div className="flex-1">
-                <InputSelect
-                  label="ФИО"
-                  placeholder="Введите ФИО"
-                  value={fullName}
-                  required
-                  onChange={handleFullNameChange}
-                />
-              </div>
-              <img src={helpIcon} alt="Help" className="w-6 h-6 flex-shrink-0" />
+            {/* Вариант страхования */}
+            <InputSelect
+              label="Вариант страхования"
+              placeholder="Выберите вариант"
+              value={insuranceVariant}
+              onChange={handleInsuranceVariantChange}
+            />
+
+            {/* Срок действия договора в годах */}
+            <InputSelect
+              label="Срок действия договора в годах"
+              placeholder="Выберите срок"
+              value={contractTerm}
+              onChange={handleContractTermChange}
+            />
+
+            {/* Периодичность оплаты */}
+            <InputSelect
+              label="Периодичность оплаты"
+              placeholder="Выберите периодичность"
+              value={paymentFrequency}
+              onChange={handlePaymentFrequencyChange}
+            />
+          </div>
+        </div>
+
+        {/* Риски Header */}
+        <h3 className="text-xl sm:text-2xl font-normal text-black tracking-wide leading-tight m-0">
+          Риски
+        </h3>
+
+        {/* Risks Inputs Block */}
+        <div className="bg-[#f2f2f2] px-10 py-8">
+          <div className="flex items-center gap-6">
+            {/* Наименование риска */}
+            <div className="flex-1">
+              <InputSelect
+                label="Наименование риска"
+                placeholder="Введите наименование"
+                value={riskName}
+                onChange={handleRiskNameChange}
+              />
             </div>
 
-            {/* Date of Birth */}
-            <div className="flex items-center gap-2">
-              <div className="flex-1">
-                <InputSelect
-                  label="Дата рождения"
-                  placeholder="ДД.ММ.ГГГГ"
-                  value={birthDate}
-                  required
-                  onChange={handleBirthDateChange}
-                />
-              </div>
-              <img src={helpIcon} alt="Help" className="w-6 h-6 flex-shrink-0" />
-            </div>
-
-            {/* Gender Selection */}
-            <div className="flex flex-col gap-3">
-              <label className="text-base font-normal text-[#191919] tracking-wide">
-                Пол <span className="text-[#437aec]">*</span>
-              </label>
-              <div className="flex items-center gap-8">
-                {/* Male Radio */}
-                <div className="flex items-center gap-2 cursor-pointer" onClick={() => handleGenderChange('male')}>
-                  <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${selectedGender === 'male' ? 'border-[#437aec] bg-[#437aec]' : 'border-[#666] bg-white'}`}>
-                    {selectedGender === 'male' && (
-                      <div className="w-3 h-3 rounded-full bg-white" />
-                    )}
-                  </div>
-                  <span className="text-base font-normal text-[#191919] tracking-wide">Мужской</span>
-                </div>
-
-                {/* Female Radio */}
-                <div className="flex items-center gap-2 cursor-pointer" onClick={() => handleGenderChange('female')}>
-                  <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${selectedGender === 'female' ? 'border-[#437aec] bg-[#437aec]' : 'border-[#666] bg-white'}`}>
-                    {selectedGender === 'female' && (
-                      <div className="w-3 h-3 rounded-full bg-white" />
-                    )}
-                  </div>
-                  <span className="text-base font-normal text-[#191919] tracking-wide">Женский</span>
-                </div>
-              </div>
+            {/* Сумма по риску */}
+            <div className="flex-1">
+              <InputSelect
+                label="Сумма по риску"
+                placeholder="Введите сумму"
+                value={riskAmount}
+                onChange={handleRiskAmountChange}
+              />
             </div>
           </div>
         </div>
