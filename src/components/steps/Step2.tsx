@@ -3,6 +3,8 @@ import InputSelect from '../ui/InputSelect';
 import Button from '../ui/Button';
 import Layout from '../layout/Layout';
 import calendarIcon from '../../assets/icons/Inputs/Calendar.svg';
+import radioSelect from '../../assets/radio/Select.svg';
+import radioNoSelect from '../../assets/radio/No-select.svg';
 
 interface Step2Props {
   onBack?: () => void;
@@ -58,21 +60,13 @@ const Step2: React.FC<Step2Props> = ({ onBack, onNext }) => {
                 <div className="flex items-center gap-8">
                   {/* Male Radio */}
                   <div className="flex items-center gap-2 cursor-pointer" onClick={() => setSelectedGender('male')}>
-                    <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${selectedGender === 'male' ? 'border-[#437aec] bg-[#437aec]' : 'border-[#666] bg-white'}`}>
-                      {selectedGender === 'male' && (
-                        <div className="w-3 h-3 rounded-full bg-white" />
-                      )}
-                    </div>
+                    <img src={selectedGender === 'male' ? radioSelect : radioNoSelect} alt="radio" className="w-6 h-6" />
                     <span className="text-base font-normal text-[#191919] tracking-wide">Мужской</span>
                   </div>
 
                   {/* Female Radio */}
                   <div className="flex items-center gap-2 cursor-pointer" onClick={() => setSelectedGender('female')}>
-                    <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${selectedGender === 'female' ? 'border-[#437aec] bg-[#437aec]' : 'border-[#666] bg-white'}`}>
-                      {selectedGender === 'female' && (
-                        <div className="w-3 h-3 rounded-full bg-white" />
-                      )}
-                    </div>
+                    <img src={selectedGender === 'female' ? radioSelect : radioNoSelect} alt="radio" className="w-6 h-6" />
                     <span className="text-base font-normal text-[#191919] tracking-wide">Женский</span>
                   </div>
                 </div>
@@ -90,12 +84,8 @@ const Step2: React.FC<Step2Props> = ({ onBack, onNext }) => {
           <div className="bg-[#f2f2f2] px-10 py-8">
             {/* Currency Radio Selection */}
             <div className="flex items-center gap-2 cursor-pointer" onClick={() => setSelectedCurrency('ruble')}>
-              <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${selectedCurrency === 'ruble' ? 'border-[#437aec] bg-[#437aec]' : 'border-[#666] bg-white'}`}>
-                {selectedCurrency === 'ruble' && (
-                  <div className="w-3 h-3 rounded-full bg-white" />
-                )}
-              </div>
-              <span className="text-base font-normal text-[#191919] tracking-wide">Российский рубль</span>
+              <img src={selectedCurrency === 'ruble' ? radioSelect : radioNoSelect} alt="radio" className="w-6 h-6" />
+              <span className="text-base font-normal text-[#333333] tracking-wide">Российский рубль</span>
             </div>
           </div>
         </div>
