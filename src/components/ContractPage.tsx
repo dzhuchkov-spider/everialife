@@ -73,7 +73,7 @@ const ContractPage: React.FC<ContractPageProps> = ({ onBack }) => {
       </div>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col gap-8 p-4 sm:p-6 lg:p-10">
+      <main className="flex-1 flex flex-col gap-8 px-4 sm:px-6 lg:px-[156px] py-8 lg:py-10">
         {/* Page Title */}
         <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-normal text-black tracking-wide leading-tight m-0">
           Ввод договора
@@ -137,15 +137,15 @@ const ContractPage: React.FC<ContractPageProps> = ({ onBack }) => {
         </div>
 
         {/* Form Section */}
-        <div className="flex flex-col gap-8 w-full max-w-4xl">
+        <div className="flex flex-col gap-8 w-full">
           {/* Form Title */}
           <h3 className="text-xl sm:text-2xl font-normal text-black tracking-wide leading-tight m-0">
             Расчёт
           </h3>
 
-          {/* Form Fields */}
-          <div className="flex flex-col sm:flex-row gap-6">
-            <div className="flex-1 min-w-0">
+          {/* Form Fields Container */}
+          <div className="bg-[#f2f2f2] px-10 py-8">
+            <div className="flex flex-col gap-6">
               <InputSelect
                 label="Продукт"
                 placeholder="Выберите продукт"
@@ -153,8 +153,6 @@ const ContractPage: React.FC<ContractPageProps> = ({ onBack }) => {
                 required
                 onChange={(value) => console.log('Product:', value)}
               />
-            </div>
-            <div className="flex-1 min-w-0">
               <InputSelect
                 label="Канал продаж"
                 placeholder="Банковский"
@@ -167,7 +165,7 @@ const ContractPage: React.FC<ContractPageProps> = ({ onBack }) => {
         </div>
 
         {/* Bottom Section */}
-        <div className="flex flex-col gap-3 items-end w-full max-w-4xl">
+        <div className="flex flex-col gap-3 items-end w-full">
           {/* Required Fields Note */}
           <p className="text-sm text-[#666] leading-tight">
             <span className="text-[#437aec]">*</span> Поля, обязательные к заполнению
