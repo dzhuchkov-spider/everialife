@@ -18,12 +18,34 @@ interface Step5Props {
 }
 
 const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
+  const [lastName, setLastName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [middleName, setMiddleName] = useState('');
+  const [birthDate, setBirthDate] = useState('');
+  const [birthPlace, setBirthPlace] = useState('');
+  const [citizenship, setCitizenship] = useState('');
+  const [gender, setGender] = useState<'male' | 'female'>('male');
+  const [documentType, setDocumentType] = useState('Паспорт');
   const [seriesNumber, setSeriesNumber] = useState(passportData?.seriesNumber || '');
+  const [documentNumber, setDocumentNumber] = useState('');
   const [issueDate, setIssueDate] = useState(passportData?.issueDate || '');
   const [issuedBy, setIssuedBy] = useState(passportData?.issuedBy || '');
   const [departmentCode, setDepartmentCode] = useState(passportData?.departmentCode || '');
-  const [gender, setGender] = useState<'male' | 'female'>('male');
-  const [documentType, setDocumentType] = useState('Паспорт');
+
+  // Validation: check if all required fields are filled
+  const isFormValid = 
+    lastName.trim() !== '' &&
+    firstName.trim() !== '' &&
+    middleName.trim() !== '' &&
+    birthDate.trim() !== '' &&
+    birthPlace.trim() !== '' &&
+    citizenship.trim() !== '' &&
+    documentType.trim() !== '' &&
+    seriesNumber.trim() !== '' &&
+    documentNumber.trim() !== '' &&
+    issueDate.trim() !== '' &&
+    issuedBy.trim() !== '' &&
+    departmentCode.trim() !== '';
 
   const steps = [
     { number: 1, label: 'Начало', completed: true, current: false },
@@ -64,8 +86,8 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
                   <InputSelect
                     label="Фамилия"
                     placeholder=""
-                    value=""
-                    onChange={() => {}}
+                    value={lastName}
+                    onChange={setLastName}
                     required
                     showTrailingIcon={false}
                   />
@@ -74,8 +96,8 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
                   <InputSelect
                     label="Имя"
                     placeholder=""
-                    value=""
-                    onChange={() => {}}
+                    value={firstName}
+                    onChange={setFirstName}
                     required
                     showTrailingIcon={false}
                   />
@@ -84,8 +106,8 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
                   <InputSelect
                     label="Отчество"
                     placeholder=""
-                    value=""
-                    onChange={() => {}}
+                    value={middleName}
+                    onChange={setMiddleName}
                     required
                     showTrailingIcon={false}
                   />
@@ -108,8 +130,8 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
                   <InputSelect
                     label="Дата рождения"
                     placeholder=""
-                    value=""
-                    onChange={() => {}}
+                    value={birthDate}
+                    onChange={setBirthDate}
                     required
                     showTrailingIcon={false}
                   />
@@ -142,8 +164,8 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
                   <InputSelect
                     label="Место рождения"
                     placeholder=""
-                    value=""
-                    onChange={() => {}}
+                    value={birthPlace}
+                    onChange={setBirthPlace}
                     required
                     showTrailingIcon={false}
                   />
@@ -152,8 +174,8 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
                   <InputSelect
                     label="Гражданство"
                     placeholder=""
-                    value=""
-                    onChange={() => {}}
+                    value={citizenship}
+                    onChange={setCitizenship}
                     required
                     showTrailingIcon={false}
                     options={['Россия', 'Беларусь', 'Казахстан', 'Узбекистан', 'Другое']}
@@ -200,8 +222,8 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
                   <InputSelect
                     label="Номер"
                     placeholder=""
-                    value=""
-                    onChange={() => {}}
+                    value={documentNumber}
+                    onChange={setDocumentNumber}
                     required
                     showTrailingIcon={false}
                   />
@@ -268,10 +290,10 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
           <Button
             variant="contained"
             size="large"
-            state="resting"
+            state={isFormValid ? 'resting' : 'disabled'}
             showTrailingIcon={false}
             className="w-[200px]"
-            onClick={onSubmit}
+            onClick={isFormValid ? onSubmit : undefined}
           >
             Далее
           </Button>
