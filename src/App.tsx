@@ -7,12 +7,22 @@ import Step4 from './components/steps/Step4'
 import Step5 from './components/steps/Step5'
 import Step6 from './components/steps/Step6'
 import Step7 from './components/steps/Step7'
+import Step8 from './components/steps/Step8'
+import Step9 from './components/steps/Step9'
 
 function App() {
-  const [currentStep, setCurrentStep] = useState<'main' | 1 | 2 | 3 | 4 | 5 | 6 | 7>('main')
+  const [currentStep, setCurrentStep] = useState<'main' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9>('main')
+
+  if (currentStep === 9) {
+    return <Step9 onBack={() => setCurrentStep(8)} onExit={() => setCurrentStep('main')} />
+  }
+
+  if (currentStep === 8) {
+    return <Step8 onBack={() => setCurrentStep(7)} onSave={() => setCurrentStep('main')} onSign={() => setCurrentStep(9)} />
+  }
 
   if (currentStep === 7) {
-    return <Step7 onBack={() => setCurrentStep(6)} onNext={() => setCurrentStep('main')} />
+    return <Step7 onBack={() => setCurrentStep(6)} onNext={() => setCurrentStep(8)} />
   }
 
   if (currentStep === 6) {
