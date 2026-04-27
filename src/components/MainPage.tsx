@@ -20,7 +20,11 @@ import newDocIcon from '../assets/icons/New_doc_72.svg';
 import addIcon from '../assets/icons/add.svg';
 import ContractsPopup from './ContractsPopup';
 
-const MainPage: React.FC = () => {
+interface MainPageProps {
+  onNavigateToContract?: () => void;
+}
+
+const MainPage: React.FC<MainPageProps> = ({ onNavigateToContract }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isContractsPopupOpen, setIsContractsPopupOpen] = useState(false);
 
@@ -258,6 +262,7 @@ const MainPage: React.FC = () => {
       <ContractsPopup
         isOpen={isContractsPopupOpen}
         onClose={() => setIsContractsPopupOpen(false)}
+        onNavigateToContract={onNavigateToContract}
       />
     </div>
   );

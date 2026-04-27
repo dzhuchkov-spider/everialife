@@ -3,7 +3,11 @@ import { Header } from './ui';
 import arrowDown from '../assets/icons/arrow down.svg';
 import groupIcon from '../assets/icons/Group.svg';
 
-const ContractPage: React.FC = () => {
+interface ContractPageProps {
+  onBack?: () => void;
+}
+
+const ContractPage: React.FC<ContractPageProps> = ({ onBack }) => {
   const handleSearch = (query: string) => {
     console.log('Search query:', query);
   };
@@ -34,11 +38,11 @@ const ContractPage: React.FC = () => {
       />
 
       {/* Navigation Menu */}
-      <div className="bg-white px-10 py-3 flex items-center justify-between">
-        <nav className="flex items-center gap-20">
+      <div className="bg-white px-4 sm:px-6 lg:px-10 py-3 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 lg:gap-0">
+        <nav className="flex items-center gap-4 sm:gap-10 lg:gap-20 overflow-x-auto w-full lg:w-auto pb-2 lg:pb-0">
           {menuItems.map((item, index) => (
             <div key={item} className="flex items-center gap-0.5 cursor-pointer flex-shrink-0">
-              <span className="text-[20px] font-normal text-[#191919] tracking-[0.2px] leading-[28px]">
+              <span className="text-base sm:text-[20px] font-normal text-[#191919] tracking-[0.2px] leading-7 sm:leading-[28px]">
                 {item}
               </span>
               {index > 0 && (
@@ -47,55 +51,39 @@ const ContractPage: React.FC = () => {
             </div>
           ))}
         </nav>
-        <div className="flex flex-col h-[56px] items-start relative shrink-0 w-[393px]">
-          <div className="flex flex-col h-[56px] items-start justify-center relative shrink-0 w-full">
-            <div className="bg-transparent border border-[#b3b3b3] border-solid flex gap-2 h-[56px] items-center pl-2 pr-4 py-2 relative shrink-0 w-full">
-              <div className="bg-[#f2f2f2] flex h-10 items-center justify-center overflow-hidden px-1 relative shrink-0">
-                <div className="flex h-6 items-center justify-center px-2 py-0.5 relative shrink-0">
-                  <span className="font-normal not-italic relative text-sm text-[#4d4d4d] tracking-[0.2px] whitespace-nowrap leading-[1.4]">
-                    по номеру
-                  </span>
-                </div>
-                <div className="flex h-6 items-center relative w-[19px] shrink-0">
-                  <img src={arrowDown} alt="arrow down" className="w-4 h-4" />
-                </div>
-              </div>
-              <div className="flex h-full items-center justify-center py-2 relative shrink-0">
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
-                  <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#666"/>
-                </svg>
-              </div>
-              <div className="flex flex-col flex-1 h-10 items-start justify-center min-w-0 py-2 relative">
-                <div className="flex items-center relative shrink-0 w-full">
-                  <div className="flex flex-1 items-center min-w-0 overflow-hidden relative">
-                    <input
-                      type="text"
-                      placeholder="Поиск договора"
-                      onChange={(e) => handleSearch(e.target.value)}
-                      className="font-normal not-italic relative text-base text-[#666] tracking-[0.5px] whitespace-nowrap border-none outline-none bg-transparent w-full"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div className="flex items-center gap-2 border border-[#b3b3b3] rounded h-12 sm:h-14 px-2 w-full sm:w-[320px] lg:w-[393px]">
+          <div className="bg-[#f2f2f2] flex items-center gap-1 px-1 rounded h-10 flex-shrink-0">
+            <span className="text-xs sm:text-sm text-[#4d4d4d] tracking-wide px-2 py-0.5">
+              по номеру
+            </span>
+            <img src={arrowDown} alt="arrow down" className="w-4 h-4" />
           </div>
+          <svg className="w-5 sm:w-6 h-5 sm:h-6 flex-shrink-0" viewBox="0 0 24 24" fill="none">
+            <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#666"/>
+          </svg>
+          <input
+            type="text"
+            placeholder="Поиск договора"
+            onChange={(e) => handleSearch(e.target.value)}
+            className="flex-1 border-none outline-none bg-transparent text-sm sm:text-base text-[#666] tracking-wide min-w-0"
+          />
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="absolute left-[156px] top-[227px] flex flex-col gap-8 w-[1128px]">
+      <main className="flex-1 flex flex-col gap-8 p-4 sm:p-6 lg:p-10">
         {/* Page Title */}
-        <h2 className="text-[32px] font-normal text-black tracking-wide leading-[48px] m-0">
+        <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-normal text-black tracking-wide leading-tight m-0">
           Ввод договора
         </h2>
 
         {/* Progress Bar */}
-        <div className="w-[1057px] h-[50px] overflow-hidden">
-          <div className="flex items-center h-full inset-0">
+        <div className="w-full h-[50px] overflow-hidden">
+          <div className="flex items-center h-full">
             {steps.map((step, index) => (
               <React.Fragment key={step.number}>
                 {/* Progress Bar Item */}
-                <div className={`flex flex-col items-center gap-1 overflow-hidden ${index === 0 ? 'w-[187.667px]' : 'flex-1'} min-w-px`}>
+                <div className={`flex flex-col items-center gap-1 overflow-hidden ${index === 0 ? 'w-[160px] sm:w-[180px] lg:w-[187.667px]' : 'flex-1'} min-w-px`}>
                   {/* Step Icon */}
                   <div className="h-[25px] w-full relative">
                     {/* Line */}
@@ -135,7 +123,7 @@ const ContractPage: React.FC = () => {
                   </div>
 
                   {/* Step Label */}
-                  <div className="px-6">
+                  <div className="px-4 sm:px-6">
                     <span className="text-sm font-normal text-[#191919] tracking-[0.2px] leading-[1.4]">
                       {step.label}
                     </span>
@@ -145,22 +133,20 @@ const ContractPage: React.FC = () => {
             ))}
           </div>
         </div>
-      </div>
+      </main>
 
       {/* Footer */}
-      <footer className="border-t border-[#f2f2f2] border-solid bg-white px-10 py-4 flex items-center justify-between h-[82px] absolute top-[998px] left-0 w-[1439px]">
-        <div className="flex items-center justify-between w-[1352px]">
-          <div className="flex-1">
-            <p className="text-base text-[#313131] leading-6 m-0 mb-0">
-              © Портал продаж СК «Эверия Лайф»
-            </p>
-            <p className="text-base text-[#313131] leading-6 m-0">
-              Официальный сайт компании – <span className="text-[#386df7]">everialife.ru</span>
-            </p>
-          </div>
-          <div className="h-[50.643px] w-[64px]">
-            <img src={groupIcon} alt="Group" className="w-full h-full" />
-          </div>
+      <footer className="border-t border-[#f2f2f2] border-solid bg-white px-4 sm:px-6 lg:px-10 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0 h-auto sm:h-[82px]">
+        <div className="flex-1">
+          <p className="text-sm sm:text-base text-[#313131] leading-6 m-0">
+            © Портал продаж СК «Эверия Лайф»
+          </p>
+          <p className="text-sm sm:text-base text-[#313131] leading-6 m-0">
+            Официальный сайт компании – <span className="text-[#386df7]">everialife.ru</span>
+          </p>
+        </div>
+        <div className="flex gap-2">
+          <img src={groupIcon} alt="Group" className="w-16 h-[50px]" />
         </div>
       </footer>
     </div>

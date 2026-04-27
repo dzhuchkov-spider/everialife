@@ -15,9 +15,10 @@ interface Contract {
 interface ContractsPopupProps {
   isOpen: boolean;
   onClose: () => void;
+  onNavigateToContract?: () => void;
 }
 
-const ContractsPopup: React.FC<ContractsPopupProps> = ({ isOpen, onClose }) => {
+const ContractsPopup: React.FC<ContractsPopupProps> = ({ isOpen, onClose, onNavigateToContract }) => {
   const contracts: Contract[] = [
     {
       id: '1',
@@ -81,7 +82,11 @@ const ContractsPopup: React.FC<ContractsPopupProps> = ({ isOpen, onClose }) => {
               {contracts.map((contract) => (
                 <div
                   key={contract.id}
-                  className="bg-[#fafafa] rounded-2xl p-4 sm:p-6 lg:p-8 flex items-center justify-between gap-4"
+                  className="bg-[#fafafa] rounded-2xl p-4 sm:p-6 lg:p-8 flex items-center justify-between gap-4 cursor-pointer hover:shadow-md transition-shadow"
+                  onClick={() => {
+                    onClose();
+                    onNavigateToContract?.();
+                  }}
                 >
                   <div className="flex items-center gap-4 sm:gap-6 flex-1 min-w-0">
                     {/* File icon and contract info */}

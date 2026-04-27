@@ -1,6 +1,6 @@
 import React from 'react';
-import logoWeb from '../../assets/logo/Property 1=Web.svg';
-import logoMob from '../../assets/logo/Property 1=Mob.svg';
+import logoWeb from '../../assets/logo/Web.svg';
+import logoMob from '../../assets/logo/Mob.svg';
 import callIcon from '../../assets/icons/call.svg';
 import signInIcon from '../../assets/icons/sign-in_24.svg';
 import searchIcon from '../../assets/icons/search_24.svg';
