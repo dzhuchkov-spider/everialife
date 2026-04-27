@@ -1,51 +1,80 @@
 import React from 'react';
+import Input from '../ui/Input';
 import InputSelect from '../ui/InputSelect';
 import Button from '../ui/Button';
 import Layout from '../layout/Layout';
+import Checkbox from '../ui/Checkbox';
 
 interface Step6Props {
   onBack?: () => void;
   onNext?: () => void;
-  onDataChange?: (data: {
-    mobilePhone?: string;
-    additionalPhone?: string;
-    email?: string;
-    postalAddress?: string;
-    registrationAddress?: string;
-  }) => void;
+  onDataChange?: (data: any) => void;
 }
 
 const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
   const [mobilePhone, setMobilePhone] = React.useState<string>('');
   const [additionalPhone, setAdditionalPhone] = React.useState<string>('');
   const [email, setEmail] = React.useState<string>('');
-  const [postalAddress, setPostalAddress] = React.useState<string>('');
-  const [registrationAddress, setRegistrationAddress] = React.useState<string>('');
+  
+  // Postal address fields
+  const [postalCountry, setPostalCountry] = React.useState<string>('Россия');
+  const [postalFullAddress, setPostalFullAddress] = React.useState<string>('');
+  const [postalRegion, setPostalRegion] = React.useState<string>('');
+  const [postalDistrict, setPostalDistrict] = React.useState<string>('');
+  const [postalCity, setPostalCity] = React.useState<string>('');
+  const [postalCityDistrict, setPostalCityDistrict] = React.useState<string>('');
+  const [postalSettlement, setPostalSettlement] = React.useState<string>('');
+  const [postalStreet, setPostalStreet] = React.useState<string>('');
+  const [postalAdditionalTerritory, setPostalAdditionalTerritory] = React.useState<string>('');
+  const [postalHouse, setPostalHouse] = React.useState<string>('');
+  const [postalBuilding, setPostalBuilding] = React.useState<string>('');
+  const [postalStructure, setPostalStructure] = React.useState<string>('');
+  const [postalApartment, setPostalApartment] = React.useState<string>('');
+  const [postalIndex, setPostalIndex] = React.useState<string>('');
+  
+  // Registration address fields
+  const sameAsPostal = true;
+  const [registrationCountry, setRegistrationCountry] = React.useState<string>('Россия');
+  const [registrationFullAddress, setRegistrationFullAddress] = React.useState<string>('');
 
-  const handleMobilePhoneChange = (value: string) => {
-    setMobilePhone(value);
-    onDataChange?.({ mobilePhone: value, additionalPhone, email, postalAddress, registrationAddress });
+  const handleDataChange = () => {
+    onDataChange?.({
+      mobilePhone,
+      additionalPhone,
+      email,
+      postalAddress: {
+        country: postalCountry,
+        fullAddress: postalFullAddress,
+        region: postalRegion,
+        district: postalDistrict,
+        city: postalCity,
+        cityDistrict: postalCityDistrict,
+        settlement: postalSettlement,
+        street: postalStreet,
+        additionalTerritory: postalAdditionalTerritory,
+        house: postalHouse,
+        building: postalBuilding,
+        structure: postalStructure,
+        apartment: postalApartment,
+        index: postalIndex,
+      },
+      registrationAddress: {
+        sameAsPostal,
+        country: registrationCountry,
+        fullAddress: registrationFullAddress,
+      },
+    });
   };
 
-  const handleAdditionalPhoneChange = (value: string) => {
-    setAdditionalPhone(value);
-    onDataChange?.({ mobilePhone, additionalPhone: value, email, postalAddress, registrationAddress });
-  };
-
-  const handleEmailChange = (value: string) => {
-    setEmail(value);
-    onDataChange?.({ mobilePhone, additionalPhone, email: value, postalAddress, registrationAddress });
-  };
-
-  const handlePostalAddressChange = (value: string) => {
-    setPostalAddress(value);
-    onDataChange?.({ mobilePhone, additionalPhone, email, postalAddress: value, registrationAddress });
-  };
-
-  const handleRegistrationAddressChange = (value: string) => {
-    setRegistrationAddress(value);
-    onDataChange?.({ mobilePhone, additionalPhone, email, postalAddress, registrationAddress: value });
-  };
+  React.useEffect(() => {
+    handleDataChange();
+  }, [
+    mobilePhone, additionalPhone, email,
+    postalCountry, postalFullAddress, postalRegion, postalDistrict, postalCity,
+    postalCityDistrict, postalSettlement, postalStreet, postalAdditionalTerritory,
+    postalHouse, postalBuilding, postalStructure, postalApartment, postalIndex,
+    sameAsPostal, registrationCountry, registrationFullAddress,
+  ]);
 
   const steps = [
     { number: 1, label: 'Начало', completed: true, current: false },
@@ -76,36 +105,39 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
             <div className="flex flex-col gap-6">
               <div className="flex gap-6">
                 <div className="flex-1">
-                  <InputSelect
+                  <Input
                     label="Мобильный телефон"
                     placeholder="+7 (___) ___-__-__"
                     value={mobilePhone}
                     required
-                    onChange={handleMobilePhoneChange}
+                    onChange={setMobilePhone}
+                    type="tel"
                   />
                 </div>
                 <div className="flex-1">
-                  <InputSelect
+                  <Input
                     label="Дополнительный телефон"
                     placeholder="+7 (___) ___-__-__"
                     value={additionalPhone}
-                    onChange={handleAdditionalPhoneChange}
+                    onChange={setAdditionalPhone}
+                    type="tel"
                   />
                 </div>
                 <div className="flex-1">
-                  <InputSelect
+                  <Input
                     label="Email"
                     placeholder="example@mail.ru"
                     value={email}
                     required
-                    onChange={handleEmailChange}
+                    onChange={setEmail}
+                    type="email"
                   />
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Address Section */}
+          {/* Postal Address Section */}
           <div className="bg-[#f2f2f2] px-10 py-8 rounded-lg">
             <div className="flex flex-col gap-6">
               <div className="flex items-center justify-between">
@@ -119,67 +151,158 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
                 <InputSelect
                   label="Страна"
                   placeholder="Россия"
-                  value="Россия"
-                  onChange={(value) => console.log('Country:', value)}
+                  value={postalCountry}
+                  onChange={setPostalCountry}
                 />
                 
+                <Input
+                  label="Укажите адрес полностью"
+                  placeholder=""
+                  value={postalFullAddress}
+                  onChange={setPostalFullAddress}
+                />
+
+                <Input
+                  label="Регион"
+                  placeholder=""
+                  value={postalRegion}
+                  onChange={setPostalRegion}
+                />
+
                 <div className="flex gap-6">
                   <div className="flex-1">
-                    <InputSelect
-                      label="Регион"
-                      placeholder="Выберите регион"
-                      value=""
-                      onChange={(value) => console.log('Region:', value)}
+                    <Input
+                      label="Район"
+                      placeholder=""
+                      value={postalDistrict}
+                      onChange={setPostalDistrict}
                     />
                   </div>
                   <div className="flex-1">
-                    <InputSelect
+                    <Input
                       label="Город"
-                      placeholder="Выберите город"
-                      value=""
-                      onChange={(value) => console.log('City:', value)}
+                      placeholder=""
+                      value={postalCity}
+                      onChange={setPostalCity}
                     />
                   </div>
                 </div>
 
-                <InputSelect
-                  label="Адрес"
-                  placeholder="Улица, дом, квартира"
-                  value={postalAddress}
-                  required
-                  onChange={handlePostalAddressChange}
-                />
+                <div className="flex gap-6">
+                  <div className="flex-1">
+                    <Input
+                      label="Городской район"
+                      placeholder=""
+                      value={postalCityDistrict}
+                      onChange={setPostalCityDistrict}
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <Input
+                      label="Населенный пункт"
+                      placeholder=""
+                      value={postalSettlement}
+                      onChange={setPostalSettlement}
+                    />
+                  </div>
+                </div>
 
-                <div className="flex justify-end">
-                  <Button
-                    variant="ghost"
-                    size="normal"
-                    state="resting"
-                    showTrailingIcon={false}
-                  >
-                    Уточнить адрес
-                  </Button>
+                <div className="flex gap-6">
+                  <div className="flex-1">
+                    <Input
+                      label="Улица"
+                      placeholder=""
+                      value={postalStreet}
+                      onChange={setPostalStreet}
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <Input
+                      label="Доп. территория"
+                      placeholder=""
+                      value={postalAdditionalTerritory}
+                      onChange={setPostalAdditionalTerritory}
+                    />
+                  </div>
+                </div>
+
+                <div className="flex gap-6">
+                  <div className="flex-1">
+                    <Input
+                      label="Дом"
+                      placeholder=""
+                      value={postalHouse}
+                      onChange={setPostalHouse}
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <Input
+                      label="Корпус"
+                      placeholder=""
+                      value={postalBuilding}
+                      onChange={setPostalBuilding}
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <Input
+                      label="Строение"
+                      placeholder=""
+                      value={postalStructure}
+                      onChange={setPostalStructure}
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <Input
+                      label="Квартира"
+                      placeholder=""
+                      value={postalApartment}
+                      onChange={setPostalApartment}
+                    />
+                  </div>
+                </div>
+
+                <div className="w-1/2">
+                  <Input
+                    label="Индекс"
+                    placeholder=""
+                    value={postalIndex}
+                    onChange={setPostalIndex}
+                  />
                 </div>
               </div>
+            </div>
+          </div>
 
-              {/* Registration Address */}
-              <div className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  id="sameAddress"
-                  className="w-5 h-5 cursor-pointer"
+          {/* Registration Address Section */}
+          <div className="bg-[#f2f2f2] px-10 py-8 rounded-lg">
+            <div className="flex flex-col gap-6">
+              <div className="flex items-center justify-between">
+                <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
+                  Адрес регистрации
+                </h4>
+                <Checkbox
+                  checked={sameAsPostal}
+                  onChange={() => {}}
+                  disabled={true}
+                  label="Совпадает с почтовым адресом"
                 />
-                <label htmlFor="sameAddress" className="text-base font-normal text-[#191919] tracking-wide cursor-pointer">
-                  Адрес регистрации совпадает с почтовым
-                </label>
               </div>
-
-              <InputSelect
-                label="Адрес регистрации"
-                placeholder="Улица, дом, квартира"
-                value={registrationAddress}
-                onChange={handleRegistrationAddressChange}
-              />
+              
+              <div className="flex flex-col gap-6">
+                <InputSelect
+                  label="Страна"
+                  placeholder="Россия"
+                  value={registrationCountry}
+                  onChange={setRegistrationCountry}
+                />
+                
+                <Input
+                  label="Укажите адрес полностью"
+                  placeholder=""
+                  value={registrationFullAddress}
+                  onChange={setRegistrationFullAddress}
+                />
+              </div>
             </div>
           </div>
         </div>
