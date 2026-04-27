@@ -2,6 +2,7 @@ import React from 'react';
 import InputSelect from '../ui/InputSelect';
 import Button from '../ui/Button';
 import Layout from '../layout/Layout';
+import calendarIcon from '../../assets/icons/Inputs/Calendar.svg';
 
 interface Step2Props {
   onBack?: () => void;
@@ -10,7 +11,7 @@ interface Step2Props {
 
 const Step2: React.FC<Step2Props> = ({ onBack, onNext }) => {
   const [selectedGender, setSelectedGender] = React.useState<'male' | 'female' | null>(null);
-  const [selectedCurrency, setSelectedCurrency] = React.useState<string>('');
+  const [selectedCurrency, setSelectedCurrency] = React.useState<string>('ruble');
 
   const steps = [
     { number: 1, label: 'Начало', completed: true, current: false },
@@ -30,57 +31,72 @@ const Step2: React.FC<Step2Props> = ({ onBack, onNext }) => {
       <div className="flex flex-col gap-8 w-full">
         {/* Form Title */}
         <h3 className="text-xl sm:text-2xl font-normal text-black tracking-wide leading-tight m-0">
-          Страхователь
+          Данные застрахованного лица
         </h3>
 
         {/* Form Fields Container */}
         <div className="bg-[#f2f2f2] px-10 py-8">
           <div className="flex flex-col gap-6">
-            {/* Date of Birth */}
-            <InputSelect
-              label="Дата рождения"
-              placeholder="ДД.ММ.ГГГГ"
-              value=""
-              required
-              onChange={(value) => console.log('Date of birth:', value)}
-            />
+            {/* Date of Birth with Gender */}
+            <div className="flex items-center gap-12">
+              <div className="flex-1">
+                <InputSelect
+                  label="Дата рождения"
+                  placeholder="ДД.ММ.ГГГГ"
+                  value=""
+                  required
+                  trailingIcon={<img src={calendarIcon} alt="calendar" className="w-6 h-6" />}
+                  onChange={(value) => console.log('Date of birth:', value)}
+                />
+              </div>
 
-            {/* Gender Selection */}
-            <div className="flex flex-col gap-3">
-              <label className="text-base font-normal text-[#191919] tracking-wide">
-                Пол <span className="text-[#437aec]">*</span>
-              </label>
+              {/* Gender Selection */}
               <div className="flex items-center gap-8">
-                {/* Male Radio */}
-                <div className="flex items-center gap-2 cursor-pointer" onClick={() => setSelectedGender('male')}>
-                  <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${selectedGender === 'male' ? 'border-[#437aec] bg-[#437aec]' : 'border-[#666] bg-white'}`}>
-                    {selectedGender === 'male' && (
-                      <div className="w-3 h-3 rounded-full bg-white" />
-                    )}
+                <label className="text-base font-normal text-[#191919] tracking-wide">
+                  Пол <span className="text-[#437aec]">*</span>
+                </label>
+                <div className="flex items-center gap-8">
+                  {/* Male Radio */}
+                  <div className="flex items-center gap-2 cursor-pointer" onClick={() => setSelectedGender('male')}>
+                    <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${selectedGender === 'male' ? 'border-[#437aec] bg-[#437aec]' : 'border-[#666] bg-white'}`}>
+                      {selectedGender === 'male' && (
+                        <div className="w-3 h-3 rounded-full bg-white" />
+                      )}
+                    </div>
+                    <span className="text-base font-normal text-[#191919] tracking-wide">Мужской</span>
                   </div>
-                  <span className="text-base font-normal text-[#191919] tracking-wide">Мужской</span>
-                </div>
 
-                {/* Female Radio */}
-                <div className="flex items-center gap-2 cursor-pointer" onClick={() => setSelectedGender('female')}>
-                  <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${selectedGender === 'female' ? 'border-[#437aec] bg-[#437aec]' : 'border-[#666] bg-white'}`}>
-                    {selectedGender === 'female' && (
-                      <div className="w-3 h-3 rounded-full bg-white" />
-                    )}
+                  {/* Female Radio */}
+                  <div className="flex items-center gap-2 cursor-pointer" onClick={() => setSelectedGender('female')}>
+                    <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${selectedGender === 'female' ? 'border-[#437aec] bg-[#437aec]' : 'border-[#666] bg-white'}`}>
+                      {selectedGender === 'female' && (
+                        <div className="w-3 h-3 rounded-full bg-white" />
+                      )}
+                    </div>
+                    <span className="text-base font-normal text-[#191919] tracking-wide">Женский</span>
                   </div>
-                  <span className="text-base font-normal text-[#191919] tracking-wide">Женский</span>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
 
-            {/* Currency Selection */}
-            <InputSelect
-              label="Валюта"
-              placeholder="Выберите валюту"
-              value={selectedCurrency}
-              required
-              onChange={(value) => setSelectedCurrency(value)}
-            />
+        {/* Calculation Data Section */}
+        <div className="flex flex-col gap-6 w-full">
+          <h3 className="text-xl sm:text-2xl font-normal text-black tracking-wide leading-tight m-0">
+            Данные для расчета
+          </h3>
+
+          <div className="bg-[#f2f2f2] px-10 py-8">
+            {/* Currency Radio Selection */}
+            <div className="flex items-center gap-2 cursor-pointer" onClick={() => setSelectedCurrency('ruble')}>
+              <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${selectedCurrency === 'ruble' ? 'border-[#437aec] bg-[#437aec]' : 'border-[#666] bg-white'}`}>
+                {selectedCurrency === 'ruble' && (
+                  <div className="w-3 h-3 rounded-full bg-white" />
+                )}
+              </div>
+              <span className="text-base font-normal text-[#191919] tracking-wide">Российский рубль</span>
+            </div>
           </div>
         </div>
       </div>
