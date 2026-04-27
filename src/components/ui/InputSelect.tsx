@@ -162,7 +162,7 @@ const InputSelect: React.FC<InputSelectProps> = ({
               disabled={disabled}
               readOnly={state === 'readOnly'}
               className={`
-                w-full border-none outline-none bg-transparent
+                w-full border-none outline-none bg-transparent text-left
                 font-normal text-base tracking-wide
                 ${disabled ? 'cursor-not-allowed' : ''}
               `}

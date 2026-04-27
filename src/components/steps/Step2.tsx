@@ -14,6 +14,27 @@ interface Step2Props {
 const Step2: React.FC<Step2Props> = ({ onBack, onNext }) => {
   const [selectedGender, setSelectedGender] = React.useState<'male' | 'female' | null>(null);
   const [selectedCurrency, setSelectedCurrency] = React.useState<string>('ruble');
+  const [dateOfBirth, setDateOfBirth] = React.useState<string>('');
+
+  const isFormValid = dateOfBirth.length === 10 && selectedGender !== null;
+
+  const handleDateChange = (value: string) => {
+    // Apply date mask: dd.mm.yyyy
+    let formatted = value.replace(/\D/g, '');
+    
+    if (formatted.length > 8) {
+      formatted = formatted.slice(0, 8);
+    }
+    
+    if (formatted.length >= 2) {
+      formatted = formatted.slice(0, 2) + '.' + formatted.slice(2);
+    }
+    if (formatted.length >= 5) {
+      formatted = formatted.slice(0, 5) + '.' + formatted.slice(5);
+    }
+    
+    setDateOfBirth(formatted);
+  };
 
   const steps = [
     { number: 1, label: 'Начало', completed: true, current: false },
@@ -45,10 +66,10 @@ const Step2: React.FC<Step2Props> = ({ onBack, onNext }) => {
                 <InputSelect
                   label="Дата рождения"
                   placeholder="ДД.ММ.ГГГГ"
-                  value=""
+                  value={dateOfBirth}
                   required
                   trailingIcon={<img src={calendarIcon} alt="calendar" className="w-6 h-6" />}
-                  onChange={(value) => console.log('Date of birth:', value)}
+                  onChange={handleDateChange}
                 />
               </div>
 
@@ -113,10 +134,10 @@ const Step2: React.FC<Step2Props> = ({ onBack, onNext }) => {
           <Button
             variant="contained"
             size="large"
-            state="resting"
+            state={isFormValid ? 'resting' : 'disabled'}
             showTrailingIcon={false}
             className="w-[200px]"
-            onClick={onNext}
+            onClick={isFormValid ? onNext : undefined}
           >
             Далее
           </Button>
