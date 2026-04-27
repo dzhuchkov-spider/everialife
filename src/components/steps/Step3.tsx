@@ -16,7 +16,6 @@ const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
   const [paymentFrequency, setPaymentFrequency] = React.useState<string>('');
   const [riskName, setRiskName] = React.useState<string>('');
   const [riskAmount, setRiskAmount] = React.useState<string>('');
-  const [selectedServices, setSelectedServices] = React.useState<string[]>([]);
 
   const insuranceOptions = ['3 года (профессионал)'];
   const contractTermOptions = ['1', '2', '3', '4', '5'];
@@ -30,37 +29,29 @@ const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
 
   const isFormValid = insuranceVariant && contractTerm && paymentFrequency;
 
-  const handleServiceToggle = (serviceId: string) => {
-    const newSelected = selectedServices.includes(serviceId)
-      ? selectedServices.filter(id => id !== serviceId)
-      : [...selectedServices, serviceId];
-    setSelectedServices(newSelected);
-    onDataChange?.({ insuranceVariant, contractTerm, paymentFrequency, riskName, riskAmount, selectedServices: newSelected });
-  };
-
   const handleInsuranceVariantChange = (value: string) => {
     setInsuranceVariant(value);
-    onDataChange?.({ insuranceVariant: value, contractTerm, paymentFrequency, riskName, riskAmount, selectedServices });
+    onDataChange?.({ insuranceVariant: value, contractTerm, paymentFrequency, riskName, riskAmount });
   };
 
   const handleContractTermChange = (value: string) => {
     setContractTerm(value);
-    onDataChange?.({ insuranceVariant, contractTerm: value, paymentFrequency, riskName, riskAmount, selectedServices });
+    onDataChange?.({ insuranceVariant, contractTerm: value, paymentFrequency, riskName, riskAmount });
   };
 
   const handlePaymentFrequencyChange = (value: string) => {
     setPaymentFrequency(value);
-    onDataChange?.({ insuranceVariant, contractTerm, paymentFrequency: value, riskName, riskAmount, selectedServices });
+    onDataChange?.({ insuranceVariant, contractTerm, paymentFrequency: value, riskName, riskAmount });
   };
 
   const handleRiskNameChange = (value: string) => {
     setRiskName(value);
-    onDataChange?.({ insuranceVariant, contractTerm, paymentFrequency, riskName: value, riskAmount, selectedServices });
+    onDataChange?.({ insuranceVariant, contractTerm, paymentFrequency, riskName: value, riskAmount });
   };
 
   const handleRiskAmountChange = (value: string) => {
     setRiskAmount(value);
-    onDataChange?.({ insuranceVariant, contractTerm, paymentFrequency, riskName, riskAmount: value, selectedServices });
+    onDataChange?.({ insuranceVariant, contractTerm, paymentFrequency, riskName, riskAmount: value });
   };
 
   const steps = [
@@ -171,31 +162,14 @@ const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
             <div className="flex flex-col gap-0">
               {/* Table Header */}
               <div className="flex items-center border-b border-[#f2f2f2] bg-white">
-                <div className="w-[72px] h-[72px] flex items-center justify-center border-b border-l border-[#f2f2f2]">
-                  <input
-                    type="checkbox"
-                    checked={selectedServices.length === services.length}
-                    onChange={(e) => {
-                      if (e.target.checked) {
-                        const allIds = services.map(s => s.id);
-                        setSelectedServices(allIds);
-                        onDataChange?.({ insuranceVariant, contractTerm, paymentFrequency, riskName, riskAmount, selectedServices: allIds });
-                      } else {
-                        setSelectedServices([]);
-                        onDataChange?.({ insuranceVariant, contractTerm, paymentFrequency, riskName, riskAmount, selectedServices: [] });
-                      }
-                    }}
-                    className="w-6 h-6 cursor-pointer"
-                  />
-                </div>
-                <div className="flex-1 h-[72px] flex items-center px-6 border-b border-[#f2f2f2]">
-                  <span className="text-base font-normal text-[#191919] tracking-wide">
-                    Услуга
+                <div className="flex-1 h-[72px] flex items-center px-6 border-b border-l border-[#f2f2f2]">
+                  <span className="text-base font-normal text-[#939393] tracking-wide">
+                    Наименование риска
                   </span>
                 </div>
                 <div className="w-[256px] h-[72px] flex items-center px-6 border-b border-r border-[#f2f2f2]">
-                  <span className="text-base font-normal text-[#191919] tracking-wide">
-                    Сумма
+                  <span className="text-base font-normal text-[#939393] tracking-wide">
+                    Сумма по риску
                   </span>
                 </div>
               </div>
@@ -206,15 +180,7 @@ const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
                   key={service.id}
                   className="flex items-center border-b border-[#f2f2f2] bg-white hover:bg-[#f9f9f9] transition-colors"
                 >
-                  <div className="w-[72px] h-[72px] flex items-center justify-center border-b border-l border-[#f2f2f2]">
-                    <input
-                      type="checkbox"
-                      checked={selectedServices.includes(service.id)}
-                      onChange={() => handleServiceToggle(service.id)}
-                      className="w-6 h-6 cursor-pointer"
-                    />
-                  </div>
-                  <div className="flex-1 h-[72px] flex items-center px-6 border-b border-[#f2f2f2]">
+                  <div className="flex-1 h-[72px] flex items-center px-6 border-b border-l border-[#f2f2f2]">
                     <span className="text-base font-normal text-[#191919] tracking-wide">
                       {service.name}
                     </span>
@@ -226,6 +192,27 @@ const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
                   </div>
                 </div>
               ))}
+
+              {/* Взнос по договору */}
+              <div className="flex items-center justify-between mt-6">
+                <div className="flex items-center gap-2">
+                  <span className="text-base font-normal text-black tracking-wide">
+                    Взнос по договору:
+                  </span>
+                  <span className="text-base font-normal text-black tracking-wide h-8 flex items-center">
+                    14 250,43 руб.
+                  </span>
+                </div>
+                <Button
+                  variant="contained"
+                  size="large"
+                  state="resting"
+                  showTrailingIcon={false}
+                  onClick={() => {}}
+                >
+                  Рассчитать взнос
+                </Button>
+              </div>
             </div>
           </div>
         )}
