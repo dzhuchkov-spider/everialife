@@ -1,13 +1,14 @@
 import React from 'react';
-import InputSelect from './ui/InputSelect';
-import Button from './ui/Button';
-import Layout from './layout/Layout';
+import InputSelect from '../ui/InputSelect';
+import Button from '../ui/Button';
+import Layout from '../layout/Layout';
 
-interface Step2ContentProps {
+interface Step2Props {
   onBack?: () => void;
+  onNext?: () => void;
 }
 
-const Step2Content: React.FC<Step2ContentProps> = ({ onBack }) => {
+const Step2: React.FC<Step2Props> = ({ onBack, onNext }) => {
   const [selectedGender, setSelectedGender] = React.useState<'male' | 'female' | null>(null);
   const [selectedCurrency, setSelectedCurrency] = React.useState<string>('');
 
@@ -91,8 +92,8 @@ const Step2Content: React.FC<Step2ContentProps> = ({ onBack }) => {
           <span className="text-[#437aec]">*</span> Поля, обязательные к заполнению
         </p>
 
-        {/* Back Button */}
-        <div className="flex items-center justify-start w-full">
+        {/* Buttons */}
+        <div className="flex items-center justify-between w-full">
           <Button
             variant="outlined"
             size="large"
@@ -103,10 +104,20 @@ const Step2Content: React.FC<Step2ContentProps> = ({ onBack }) => {
           >
             Назад
           </Button>
+          <Button
+            variant="contained"
+            size="large"
+            state="resting"
+            showTrailingIcon={false}
+            className="w-[200px]"
+            onClick={onNext}
+          >
+            Далее
+          </Button>
         </div>
       </div>
     </Layout>
   );
 };
 
-export default Step2Content;
+export default Step2;

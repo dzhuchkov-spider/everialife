@@ -1,14 +1,14 @@
 import React from 'react';
-import InputSelect from './ui/InputSelect';
-import Button from './ui/Button';
-import helpIcon from '../assets/icons/Inputs/Help.svg';
-import Layout from './layout/Layout';
+import InputSelect from '../ui/InputSelect';
+import Button from '../ui/Button';
+import helpIcon from '../../assets/icons/Inputs/Help.svg';
+import Layout from '../layout/Layout';
 
-interface ContractPageProps {
+interface Step1Props {
   onNext?: () => void;
 }
 
-const ContractPage: React.FC<ContractPageProps> = ({ onNext }) => {
+const Step1: React.FC<Step1Props> = ({ onNext }) => {
   const steps = [
     { number: 1, label: 'Начало', completed: true, current: false },
     { number: 2, label: 'Расчёт', completed: false, current: true },
@@ -88,4 +88,4 @@ const ContractPage: React.FC<ContractPageProps> = ({ onNext }) => {
   );
 };
 
-export default ContractPage;
+export default Step1;
