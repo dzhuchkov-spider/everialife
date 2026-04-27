@@ -30,7 +30,7 @@ function App() {
   }
 
   if (currentStep === 5) {
-    return <Step5 onBack={() => setCurrentStep(4)} onSubmit={() => setCurrentStep(6)} />
+    return <Step5 onBack={() => setCurrentStep(3)} onSubmit={() => setCurrentStep(6)} />
   }
 
   if (currentStep === 4) {
@@ -38,7 +38,7 @@ function App() {
   }
 
   if (currentStep === 3) {
-    return <Step3 onBack={() => setCurrentStep(2)} onNext={() => setCurrentStep(4)} />
+    return <Step3 onBack={() => setCurrentStep(2)} onNext={() => setCurrentStep(5)} />
   }
 
   if (currentStep === 2) {

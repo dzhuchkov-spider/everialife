@@ -216,7 +216,7 @@ const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
                   <span className="text-base font-normal text-black tracking-wide">
                     Взнос по договору:
                   </span>
-                  <span className="text-base font-normal text-[#386DF7] tracking-wide h-8 flex items-center">
+                  <span className="text-[32px] font-normal text-[#386DF7] tracking-wide h-8 flex items-center">
                     14 250,43 руб.
                   </span>
                 </div>
