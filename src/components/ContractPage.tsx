@@ -147,9 +147,16 @@ const ContractPage: React.FC<ContractPageProps> = ({ onBack }) => {
           <div className="bg-[#f2f2f2] px-10 py-8">
             <div className="flex flex-col gap-6">
               <InputSelect
+                label="Агент"
+                placeholder="Агент"
+                value="Aгент | MAGNUM-С-N007288 | ТЕСТ МАГНУМ ТЕСТ"
+                showTrailingIcon={false}
+                onChange={(value) => console.log('Agent:', value)}
+              />
+              <InputSelect
                 label="Продукт"
                 placeholder="Выберите продукт"
-                value=""
+                value="11110 | ЗА РУЛЁМ.ЗДОРОВЬЕ"
                 required
                 onChange={(value) => console.log('Product:', value)}
               />

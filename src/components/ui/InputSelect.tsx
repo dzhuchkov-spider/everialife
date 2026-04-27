@@ -40,6 +40,7 @@ export interface InputSelectProps {
   state?: 'resting' | 'focused' | 'hovered' | 'readOnly';
   onChange?: (value: string) => void;
   trailingIcon?: React.ReactNode;
+  showTrailingIcon?: boolean;
 }
 
 const InputSelect: React.FC<InputSelectProps> = ({
@@ -55,6 +56,7 @@ const InputSelect: React.FC<InputSelectProps> = ({
   state = 'resting',
   onChange,
   trailingIcon,
+  showTrailingIcon = true,
 }) => {
   const [internalState, setInternalState] = useState<'resting' | 'focused' | 'hovered'>('resting');
   
@@ -165,16 +167,18 @@ const InputSelect: React.FC<InputSelectProps> = ({
                 ${disabled ? 'cursor-not-allowed' : ''}
               `}
               style={{
-                color: DESIGN_TOKENS.colors.interactiveNeutralDefault,
+                color: isPopulated ? '#000000' : DESIGN_TOKENS.colors.interactiveNeutralDefault,
                 fontSize: DESIGN_TOKENS.fontSize.body1,
               }}
             />
           </div>
 
           {/* Trailing Icon */}
-          <div className="flex items-center justify-center flex-shrink-0">
-            {defaultTrailingIcon}
-          </div>
+          {showTrailingIcon && (
+            <div className="flex items-center justify-center flex-shrink-0">
+              {defaultTrailingIcon}
+            </div>
+          )}
         </div>
 
         {/* Label (floating when populated) */}
