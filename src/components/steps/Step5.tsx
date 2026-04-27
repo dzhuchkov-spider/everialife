@@ -41,11 +41,6 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
     >
       {/* Form Section */}
       <div className="flex flex-col gap-8 w-full">
-        {/* Form Title */}
-        <h3 className="text-xl sm:text-2xl font-normal text-black tracking-wide leading-tight m-0">
-          Данные для создания договора
-        </h3>
-
         {/* Section 1: Данные страхователя */}
         <div className="flex flex-col gap-4">
           <h4 className="text-[24px] font-normal text-black tracking-wide leading-tight m-0">
@@ -177,7 +172,7 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
           <div className="bg-[#f2f2f2] px-10 py-8">
             <div className="flex flex-col gap-6">
               {/* Document Type Dropdown */}
-              <div className="w-[244px]">
+              <div className="w-full">
                 <InputSelect
                   label="Тип документа"
                   placeholder=""
