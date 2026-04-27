@@ -1,5 +1,5 @@
 import React from 'react';
-import plusIcon from '../../assets/icons/plus.svg';
+import arrowLeftAltIcon from '../../assets/icons/arrow_left_alt.svg';
 import arrowRightIcon from '../../assets/icons/arrow-right.svg';
 
 export interface ButtonProps {
@@ -60,7 +60,7 @@ const Button: React.FC<ButtonProps> = ({
   const iconSize = size === 'large' ? 'w-6 h-6' : 'w-5 h-5';
 
   // Default icons from Figma
-  const defaultLeadingIcon = leadingIcon || (variant !== 'contained' ? <img src={plusIcon} alt="plus" className="w-full h-full" /> : null);
+  const defaultLeadingIcon = leadingIcon || (variant !== 'contained' ? <img src={arrowLeftAltIcon} alt="arrow left" className="w-full h-full" /> : null);
   const defaultTrailingIcon = trailingIcon || (showTrailingIcon && variant === 'contained' && size === 'large' && state === 'resting' ? <img src={arrowRightIcon} alt="arrow" className="w-full h-full" /> : null);
 
   return (

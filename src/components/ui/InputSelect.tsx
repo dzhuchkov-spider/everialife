@@ -162,13 +162,15 @@ const InputSelect: React.FC<InputSelectProps> = ({
               disabled={disabled}
               readOnly={state === 'readOnly'}
               className={`
-                w-full border-none outline-none bg-transparent text-left
+                w-full border-none outline-none bg-transparent
                 font-normal text-base tracking-wide
                 ${disabled ? 'cursor-not-allowed' : ''}
               `}
               style={{
                 color: isPopulated ? '#000000' : DESIGN_TOKENS.colors.interactiveNeutralDefault,
                 fontSize: DESIGN_TOKENS.fontSize.body1,
+                textAlign: 'left',
+                verticalAlign: 'middle',
               }}
             />
           </div>
