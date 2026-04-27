@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import InputSelect from '../ui/InputSelect';
 import Button from '../ui/Button';
 import Layout from '../layout/Layout';
+import checkIcon from '../../assets/check/Select.svg';
 
 interface Step5Props {
   onBack?: () => void;
@@ -19,6 +20,7 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
   const [issueDate, setIssueDate] = useState(passportData?.issueDate || '');
   const [issuedBy, setIssuedBy] = useState(passportData?.issuedBy || '');
   const [departmentCode, setDepartmentCode] = useState(passportData?.departmentCode || '');
+  const [gender, setGender] = useState<'male' | 'female'>('male');
 
   const steps = [
     { number: 1, label: 'Начало', completed: true, current: false },
@@ -43,21 +45,53 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
 
         {/* Section 1: Данные страхователя */}
         <div className="flex flex-col gap-4">
-          <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
+          <h4 className="text-[24px] font-normal text-black tracking-wide leading-tight m-0">
             Данные страхователя
           </h4>
           <div className="bg-[#f2f2f2] px-10 py-8">
             <div className="flex flex-col gap-6">
-              {/* Placeholder inputs for insurer data */}
-              <div className="w-[244px]">
-                <InputSelect
-                  label="ФИО"
-                  placeholder=""
-                  value=""
-                  onChange={() => {}}
-                  required
-                  showTrailingIcon={false}
-                />
+              {/* Checkbox - always checked */}
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 rounded border-2 border-[#437aec] bg-[#437aec] flex items-center justify-center cursor-not-allowed">
+                  <img src={checkIcon} alt="check" className="w-3 h-3" />
+                </div>
+                <span className="text-base text-[#333] font-normal tracking-[0.5px] leading-[1.4]">
+                  Страхователь совпадает с застрахованным
+                </span>
+              </div>
+
+              {/* Three inputs: Фамилия, Имя, Отчество */}
+              <div className="flex gap-6">
+                <div className="flex-1">
+                  <InputSelect
+                    label="Фамилия"
+                    placeholder=""
+                    value=""
+                    onChange={() => {}}
+                    required
+                    showTrailingIcon={false}
+                  />
+                </div>
+                <div className="flex-1">
+                  <InputSelect
+                    label="Имя"
+                    placeholder=""
+                    value=""
+                    onChange={() => {}}
+                    required
+                    showTrailingIcon={false}
+                  />
+                </div>
+                <div className="flex-1">
+                  <InputSelect
+                    label="Отчество"
+                    placeholder=""
+                    value=""
+                    onChange={() => {}}
+                    required
+                    showTrailingIcon={false}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -65,12 +99,13 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
 
         {/* Section 2: Дата и место рождения */}
         <div className="flex flex-col gap-4">
-          <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
+          <h4 className="text-[24px] font-normal text-black tracking-wide leading-tight m-0">
             Дата и место рождения
           </h4>
           <div className="bg-[#f2f2f2] px-10 py-8">
             <div className="flex flex-col gap-6">
-              <div className="flex gap-4">
+              {/* Date of birth + Gender selection */}
+              <div className="flex items-center gap-4">
                 <div className="w-[244px]">
                   <InputSelect
                     label="Дата рождения"
@@ -81,6 +116,52 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
                     showTrailingIcon={false}
                   />
                 </div>
+                <span className="text-base text-[#333] font-normal tracking-[0.5px] leading-[1.4]">
+                  Пол:
+                </span>
+                <div className="flex gap-4">
+                  {/* Male radio button */}
+                  <div className="flex items-center gap-2">
+                    <div 
+                      className={`w-6 h-6 rounded-full border-2 cursor-pointer ${
+                        gender === 'male' 
+                          ? 'border-[#437aec] bg-white' 
+                          : 'border-[#666] bg-white'
+                      }`}
+                      onClick={() => setGender('male')}
+                    >
+                      {gender === 'male' && (
+                        <div className="w-3 h-3 rounded-full bg-[#386df7] m-auto mt-0.5" />
+                      )}
+                    </div>
+                    <span className="text-base text-[#333] font-normal tracking-[0.5px] leading-[1.4]">
+                      Мужской
+                    </span>
+                  </div>
+
+                  {/* Female radio button */}
+                  <div className="flex items-center gap-2">
+                    <div 
+                      className={`w-6 h-6 rounded-full border-2 cursor-pointer ${
+                        gender === 'female' 
+                          ? 'border-[#437aec] bg-white' 
+                          : 'border-[#666] bg-white'
+                      }`}
+                      onClick={() => setGender('female')}
+                    >
+                      {gender === 'female' && (
+                        <div className="w-3 h-3 rounded-full bg-[#386df7] m-auto mt-0.5" />
+                      )}
+                    </div>
+                    <span className="text-base text-[#333] font-normal tracking-[0.5px] leading-[1.4]">
+                      Женский
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Place of birth + Citizenship */}
+              <div className="flex gap-6">
                 <div className="flex-1">
                   <InputSelect
                     label="Место рождения"
@@ -91,6 +172,17 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
                     showTrailingIcon={false}
                   />
                 </div>
+                <div className="flex-1">
+                  <InputSelect
+                    label="Гражданство"
+                    placeholder=""
+                    value=""
+                    onChange={() => {}}
+                    required
+                    showTrailingIcon={false}
+                    options={['Россия', 'Беларусь', 'Казахстан', 'Узбекистан', 'Другое']}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -98,7 +190,7 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
 
         {/* Section 3: Документ, удостоверяющий личность */}
         <div className="flex flex-col gap-4">
-          <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
+          <h4 className="text-[24px] font-normal text-black tracking-wide leading-tight m-0">
             Документ, удостоверяющий личность
           </h4>
           <div className="bg-[#f2f2f2] px-10 py-8">
