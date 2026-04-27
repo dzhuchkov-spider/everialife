@@ -1,5 +1,6 @@
 import React from 'react';
 import InputSelect from '../ui/InputSelect';
+import Input from '../ui/Input';
 import Button from '../ui/Button';
 import Layout from '../layout/Layout';
 
@@ -72,8 +73,7 @@ const Step7: React.FC<Step7Props> = ({ onBack, onNext, onDataChange }) => {
 
             {/* Agent Share Input */}
             <div className="w-32">
-              <InputSelect
-                label="Доля"
+              <Input
                 placeholder="2"
                 value={agentShare}
                 onChange={handleAgentShareChange}
@@ -116,7 +116,7 @@ const Step7: React.FC<Step7Props> = ({ onBack, onNext, onDataChange }) => {
           <Button
             variant="contained"
             size="large"
-            state="resting"
+            state={!agentContractNumber ? 'disabled' : 'resting'}
             showTrailingIcon={false}
             className="w-[200px]"
             onClick={onNext}
