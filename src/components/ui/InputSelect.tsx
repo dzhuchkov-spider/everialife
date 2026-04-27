@@ -156,7 +156,7 @@ const InputSelect: React.FC<InputSelectProps> = ({
           <div className="flex-1 flex items-center min-w-0">
             <input
               type="text"
-              placeholder={placeholder}
+              placeholder={isPopulated || actualState === 'focused' ? placeholder : ''}
               value={value}
               onChange={handleChange}
               disabled={disabled}
@@ -183,18 +183,18 @@ const InputSelect: React.FC<InputSelectProps> = ({
           )}
         </div>
 
-        {/* Label (floating when populated) */}
+        {/* Label (floating when populated or focused, acts as placeholder when empty) */}
         {label && (
           <div
             className={`
-              absolute flex items-center gap-1 px-1
-              font-normal text-base tracking-wide
+              absolute flex items-center gap-1 px-1 pointer-events-none
+              font-normal tracking-wide
               transition-all duration-200
               ${isPopulated || actualState === 'focused' ? '-top-2.5 left-3 text-xs' : 'top-4 left-4 text-base'}
             `}
             style={{
-              backgroundColor: DESIGN_TOKENS.colors.backgroundDefaultLight,
-              color: getLabelColor(),
+              backgroundColor: isPopulated || actualState === 'focused' ? DESIGN_TOKENS.colors.backgroundDefaultLight : 'transparent',
+              color: isPopulated || actualState === 'focused' ? getLabelColor() : DESIGN_TOKENS.colors.interactiveNeutralDefault,
               fontSize: isPopulated || actualState === 'focused' ? DESIGN_TOKENS.fontSize.caption : DESIGN_TOKENS.fontSize.body1,
             }}
           >

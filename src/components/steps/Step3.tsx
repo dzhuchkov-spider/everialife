@@ -2,6 +2,7 @@ import React from 'react';
 import InputSelect from '../ui/InputSelect';
 import Button from '../ui/Button';
 import Layout from '../layout/Layout';
+import helpIcon from '../../assets/icons/Inputs/Help.svg';
 
 interface Step3Props {
   onBack?: () => void;
@@ -69,30 +70,39 @@ const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
 
         {/* Dropdowns Block */}
         <div className="bg-[#f2f2f2] px-10 py-8">
-          <div className="flex flex-col gap-6">
+          <div className="flex items-center gap-6">
             {/* Вариант страхования */}
-            <InputSelect
-              label="Вариант страхования"
-              placeholder="Выберите вариант"
-              value={insuranceVariant}
-              onChange={handleInsuranceVariantChange}
-            />
+            <div className="flex items-center gap-2 flex-1">
+              <div className="flex-1">
+                <InputSelect
+                  label="Вариант страхования"
+                  placeholder="Выберите вариант"
+                  value={insuranceVariant}
+                  onChange={handleInsuranceVariantChange}
+                />
+              </div>
+              <img src={helpIcon} alt="Help" className="w-6 h-6 flex-shrink-0" />
+            </div>
 
             {/* Срок действия договора в годах */}
-            <InputSelect
-              label="Срок действия договора в годах"
-              placeholder="Выберите срок"
-              value={contractTerm}
-              onChange={handleContractTermChange}
-            />
+            <div className="flex-1">
+              <InputSelect
+                label="Срок действия договора в годах"
+                placeholder="Выберите срок"
+                value={contractTerm}
+                onChange={handleContractTermChange}
+              />
+            </div>
 
             {/* Периодичность оплаты */}
-            <InputSelect
-              label="Периодичность оплаты"
-              placeholder="Выберите периодичность"
-              value={paymentFrequency}
-              onChange={handlePaymentFrequencyChange}
-            />
+            <div className="flex-1">
+              <InputSelect
+                label="Периодичность оплаты"
+                placeholder="Выберите периодичность"
+                value={paymentFrequency}
+                onChange={handlePaymentFrequencyChange}
+              />
+            </div>
           </div>
         </div>
 
@@ -111,6 +121,7 @@ const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
                 placeholder="Введите наименование"
                 value={riskName}
                 onChange={handleRiskNameChange}
+                showTrailingIcon={false}
               />
             </div>
 
@@ -121,6 +132,7 @@ const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
                 placeholder="Введите сумму"
                 value={riskAmount}
                 onChange={handleRiskAmountChange}
+                showTrailingIcon={false}
               />
             </div>
           </div>
