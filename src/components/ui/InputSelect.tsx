@@ -190,7 +190,7 @@ const InputSelect: React.FC<InputSelectProps> = ({
               absolute flex items-center gap-1 px-1 pointer-events-none
               font-normal tracking-wide
               transition-all duration-200
-              ${isPopulated || actualState === 'focused' ? '-top-2.5 left-3 text-xs' : 'top-4 left-4 text-base'}
+              ${isPopulated || actualState === 'focused' ? '-top-2.5 left-3 text-xs' : 'top-1/2 -translate-y-1/2 left-4 text-base'}
             `}
             style={{
               backgroundColor: isPopulated || actualState === 'focused' ? DESIGN_TOKENS.colors.backgroundDefaultLight : 'transparent',
