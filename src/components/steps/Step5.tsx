@@ -3,6 +3,8 @@ import InputSelect from '../ui/InputSelect';
 import Button from '../ui/Button';
 import Layout from '../layout/Layout';
 import checkIcon from '../../assets/check/Select.svg';
+import radioSelectIcon from '../../assets/radio/Select.svg';
+import radioNoSelectIcon from '../../assets/radio/No-select.svg';
 
 interface Step5Props {
   onBack?: () => void;
@@ -21,6 +23,7 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
   const [issuedBy, setIssuedBy] = useState(passportData?.issuedBy || '');
   const [departmentCode, setDepartmentCode] = useState(passportData?.departmentCode || '');
   const [gender, setGender] = useState<'male' | 'female'>('male');
+  const [documentType, setDocumentType] = useState('Паспорт');
 
   const steps = [
     { number: 1, label: 'Начало', completed: true, current: false },
@@ -121,38 +124,16 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
                 </span>
                 <div className="flex gap-4">
                   {/* Male radio button */}
-                  <div className="flex items-center gap-2">
-                    <div 
-                      className={`w-6 h-6 rounded-full border-2 cursor-pointer ${
-                        gender === 'male' 
-                          ? 'border-[#437aec] bg-white' 
-                          : 'border-[#666] bg-white'
-                      }`}
-                      onClick={() => setGender('male')}
-                    >
-                      {gender === 'male' && (
-                        <div className="w-3 h-3 rounded-full bg-[#386df7] m-auto mt-0.5" />
-                      )}
-                    </div>
+                  <div className="flex items-center gap-2 cursor-pointer" onClick={() => setGender('male')}>
+                    <img src={gender === 'male' ? radioSelectIcon : radioNoSelectIcon} alt="radio" className="w-6 h-6" />
                     <span className="text-base text-[#333] font-normal tracking-[0.5px] leading-[1.4]">
                       Мужской
                     </span>
                   </div>
 
                   {/* Female radio button */}
-                  <div className="flex items-center gap-2">
-                    <div 
-                      className={`w-6 h-6 rounded-full border-2 cursor-pointer ${
-                        gender === 'female' 
-                          ? 'border-[#437aec] bg-white' 
-                          : 'border-[#666] bg-white'
-                      }`}
-                      onClick={() => setGender('female')}
-                    >
-                      {gender === 'female' && (
-                        <div className="w-3 h-3 rounded-full bg-[#386df7] m-auto mt-0.5" />
-                      )}
-                    </div>
+                  <div className="flex items-center gap-2 cursor-pointer" onClick={() => setGender('female')}>
+                    <img src={gender === 'female' ? radioSelectIcon : radioNoSelectIcon} alt="radio" className="w-6 h-6" />
                     <span className="text-base text-[#333] font-normal tracking-[0.5px] leading-[1.4]">
                       Женский
                     </span>
@@ -195,22 +176,42 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
           </h4>
           <div className="bg-[#f2f2f2] px-10 py-8">
             <div className="flex flex-col gap-6">
-              {/* Series and Number */}
+              {/* Document Type Dropdown */}
               <div className="w-[244px]">
                 <InputSelect
-                  label="Серия и номер"
+                  label="Тип документа"
                   placeholder=""
-                  value={seriesNumber}
-                  onChange={setSeriesNumber}
+                  value={documentType}
+                  onChange={setDocumentType}
                   required
                   showTrailingIcon={false}
+                  options={['Паспорт']}
                 />
               </div>
 
-              {/* Issue Date and Issued By - Row */}
-              <div className="flex gap-4">
-                {/* Issue Date */}
-                <div className="w-[244px]">
+              {/* Series, Number, Issue Date - Row */}
+              <div className="flex gap-6">
+                <div className="flex-1">
+                  <InputSelect
+                    label="Серия"
+                    placeholder=""
+                    value={seriesNumber}
+                    onChange={setSeriesNumber}
+                    required
+                    showTrailingIcon={false}
+                  />
+                </div>
+                <div className="flex-1">
+                  <InputSelect
+                    label="Номер"
+                    placeholder=""
+                    value=""
+                    onChange={() => {}}
+                    required
+                    showTrailingIcon={false}
+                  />
+                </div>
+                <div className="flex-1">
                   <InputSelect
                     label="Дата выдачи"
                     placeholder=""
@@ -220,8 +221,10 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
                     showTrailingIcon={false}
                   />
                 </div>
+              </div>
 
-                {/* Issued By */}
+              {/* Issued By and Department Code - Row */}
+              <div className="flex gap-6">
                 <div className="flex-1">
                   <InputSelect
                     label="Кем выдан"
@@ -232,18 +235,16 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
                     showTrailingIcon={false}
                   />
                 </div>
-              </div>
-
-              {/* Department Code */}
-              <div className="w-[244px]">
-                <InputSelect
-                  label="Код подразделения"
-                  placeholder=""
-                  value={departmentCode}
-                  onChange={setDepartmentCode}
-                  required
-                  showTrailingIcon={false}
-                />
+                <div className="w-[244px]">
+                  <InputSelect
+                    label="Код подразделения"
+                    placeholder=""
+                    value={departmentCode}
+                    onChange={setDepartmentCode}
+                    required
+                    showTrailingIcon={false}
+                  />
+                </div>
               </div>
             </div>
           </div>
