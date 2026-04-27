@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import arrowDownIcon from '../../assets/icons/arrow down.svg';
 
 // Design tokens from Figma
@@ -41,6 +41,7 @@ export interface InputSelectProps {
   onChange?: (value: string) => void;
   trailingIcon?: React.ReactNode;
   showTrailingIcon?: boolean;
+  options?: string[];
 }
 
 const InputSelect: React.FC<InputSelectProps> = ({
@@ -57,11 +58,31 @@ const InputSelect: React.FC<InputSelectProps> = ({
   onChange,
   trailingIcon,
   showTrailingIcon = true,
+  options = [],
 }) => {
   const [internalState, setInternalState] = useState<'resting' | 'focused' | 'hovered'>('resting');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
   
   const actualState = state === 'readOnly' ? 'readOnly' : internalState;
   const isPopulated = value.length > 0;
+  const hasOptions = options && options.length > 0;
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    if (isDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isDropdownOpen]);
 
   const handleFocus = () => {
     if (!disabled && state !== 'readOnly') {
@@ -90,6 +111,19 @@ const InputSelect: React.FC<InputSelectProps> = ({
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!disabled && state !== 'readOnly' && onChange) {
       onChange(e.target.value);
+    }
+  };
+
+  const handleContainerClick = () => {
+    if (!disabled && state !== 'readOnly' && hasOptions) {
+      setIsDropdownOpen(!isDropdownOpen);
+    }
+  };
+
+  const handleOptionClick = (option: string) => {
+    if (!disabled && state !== 'readOnly' && onChange) {
+      onChange(option);
+      setIsDropdownOpen(false);
     }
   };
 
@@ -131,7 +165,7 @@ const InputSelect: React.FC<InputSelectProps> = ({
   const defaultTrailingIcon = trailingIcon || <img src={arrowDownIcon} alt="arrow down" className="w-4 h-4" style={{ filter: 'brightness(0.6)' }} />;
 
   return (
-    <div className={`flex flex-col items-start relative w-full ${className}`}>
+    <div className={`flex flex-col items-start relative w-full ${className}`} ref={containerRef}>
       <div className="flex flex-col items-start relative w-full">
         {/* Input Container */}
         <div
@@ -139,7 +173,7 @@ const InputSelect: React.FC<InputSelectProps> = ({
             flex items-center gap-2 h-16 px-4 py-2 w-full
             border border-solid
             transition-all duration-200
-            ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'}
+            ${disabled ? 'cursor-not-allowed' : hasOptions ? 'cursor-pointer' : ''}
           `}
           style={{
             backgroundColor: getBackgroundColor(),
@@ -150,6 +184,7 @@ const InputSelect: React.FC<InputSelectProps> = ({
           onBlur={handleBlur}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          onClick={handleContainerClick}
           tabIndex={disabled ? -1 : 0}
         >
           {/* Input Field */}
@@ -159,8 +194,8 @@ const InputSelect: React.FC<InputSelectProps> = ({
               placeholder={isPopulated || actualState === 'focused' ? placeholder : ''}
               value={value}
               onChange={handleChange}
-              disabled={disabled}
-              readOnly={state === 'readOnly'}
+              disabled={disabled || hasOptions}
+              readOnly={state === 'readOnly' || hasOptions}
               className={`
                 w-full border-none outline-none bg-transparent
                 font-normal text-base tracking-wide
@@ -182,6 +217,33 @@ const InputSelect: React.FC<InputSelectProps> = ({
             </div>
           )}
         </div>
+
+        {/* Dropdown Options */}
+        {hasOptions && isDropdownOpen && (
+          <div
+            className="absolute top-full left-0 right-0 z-50 bg-white border border-solid shadow-lg"
+            style={{
+              borderColor: DESIGN_TOKENS.colors.interactiveOutlineNeutralDefault,
+              borderRadius: DESIGN_TOKENS.borderRadius,
+              marginTop: '4px',
+            }}
+          >
+            {options.map((option, index) => (
+              <div
+                key={index}
+                className="px-4 py-3 hover:bg-[#f5f5f5] cursor-pointer transition-colors"
+                onClick={() => handleOptionClick(option)}
+                style={{
+                  borderBottom: index < options.length - 1 ? `1px solid ${DESIGN_TOKENS.colors.interactiveOutlineNeutralDefault}` : 'none',
+                }}
+              >
+                <span className="text-base font-normal text-black tracking-wide">
+                  {option}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Label (floating when populated or focused, acts as placeholder when empty) */}
         {label && (
