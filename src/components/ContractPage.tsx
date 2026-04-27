@@ -200,7 +200,7 @@ const ContractPage: React.FC<ContractPageProps> = ({ onBack }) => {
         </div>
 
         {/* Bottom Section */}
-        <div className="flex flex-col gap-3 items-end w-full">
+        <div className="flex flex-col gap-3 items-start w-full">
           {/* Required Fields Note */}
           <p className="text-sm text-[#666] leading-tight">
             <span className="text-[#437aec]">*</span> Поля, обязательные к заполнению
