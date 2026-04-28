@@ -6,6 +6,8 @@ import editIcon from '../../assets/icons/edit.svg';
 import showPolisIcon from '../../assets/icons/show-polis.svg';
 import show2Icon from '../../assets/icons/show-2.svg';
 import checkoutIcon from '../../assets/icons/checkout.svg';
+import errorIcon from '../../assets/icons/Eror.svg';
+import closeIcon from '../../assets/icons/close.svg';
 
 interface Step9Props {
   onBack?: () => void;
@@ -75,10 +77,8 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
         {/* Notification */}
         {notificationVisible && (
           <div className="bg-[#fafafa] p-5 rounded-lg flex gap-3 items-start">
-            <div className="w-6 h-6 rounded-full bg-[#437aec] flex items-center justify-center shrink-0">
-              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
+            <div className="w-6 h-6 flex items-center justify-center shrink-0">
+              <img src={errorIcon} alt="error" className="w-full h-full" style={{ filter: 'brightness(0) saturate(100%) invert(17%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(94%) contrast(94%)' }} />
             </div>
             <div className="flex-1">
               <p className="text-base font-normal text-[#191919] tracking-wide leading-relaxed mb-2">
@@ -92,16 +92,10 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
               onClick={() => setNotificationVisible(false)}
               className="shrink-0 w-6 h-6 flex items-center justify-center hover:bg-[#e0e0e0] rounded transition-colors"
             >
-              <svg className="w-4 h-4 text-[#666]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              <img src={closeIcon} alt="close" className="w-full h-full" />
             </button>
           </div>
         )}
-        {/* Main Title */}
-        <h3 className="text-3xl font-normal text-black tracking-wide leading-tight m-0">
-          Договор страхования
-        </h3>
 
         {/* Contract Information */}
         <div className="flex flex-col gap-6">
@@ -282,7 +276,7 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-4">
+        <div className="flex gap-8">
           <Button
             variant="ghost"
             size="large"
