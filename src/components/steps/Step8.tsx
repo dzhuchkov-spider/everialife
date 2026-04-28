@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '../ui/Button';
 import Layout from '../layout/Layout';
 import SignContractPopup from '../ui/SignContractPopup';
+import editIcon from '../../assets/icons/edit.svg';
 
 interface Step8Props {
   onBack?: () => void;
@@ -119,8 +120,8 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
               <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
                 Страхователь
               </h4>
-              <Button variant="ghost" size="normal" state="resting" showTrailingIcon={false}>
-                Изменить
+              <Button variant="ghost" size="normal" state="resting" leadingIcon={null} trailingIcon={<div className="w-5 h-5 flex items-center justify-center text-[#386DF7]"><img src={editIcon} alt="edit" className="w-full h-full" /></div>}>
+                Редактировать
               </Button>
             </div>
             <div className="bg-white border border-[#CCCCCC] rounded px-6 py-4 flex flex-col gap-4">
@@ -168,8 +169,8 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
               <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
                 Параметры договора
               </h4>
-              <Button variant="ghost" size="normal" state="resting" showTrailingIcon={false}>
-                Изменить
+              <Button variant="ghost" size="normal" state="resting" leadingIcon={null} trailingIcon={<div className="w-5 h-5 flex items-center justify-center text-[#386DF7]"><img src={editIcon} alt="edit" className="w-full h-full" /></div>}>
+                Редактировать
               </Button>
             </div>
             <div className="bg-white border border-[#CCCCCC] rounded px-6 py-4 flex flex-col gap-4">
@@ -209,8 +210,8 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
               <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
                 Риски
               </h4>
-              <Button variant="ghost" size="normal" state="resting" showTrailingIcon={false}>
-                Изменить
+              <Button variant="ghost" size="normal" state="resting" leadingIcon={null} trailingIcon={<div className="w-5 h-5 flex items-center justify-center text-[#386DF7]"><img src={editIcon} alt="edit" className="w-full h-full" /></div>}>
+                Редактировать
               </Button>
             </div>
             <div className="bg-white rounded border border-[#e0e0e0]">
@@ -249,8 +250,8 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
               <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
                 Агент
               </h4>
-              <Button variant="ghost" size="normal" state="resting" showTrailingIcon={false}>
-                Изменить
+              <Button variant="ghost" size="normal" state="resting" leadingIcon={null} trailingIcon={<div className="w-5 h-5 flex items-center justify-center text-[#386DF7]"><img src={editIcon} alt="edit" className="w-full h-full" /></div>}>
+                Редактировать
               </Button>
             </div>
             <div className="bg-white border border-[#CCCCCC] rounded px-6 py-4 flex flex-col gap-3">

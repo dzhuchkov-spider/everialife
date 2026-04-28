@@ -60,8 +60,8 @@ const Button: React.FC<ButtonProps> = ({
   const iconSize = size === 'large' ? 'w-6 h-6' : 'w-5 h-5';
 
   // Default icons from Figma
-  const defaultLeadingIcon = leadingIcon || (variant !== 'contained' ? <img src={arrowLeftAltIcon} alt="arrow left" className="w-full h-full" /> : null);
-  const defaultTrailingIcon = trailingIcon || (showTrailingIcon && variant === 'contained' && size === 'large' && state === 'resting' ? <img src={arrowRightIcon} alt="arrow" className="w-full h-full" /> : null);
+  const defaultLeadingIcon = leadingIcon !== undefined ? leadingIcon : (variant !== 'contained' ? <img src={arrowLeftAltIcon} alt="arrow left" className="w-full h-full" /> : null);
+  const defaultTrailingIcon = trailingIcon !== undefined ? trailingIcon : (showTrailingIcon && variant === 'contained' && size === 'large' && state === 'resting' ? <img src={arrowRightIcon} alt="arrow" className="w-full h-full" /> : null);
 
   return (
     <button
