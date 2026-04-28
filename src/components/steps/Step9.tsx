@@ -293,7 +293,7 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
         </div>
 
         {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-8">
+        <div className="flex flex-row gap-4 sm:gap-8">
           <Button
             variant="ghost"
             size="large"

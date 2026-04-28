@@ -101,7 +101,7 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
           </h3>
 
           {/* Phones and Email */}
-          <div className="bg-[#f2f2f2] px-10 py-8 rounded-lg">
+          <div className="bg-[#f2f2f2] px-4 py-5 sm:px-10 sm:py-8 rounded-lg">
             <div className="flex flex-col gap-6">
               <div className="flex flex-col sm:flex-row gap-6">
                 <div className="w-full">
@@ -138,7 +138,7 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
           </div>
 
           {/* Postal Address Section */}
-          <div className="bg-[#f2f2f2] px-10 py-8 rounded-lg">
+          <div className="bg-[#f2f2f2] px-4 py-5 sm:px-10 sm:py-8 rounded-lg">
             <div className="flex flex-col gap-6">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
@@ -274,7 +274,7 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
           </div>
 
           {/* Registration Address Section */}
-          <div className="bg-[#f2f2f2] px-10 py-8 rounded-lg">
+          <div className="bg-[#f2f2f2] px-4 py-5 sm:px-10 sm:py-8 rounded-lg">
             <div className="flex flex-col gap-6">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">

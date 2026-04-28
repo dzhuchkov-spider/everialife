@@ -68,7 +68,7 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
           <h4 className="text-[24px] font-normal text-black tracking-wide leading-tight m-0">
             Данные страхователя
           </h4>
-          <div className="bg-[#f2f2f2] px-10 py-8">
+          <div className="bg-[#f2f2f2] px-4 py-5 sm:px-10 sm:py-8">
             <div className="flex flex-col gap-6">
               {/* Checkbox - always checked */}
               <div className="flex flex-col sm:flex-row sm:items-center gap-2">
@@ -122,7 +122,7 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
           <h4 className="text-[24px] font-normal text-black tracking-wide leading-tight m-0">
             Дата и место рождения
           </h4>
-          <div className="bg-[#f2f2f2] px-10 py-8">
+          <div className="bg-[#f2f2f2] px-4 py-5 sm:px-10 sm:py-8">
             <div className="flex flex-col gap-6">
               {/* Date of birth + Gender selection */}
               <div className="flex flex-col sm:flex-row sm:items-center gap-4">
@@ -193,7 +193,7 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
           <h4 className="text-[24px] font-normal text-black tracking-wide leading-tight m-0">
             Документ, удостоверяющий личность
           </h4>
-          <div className="bg-[#f2f2f2] px-10 py-8">
+          <div className="bg-[#f2f2f2] px-4 py-5 sm:px-10 sm:py-8">
             <div className="flex flex-col gap-6">
               {/* Document Type Dropdown */}
               <div className="w-full">

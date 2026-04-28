@@ -54,7 +54,7 @@ const Step4: React.FC<Step4Props> = ({ onBack, onNext, onDataChange }) => {
         </h3>
 
         {/* Services Table */}
-        <div className="bg-[#f2f2f2] px-10 py-8">
+        <div className="bg-[#f2f2f2] px-4 py-5 sm:px-10 sm:py-8">
           <div className="flex flex-col gap-0">
             {/* Table Header */}
             <div className="flex items-center border-b border-[#f2f2f2] bg-white">

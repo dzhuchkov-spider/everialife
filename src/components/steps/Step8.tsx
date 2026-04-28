@@ -118,7 +118,7 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
 
           {/* Section: Страхователь */}
           <div className="flex flex-col gap-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex flex-row items-center justify-between gap-4">
               <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
                 Страхователь
               </h4>
@@ -167,7 +167,7 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
 
           {/* Section: Параметры договора */}
           <div className="flex flex-col gap-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex flex-row items-center justify-between gap-4">
               <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
                 Параметры договора
               </h4>
@@ -208,7 +208,7 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
 
           {/* Section: Риски */}
           <div className="flex flex-col gap-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex flex-row items-center justify-between gap-4">
               <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
                 Риски
               </h4>
@@ -248,7 +248,7 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
 
           {/* Section: Агент */}
           <div className="flex flex-col gap-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex flex-row items-center justify-between gap-4">
               <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
                 Агент
               </h4>
@@ -272,7 +272,7 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
         </div>
 
         {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex flex-col gap-4 sm:flex-row">
           <Button
             variant="ghost"
             size="large"

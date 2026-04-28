@@ -58,7 +58,7 @@ const Step7: React.FC<Step7Props> = ({ onBack, onNext, onDataChange }) => {
         </div>
 
         {/* Agent Input Section */}
-        <div className="bg-[#f2f2f2] px-10 py-8 rounded-lg">
+        <div className="bg-[#f2f2f2] px-4 py-5 sm:px-10 sm:py-8 rounded-lg">
           <div className="flex flex-col sm:flex-row sm:items-center gap-6">
             {/* Agent Contract Number / Name Input */}
             <div className="w-full">

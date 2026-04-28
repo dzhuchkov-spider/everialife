@@ -79,31 +79,44 @@ const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
       {/* Form Section */}
       <div className="flex flex-col gap-8 w-full">
         {/* Form Title with Currency */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <h3 className="text-xl sm:text-2xl font-normal text-black tracking-wide leading-tight m-0">
             Данные для создания договора
           </h3>
-          <p className="text-base font-normal text-black tracking-wide">
+          <div className="sm:hidden flex items-center gap-1">
+            <span className="text-base font-normal text-black tracking-wide">
+              Валюта договора
+            </span>
+            <span className="text-base font-normal text-black tracking-wide" style={{ color: '#386DF7' }}>
+              Российский рубль
+            </span>
+          </div>
+          <p className="hidden sm:block text-base font-normal text-black tracking-wide">
             Валюта договора <span style={{ color: '#386DF7' }}>Российский рубль</span>
           </p>
         </div>
 
         {/* Dropdowns Block */}
-        <div className="bg-[#f2f2f2] px-10 py-8">
+        <div className="bg-[#f2f2f2] px-4 py-5 sm:px-10 sm:py-8">
           <div className="flex flex-col sm:flex-row sm:items-center gap-6">
             {/* Вариант страхования */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 w-full">
-              <div className="w-full">
-                <InputSelect
-                  label="Вариант страхования"
-                  placeholder="Выберите вариант"
-                  value={insuranceVariant}
-                  onChange={handleInsuranceVariantChange}
-                  options={insuranceOptions}
-                  required
-                />
+              <div className="flex flex-row items-center gap-2 w-full">
+                <div className="flex-1">
+                  <InputSelect
+                    label="Вариант страхования"
+                    placeholder="Выберите вариант"
+                    value={insuranceVariant}
+                    onChange={handleInsuranceVariantChange}
+                    options={insuranceOptions}
+                    required
+                  />
+                </div>
+                <img src={helpIcon} alt="Help" className="w-6 h-6 flex-shrink-0" />
               </div>
-              <img src={helpIcon} alt="Help" className="w-6 h-6 flex-shrink-0 sm:ml-2" />
+              <div className="hidden sm:block">
+                <img src={helpIcon} alt="Help" className="w-6 h-6 flex-shrink-0 sm:ml-2" />
+              </div>
             </div>
 
             {/* Срок действия договора в годах */}
@@ -139,7 +152,7 @@ const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
 
         {/* Risks Inputs Block - показываем только если не выбраны все три дропдауна */}
         {!isFormValid ? (
-          <div className="bg-[#f2f2f2] px-10 py-8">
+          <div className="bg-[#f2f2f2] px-4 py-5 sm:px-10 sm:py-8">
             <div className="flex flex-col sm:flex-row sm:items-center gap-6">
               {/* Наименование риска */}
               <div className="w-full">
@@ -166,7 +179,7 @@ const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
           </div>
         ) : (
           /* Services Table - показываем после выбора всех трех дропдаунов */
-          <div className="bg-[#f2f2f2] px-10 py-8">
+          <div className="bg-[#f2f2f2] px-4 py-5 sm:px-10 sm:py-8">
             <div className="flex flex-col gap-0">
               {/* Table Header */}
               <div className="flex items-center border-b border-[#f2f2f2] bg-white">

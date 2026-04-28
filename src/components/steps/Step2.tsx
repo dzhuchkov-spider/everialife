@@ -58,7 +58,7 @@ const Step2: React.FC<Step2Props> = ({ onBack, onNext }) => {
         </h3>
 
         {/* Form Fields Container */}
-        <div className="bg-[#f2f2f2] px-10 py-8">
+        <div className="bg-[#f2f2f2] px-4 py-5 sm:px-10 sm:py-8">
           <div className="flex flex-col gap-6">
             {/* Date of Birth with Gender */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-12">
@@ -102,7 +102,7 @@ const Step2: React.FC<Step2Props> = ({ onBack, onNext }) => {
             Данные для расчета
           </h3>
 
-          <div className="bg-[#f2f2f2] px-10 py-8">
+          <div className="bg-[#f2f2f2] px-4 py-5 sm:px-10 sm:py-8">
             {/* Currency Radio Selection */}
             <div className="flex items-center gap-2 cursor-pointer" onClick={() => setSelectedCurrency('ruble')}>
               <img src={selectedCurrency === 'ruble' ? radioSelect : radioNoSelect} alt="radio" className="w-6 h-6" />

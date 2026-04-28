@@ -31,7 +31,7 @@ const Step1: React.FC<Step1Props> = ({ onNext }) => {
         </h3>
 
         {/* Form Fields Container */}
-        <div className="bg-[#f2f2f2] px-10 py-8">
+        <div className="bg-[#f2f2f2] px-4 py-5 sm:px-10 sm:py-8">
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-2">
               <div className="flex-1">
