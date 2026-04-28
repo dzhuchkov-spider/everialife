@@ -214,14 +214,14 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
                 Редактировать
               </Button>
             </div>
-            <div className="bg-white rounded border border-[#e0e0e0]">
+            <div className="bg-white rounded border border-[#e0e0e0] px-10 py-8">
               {/* Table Header */}
-              <div className="flex border-b border-[#e0e0e0]">
+              <div className="flex border-b border-[#e0e0e0] bg-[#FAFAFA]">
                 <div className="flex-1 px-6 py-4">
-                  <span className="text-sm font-medium text-[#191919]">Наименование риска</span>
+                  <span className="text-sm font-normal text-[#939393]">Наименование риска</span>
                 </div>
                 <div className="w-64 px-6 py-4">
-                  <span className="text-sm font-medium text-[#191919]">Сумма по риску</span>
+                  <span className="text-sm font-normal text-[#939393]">Сумма по риску</span>
                 </div>
               </div>
               {/* Table Rows */}
@@ -232,7 +232,7 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
                 { name: 'Дневной стационар', amount: '200 000,00 руб.' },
                 { name: 'Диагностика', amount: '100 000,00 руб.' },
               ].map((risk, index) => (
-                <div key={index} className="flex border-b border-[#e0e0e0] hover:bg-[#f9f9f9]">
+                <div key={index} className="flex border-b border-[#e0e0e0] bg-[#FAFAFA]">
                   <div className="flex-1 px-6 py-4">
                     <span className="text-sm text-[#191919]">{risk.name}</span>
                   </div>
