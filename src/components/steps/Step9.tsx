@@ -5,6 +5,7 @@ import SignContractPopup from '../ui/SignContractPopup';
 import editIcon from '../../assets/icons/edit.svg';
 import showPolisIcon from '../../assets/icons/show-polis.svg';
 import show2Icon from '../../assets/icons/show-2.svg';
+import checkoutIcon from '../../assets/icons/checkout.svg';
 
 interface Step9Props {
   onBack?: () => void;
@@ -147,14 +148,9 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
 
           {/* Section: Страхователь */}
           <div className="flex flex-col gap-4">
-            <div className="flex items-center justify-between">
-              <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
-                Страхователь
-              </h4>
-              <Button variant="ghost" size="normal" state="resting" leadingIcon={null} trailingIcon={<div className="w-5 h-5 flex items-center justify-center text-[#386DF7]"><img src={editIcon} alt="edit" className="w-full h-full" /></div>}>
-                Редактировать
-              </Button>
-            </div>
+            <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
+              Страхователь
+            </h4>
             <div className="bg-white border border-[#CCCCCC] rounded px-6 py-4 flex flex-col gap-4">
               {/* First row: ФИО, Дата рождения, Пол */}
               <div className="flex gap-6">
@@ -196,14 +192,9 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
 
           {/* Section: Параметры договора */}
           <div className="flex flex-col gap-4">
-            <div className="flex items-center justify-between">
-              <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
-                Параметры договора
-              </h4>
-              <Button variant="ghost" size="normal" state="resting" leadingIcon={null} trailingIcon={<div className="w-5 h-5 flex items-center justify-center text-[#386DF7]"><img src={editIcon} alt="edit" className="w-full h-full" /></div>}>
-                Редактировать
-              </Button>
-            </div>
+            <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
+              Параметры договора
+            </h4>
             <div className="bg-white border border-[#CCCCCC] rounded px-6 py-4 flex flex-col gap-4">
               {/* First row: Срок действия договора, Периодичность оплаты, Тип уплаты */}
               <div className="flex gap-6">
@@ -237,14 +228,9 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
 
           {/* Section: Риски */}
           <div className="flex flex-col gap-4">
-            <div className="flex items-center justify-between">
-              <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
-                Риски
-              </h4>
-              <Button variant="ghost" size="normal" state="resting" leadingIcon={null} trailingIcon={<div className="w-5 h-5 flex items-center justify-center text-[#386DF7]"><img src={editIcon} alt="edit" className="w-full h-full" /></div>}>
-                Редактировать
-              </Button>
-            </div>
+            <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
+              Риски
+            </h4>
             <div className="bg-white rounded border border-[#e0e0e0] px-10 py-8">
               {/* Table Header */}
               <div className="flex border-b border-[#e0e0e0] bg-[#FAFAFA]">
@@ -277,14 +263,9 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
 
           {/* Section: Агент */}
           <div className="flex flex-col gap-4">
-            <div className="flex items-center justify-between">
-              <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
-                Агент
-              </h4>
-              <Button variant="ghost" size="normal" state="resting" leadingIcon={null} trailingIcon={<div className="w-5 h-5 flex items-center justify-center text-[#386DF7]"><img src={editIcon} alt="edit" className="w-full h-full" /></div>}>
-                Редактировать
-              </Button>
-            </div>
+            <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
+              Агент
+            </h4>
             <div className="bg-white border border-[#CCCCCC] rounded px-6 py-4 flex flex-col gap-3">
               <div className="flex gap-6">
                 <div className="flex-1 flex flex-col gap-3">
@@ -316,11 +297,11 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
             variant="ghost"
             size="large"
             state="resting"
-            leadingIcon={<div className="w-10 h-10 flex items-center justify-center"><img src={show2Icon} alt="show-2" className="w-full h-full" /></div>}
+            leadingIcon={<div className="w-10 h-10 flex items-center justify-center"><img src={checkoutIcon} alt="checkout" className="w-full h-full" /></div>}
             showTrailingIcon={false}
             className="w-56"
           >
-            Посмотреть заявление
+            Квитанция
           </Button>
         </div>
       </div>
@@ -337,29 +318,16 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
         >
           Назад
         </Button>
-        <div className="flex gap-4">
-          <Button
-            variant="outlined"
-            size="large"
-            state="resting"
-            leadingIcon={null}
-            showTrailingIcon={false}
-            className="w-48"
-            onClick={onSave}
-          >
-            Отменить договор
-          </Button>
-          <Button
-            variant="contained"
-            size="large"
-            state="resting"
-            showTrailingIcon={false}
-            className="w-56"
-            onClick={handleSignClick}
-          >
-            Согласен с условиями
-          </Button>
-        </div>
+        <Button
+          variant="contained"
+          size="large"
+          state="resting"
+          showTrailingIcon={false}
+          className="w-80"
+          onClick={handleSignClick}
+        >
+          Отправить документы страхователю
+        </Button>
       </div>
 
       {/* Sign Contract Popup */}
