@@ -28,6 +28,14 @@ const LayoutStep8: React.FC<LayoutStep8Props> = ({
     console.log('Logout clicked');
   };
 
+  const handleNavigation = (item: string) => {
+    if (item === 'Главная') {
+      window.location.href = '/'; // Переход на главную страницу
+    } else {
+      console.log(`Navigation clicked: ${item}`);
+    }
+  };
+
   const menuItems = ['Главная', 'Договоры', 'Отчёты', 'Сервис'];
 
   const defaultSteps = [
@@ -94,7 +102,7 @@ const LayoutStep8: React.FC<LayoutStep8Props> = ({
         <div className="bg-white px-4 sm:px-6 lg:px-10 py-3 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 lg:gap-0">
           <nav className="flex items-center gap-4 sm:gap-10 lg:gap-20 overflow-x-auto w-full lg:w-auto pb-2 lg:pb-0">
             {menuItems.map((item, index) => (
-              <div key={item} className="flex items-center gap-0.5 cursor-pointer flex-shrink-0">
+              <div key={item} className="flex items-center gap-0.5 cursor-pointer flex-shrink-0" onClick={() => handleNavigation(item)}>
                 <span className="text-base sm:text-xl font-normal text-[#191919] tracking-wide leading-7">
                   {item}
                 </span>
