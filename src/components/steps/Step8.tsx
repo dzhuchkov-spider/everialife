@@ -85,29 +85,30 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
               </div>
               {/* Second row: Contract Number, Application Number, Application Date */}
               <div className="flex gap-6">
-                <div className="flex flex-col gap-3">
+                <div className="flex-1 flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Номер договора:</span>
                   <span className="text-sm text-[#191919]">{contractData?.contractNumber || '5033819725'}</span>
                 </div>
-                <div className="flex flex-col gap-3">
+                <div className="flex-1 flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Номер заявления:</span>
                   <span className="text-sm text-[#191919]">{contractData?.applicationNumber || 'ПН01633382'}</span>
                 </div>
-                <div className="flex flex-col gap-3">
+                <div className="flex-1 flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Дата заявления:</span>
                   <span className="text-sm text-[#191919]">{contractData?.applicationDate || '29.03.2024'}</span>
                 </div>
               </div>
               {/* Third row: Status and Start Date */}
               <div className="flex gap-6">
-                <div className="flex flex-col gap-3">
+                <div className="flex-1 flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Статус договора:</span>
                   <span className="text-sm text-[#191919]">{contractData?.status || 'Договор в состоянии ввода'}</span>
                 </div>
-                <div className="flex flex-col gap-3">
+                <div className="flex-1 flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Дата начала действия:</span>
                   <span className="text-sm text-[#191919]">{contractData?.startDate || '01.04.2024'}</span>
                 </div>
+                <div className="flex-1"></div>
               </div>
             </div>
           </div>
