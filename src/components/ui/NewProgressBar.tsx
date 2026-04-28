@@ -41,8 +41,8 @@ const NewProgressBar: React.FC<NewProgressBarProps> = ({ steps, progress = 0 }) 
         <div 
           className="absolute top-1/2 -translate-y-1/2 h-[2px] bg-gray-200 z-0"
           style={{
-            left: '20px', // Circle radius
-            right: '20px', // Circle radius
+            left: '12.5px', // Circle radius (25px / 2)
+            right: '12.5px', // Circle radius (25px / 2)
           }}
         />
 
@@ -50,85 +50,71 @@ const NewProgressBar: React.FC<NewProgressBarProps> = ({ steps, progress = 0 }) 
         <div 
           className="absolute top-1/2 -translate-y-1/2 h-[2px] bg-[#b47a59] z-10"
           style={{
-            left: '20px', // Circle radius
+            left: '12.5px', // Circle radius
             width: `${progressPercentage}%`, // Dynamic width calculation
           }}
         />
 
-        {/* Circles Container */}
+        {/* Step Containers - Final Styling */}
         <div className="relative z-20 flex justify-between items-center w-full px-5">
           
-          {/* Step 1 Circle */}
-          <div className="relative">
-            <div className="bg-[#b47a59] rounded-[99px] shrink-0 size-[40px] flex items-center justify-center">
+          {/* Step 1 - Circle + Text Container */}
+          <div className="flex flex-col items-center gap-[5px]">
+            <div className="bg-[#b47a59] rounded-[99px] shrink-0 size-[25px] flex items-center justify-center">
               <img src={checkIcon} alt="check" className="w-[16px] h-[16px]" />
+            </div>
+            <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-[#191919] tracking-[0.2px] whitespace-nowrap">
+              <p className="leading-[1.4]">Начало</p>
             </div>
           </div>
 
-          {/* Step 2 Circle */}
-          <div className="relative">
-            <div className="bg-[#b47a59] rounded-[99px] shrink-0 size-[40px] flex items-center justify-center">
+          {/* Step 2 - Circle + Text Container */}
+          <div className="flex flex-col items-center gap-[5px]">
+            <div className="bg-[#b47a59] rounded-[99px] shrink-0 size-[25px] flex items-center justify-center">
               <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] h-[16px] justify-center leading-[0] not-italic text-[16px] text-white text-center tracking-[0.5px] w-[24px]">
                 <p className="leading-[1.4]">2</p>
               </div>
             </div>
+            <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-[#191919] tracking-[0.2px] whitespace-nowrap">
+              <p className="leading-[1.4]">Расчёт</p>
+            </div>
           </div>
 
-          {/* Step 3 Circle */}
-          <div className="relative">
-            <div className="bg-white border border-[#e5e7eb] border-solid rounded-[99px] shrink-0 size-[40px] flex items-center justify-center">
+          {/* Step 3 - Circle + Text Container */}
+          <div className="flex flex-col items-center gap-[5px]">
+            <div className="bg-white border border-[#e5e7eb] border-solid rounded-[99px] shrink-0 size-[25px] flex items-center justify-center">
               <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] h-[16px] justify-center leading-[0] not-italic text-[16px] text-[#191919] text-center tracking-[0.5px] w-[24px]">
                 <p className="leading-[1.4]">3</p>
               </div>
             </div>
+            <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-[#191919] tracking-[0.2px] whitespace-nowrap">
+              <p className="leading-[1.4]">Страхователь</p>
+            </div>
           </div>
 
-          {/* Step 4 Circle */}
-          <div className="relative">
-            <div className="bg-white border border-[#e5e7eb] border-solid rounded-[99px] shrink-0 size-[40px] flex items-center justify-center">
+          {/* Step 4 - Circle + Text Container */}
+          <div className="flex flex-col items-center gap-[5px]">
+            <div className="bg-white border border-[#e5e7eb] border-solid rounded-[99px] shrink-0 size-[25px] flex items-center justify-center">
               <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] h-[16px] justify-center leading-[0] not-italic text-[16px] text-[#191919] text-center tracking-[0.5px] w-[24px]">
                 <p className="leading-[1.4]">4</p>
               </div>
             </div>
+            <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-[#191919] tracking-[0.2px] whitespace-nowrap">
+              <p className="leading-[1.4]">Застрахованный</p>
+            </div>
           </div>
 
-          {/* Step 5 Circle */}
-          <div className="relative">
-            <div className="bg-white border border-[#e5e7eb] border-solid rounded-[99px] shrink-0 size-[40px] flex items-center justify-center">
+          {/* Step 5 - Circle + Text Container */}
+          <div className="flex flex-col items-center gap-[5px]">
+            <div className="bg-white border border-[#e5e7eb] border-solid rounded-[99px] shrink-0 size-[25px] flex items-center justify-center">
               <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] h-[16px] justify-center leading-[0] not-italic text-[16px] text-[#191919] text-center tracking-[0.5px] w-[24px]">
                 <p className="leading-[1.4]">5</p>
               </div>
             </div>
+            <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-[#191919] tracking-[0.2px] whitespace-nowrap">
+              <p className="leading-[1.4]">Просмотр договора</p>
+            </div>
           </div>
-        </div>
-      </div>
-
-      {/* Text Labels Container - Separate from circles */}
-      <div className="relative flex justify-between items-center w-full px-5 mt-2">
-        
-        {/* Step 1 Label */}
-        <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-[#191919] tracking-[0.2px] whitespace-nowrap text-center">
-          <p className="leading-[1.4]">Начало</p>
-        </div>
-
-        {/* Step 2 Label */}
-        <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-[#191919] tracking-[0.2px] whitespace-nowrap text-center">
-          <p className="leading-[1.4]">Расчёт</p>
-        </div>
-
-        {/* Step 3 Label */}
-        <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-[#191919] tracking-[0.2px] whitespace-nowrap text-center">
-          <p className="leading-[1.4]">Страхователь</p>
-        </div>
-
-        {/* Step 4 Label */}
-        <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-[#191919] tracking-[0.2px] whitespace-nowrap text-center">
-          <p className="leading-[1.4]">Застрахованный</p>
-        </div>
-
-        {/* Step 5 Label */}
-        <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-[#191919] tracking-[0.2px] whitespace-nowrap text-center">
-          <p className="leading-[1.4]">Просмотр договора</p>
         </div>
       </div>
     </div>
