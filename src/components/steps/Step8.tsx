@@ -277,7 +277,7 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
             variant="ghost"
             size="large"
             state="resting"
-            leadingIcon={<div className="w-5 h-5 flex items-center justify-center"><img src={showPolisIcon} alt="show-polis" className="w-full h-full" /></div>}
+            leadingIcon={<div className="w-10 h-10 flex items-center justify-center"><img src={showPolisIcon} alt="show-polis" className="w-full h-full" /></div>}
             showTrailingIcon={false}
             className="w-48"
           >
@@ -287,7 +287,7 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
             variant="ghost"
             size="large"
             state="resting"
-            leadingIcon={<div className="w-5 h-5 flex items-center justify-center"><img src={show2Icon} alt="show-2" className="w-full h-full" /></div>}
+            leadingIcon={<div className="w-10 h-10 flex items-center justify-center"><img src={show2Icon} alt="show-2" className="w-full h-full" /></div>}
             showTrailingIcon={false}
             className="w-56"
           >
