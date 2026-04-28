@@ -43,11 +43,11 @@ const Step7: React.FC<Step7Props> = ({ onBack, onNext, onDataChange }) => {
       {/* Form Section */}
       <div className="flex flex-col gap-8 w-full">
         {/* Section Title with Contract Amount */}
-        <div className="flex items-center justify-between w-full">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 w-full">
           <h3 className="text-xl sm:text-2xl font-normal text-black tracking-wide leading-tight m-0">
             Участвующие агенты
           </h3>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2">
             <span className="text-base font-normal text-black tracking-wide">
               Взнос по договору:
             </span>
@@ -59,9 +59,9 @@ const Step7: React.FC<Step7Props> = ({ onBack, onNext, onDataChange }) => {
 
         {/* Agent Input Section */}
         <div className="bg-[#f2f2f2] px-10 py-8 rounded-lg">
-          <div className="flex gap-6 items-start">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-6">
             {/* Agent Contract Number / Name Input */}
-            <div className="flex-1">
+            <div className="w-full">
               <InputSelect
                 label="Номер агентского договора или ФИО агента"
                 placeholder="Введите номер или ФИО"
@@ -72,7 +72,7 @@ const Step7: React.FC<Step7Props> = ({ onBack, onNext, onDataChange }) => {
             </div>
 
             {/* Agent Share Input */}
-            <div className="w-32">
+            <div className="w-full sm:w-32">
               <Input
                 placeholder="2"
                 value={agentShare}
@@ -86,7 +86,7 @@ const Step7: React.FC<Step7Props> = ({ onBack, onNext, onDataChange }) => {
               size="large"
               state="resting"
               showTrailingIcon={false}
-              className="h-16"
+              className="h-16 w-full sm:w-auto"
             >
               Добавить
             </Button>

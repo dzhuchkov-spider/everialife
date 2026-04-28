@@ -93,7 +93,7 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
       <div className="flex flex-col gap-8 w-full">
         {/* Notification */}
         {notificationVisible && (
-          <div className="bg-[#fafafa] p-5 rounded-lg flex gap-3 items-start">
+          <div className="bg-[#fafafa] p-5 rounded-lg flex flex-col sm:flex-row gap-3 items-start">
             <div className="w-6 h-6 flex items-center justify-center shrink-0">
               <img src={errorIcon} alt="error" className="w-full h-full" style={{ filter: 'brightness(0) saturate(100%) invert(17%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(94%) contrast(94%)' }} />
             </div>
@@ -128,31 +128,31 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
                 <span className="text-sm text-[#191919]">{contractData?.product || '11110 | ЗА РУЛЁМ.ЗДОРОВЬЕ'}</span>
               </div>
               {/* Second row: Contract Number, Application Number, Application Date */}
-              <div className="flex gap-6">
-                <div className="flex-1 flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Номер договора:</span>
                   <span className="text-sm text-[#191919]">{contractData?.contractNumber || '5033819725'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Номер заявления:</span>
                   <span className="text-sm text-[#191919]">{contractData?.applicationNumber || 'ПН01633382'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Дата заявления:</span>
                   <span className="text-sm text-[#191919]">{contractData?.applicationDate || '29.03.2024'}</span>
                 </div>
               </div>
               {/* Third row: Status and Start Date */}
-              <div className="flex gap-6">
-                <div className="flex-1 flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Статус договора:</span>
                   <span className="text-sm text-[#191919]">{contractData?.status || 'Договор в состоянии ввода'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Дата начала действия:</span>
                   <span className="text-sm text-[#191919]">{contractData?.startDate || '01.04.2024'}</span>
                 </div>
-                <div className="flex-1"></div>
+                <div className="w-full hidden sm:block"></div>
               </div>
             </div>
           </div>
@@ -164,31 +164,31 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
             </h4>
             <div className="bg-white border border-[#CCCCCC] rounded px-6 py-4 flex flex-col gap-4">
               {/* First row: ФИО, Дата рождения, Пол */}
-              <div className="flex gap-6">
-                <div className="flex-1 flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">ФИО:</span>
                   <span className="text-sm text-[#191919]">{contractData?.fullName || 'Созонова Екатерина Валентиновна'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Дата рождения:</span>
                   <span className="text-sm text-[#191919]">{contractData?.birthDate || '14.10.1976'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Пол:</span>
                   <span className="text-sm text-[#191919]">{contractData?.gender === 'male' ? 'Мужской' : contractData?.gender === 'female' ? 'Женский' : 'Женский'}</span>
                 </div>
               </div>
               {/* Second row: Мобильный телефон, Дополнительный телефон, E-mail */}
-              <div className="flex gap-6">
-                <div className="flex-1 flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Мобильный телефон:</span>
                   <span className="text-sm text-[#191919]">{contractData?.mobilePhone || '+7(905)458-45-56'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Дополнительный телефон:</span>
                   <span className="text-sm text-[#191919]">{contractData?.additionalPhone || '+7(905)478-22-44'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">E-mail:</span>
                   <span className="text-sm text-[#191919]">{contractData?.email || 'sazonova79@yandex.ru'}</span>
                 </div>
@@ -208,31 +208,31 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
             </h4>
             <div className="bg-white border border-[#CCCCCC] rounded px-6 py-4 flex flex-col gap-4">
               {/* First row: Срок действия договора, Периодичность оплаты, Тип уплаты */}
-              <div className="flex gap-6">
-                <div className="flex-1 flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Срок действия договора в годах:</span>
                   <span className="text-sm text-[#191919]">{contractData?.contractTerm || '3'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Периодичность оплаты:</span>
                   <span className="text-sm text-[#191919]">{contractData?.paymentPeriod || 'Единовременно'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Тип уплаты:</span>
                   <span className="text-sm text-[#191919]">{contractData?.paymentType || 'Полный'}</span>
                 </div>
               </div>
               {/* Second row: Вариант страхования, Взнос по договору */}
-              <div className="flex gap-6">
-                <div className="flex-1 flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Вариант страхования:</span>
                   <span className="text-sm text-[#191919]">{contractData?.insuranceVariant || '3 года (профессионал)'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Взнос по договору:</span>
                   <span className="text-sm text-[#191919]">{contractData?.contribution || '20 000 руб.'}</span>
                 </div>
-                <div className="flex-1"></div>
+                <div className="w-full hidden sm:block"></div>
               </div>
             </div>
           </div>
@@ -278,12 +278,12 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
               Агент
             </h4>
             <div className="bg-white border border-[#CCCCCC] rounded px-6 py-4 flex flex-col gap-3">
-              <div className="flex gap-6">
-                <div className="flex-1 flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Агент:</span>
                   <span className="text-sm text-[#191919]">{contractData?.agent || 'Aгент | MAGNUM-С-N007288 | ТЕСТ МАГНУМ ТЕСТ'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Канал продаж:</span>
                   <span className="text-sm text-[#191919]">{contractData?.salesChannel || 'Банковский'}</span>
                 </div>
@@ -293,14 +293,14 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-8">
+        <div className="flex flex-col sm:flex-row gap-8">
           <Button
             variant="ghost"
             size="large"
             state="resting"
             leadingIcon={<div className="w-10 h-10 flex items-center justify-center"><img src={showPolisIcon} alt="show-polis" className="w-full h-full" /></div>}
             showTrailingIcon={false}
-            className="w-48"
+            className="w-full sm:w-48"
           >
             Посмотреть полис
           </Button>
@@ -310,7 +310,7 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
             state="resting"
             leadingIcon={<div className="w-10 h-10 flex items-center justify-center"><img src={checkoutIcon} alt="checkout" className="w-full h-full" /></div>}
             showTrailingIcon={false}
-            className="w-56"
+            className="w-full sm:w-56"
           >
             Квитанция
           </Button>
@@ -318,13 +318,13 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
       </div>
 
       {/* Bottom Section */}
-      <div className="flex items-center justify-between w-full">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between w-full gap-4">
         <Button
           variant="ghost"
           size="large"
           state="resting"
           showTrailingIcon={false}
-          className="w-32"
+          className="w-full sm:w-32"
           onClick={onBack}
         >
           Назад
@@ -334,7 +334,7 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
           size="large"
           state="resting"
           showTrailingIcon={false}
-          className="w-80"
+          className="w-full sm:w-80"
           onClick={handleSendDocuments}
         >
           Отправить документы страхователю

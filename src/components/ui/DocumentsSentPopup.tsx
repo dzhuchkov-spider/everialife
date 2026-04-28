@@ -9,7 +9,7 @@ const DocumentsSentPopup: React.FC<DocumentsSentPopupProps> = ({ isOpen, onClose
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}>
+    <div className="fixed inset-0 flex items-center justify-center z-50 p-4" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}>
       <div className="bg-white rounded-lg p-8 max-w-md w-full mx-4">
         <div className="text-center">
           {/* Success Icon */}
@@ -20,7 +20,7 @@ const DocumentsSentPopup: React.FC<DocumentsSentPopupProps> = ({ isOpen, onClose
           </div>
           
           {/* Title */}
-          <h2 className="text-2xl font-normal text-black tracking-wide leading-tight mb-4">
+          <h2 className="text-xl sm:text-2xl font-normal text-black tracking-wide leading-tight mb-4">
             Документы отправлены
           </h2>
           

@@ -143,7 +143,7 @@ const LayoutStep8: React.FC<LayoutStep8Props> = ({
         </h2>
 
         {/* Step8 Progress Bar */}
-        {showProgress && <NewProgressBarStep8 steps={displaySteps} progress={currentProgress} />}
+        {showProgress && <div className="hidden sm:block"><NewProgressBarStep8 steps={displaySteps} progress={currentProgress} /></div>}
 
         {/* Children Content */}
         {children}

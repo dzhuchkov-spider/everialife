@@ -87,38 +87,38 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
                 <span className="text-sm text-[#191919]">{contractData?.product || '11110 | ЗА РУЛЁМ.ЗДОРОВЬЕ'}</span>
               </div>
               {/* Second row: Contract Number, Application Number, Application Date */}
-              <div className="flex gap-6">
-                <div className="flex-1 flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Номер договора:</span>
                   <span className="text-sm text-[#191919]">{contractData?.contractNumber || '5033819725'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Номер заявления:</span>
                   <span className="text-sm text-[#191919]">{contractData?.applicationNumber || 'ПН01633382'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Дата заявления:</span>
                   <span className="text-sm text-[#191919]">{contractData?.applicationDate || '29.03.2024'}</span>
                 </div>
               </div>
               {/* Third row: Status and Start Date */}
-              <div className="flex gap-6">
-                <div className="flex-1 flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Статус договора:</span>
                   <span className="text-sm text-[#191919]">{contractData?.status || 'Договор в состоянии ввода'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Дата начала действия:</span>
                   <span className="text-sm text-[#191919]">{contractData?.startDate || '01.04.2024'}</span>
                 </div>
-                <div className="flex-1"></div>
+                <div className="w-full hidden sm:block"></div>
               </div>
             </div>
           </div>
 
           {/* Section: Страхователь */}
           <div className="flex flex-col gap-4">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
                 Страхователь
               </h4>
@@ -128,31 +128,31 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
             </div>
             <div className="bg-white border border-[#CCCCCC] rounded px-6 py-4 flex flex-col gap-4">
               {/* First row: ФИО, Дата рождения, Пол */}
-              <div className="flex gap-6">
-                <div className="flex-1 flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">ФИО:</span>
                   <span className="text-sm text-[#191919]">{contractData?.fullName || 'Созонова Екатерина Валентиновна'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Дата рождения:</span>
                   <span className="text-sm text-[#191919]">{contractData?.birthDate || '14.10.1976'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Пол:</span>
                   <span className="text-sm text-[#191919]">{contractData?.gender === 'male' ? 'Мужской' : contractData?.gender === 'female' ? 'Женский' : 'Женский'}</span>
                 </div>
               </div>
               {/* Second row: Мобильный телефон, Дополнительный телефон, E-mail */}
-              <div className="flex gap-6">
-                <div className="flex-1 flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Мобильный телефон:</span>
                   <span className="text-sm text-[#191919]">{contractData?.mobilePhone || '+7(905)458-45-56'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Дополнительный телефон:</span>
                   <span className="text-sm text-[#191919]">{contractData?.additionalPhone || '+7(905)478-22-44'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">E-mail:</span>
                   <span className="text-sm text-[#191919]">{contractData?.email || 'sazonova79@yandex.ru'}</span>
                 </div>
@@ -167,7 +167,7 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
 
           {/* Section: Параметры договора */}
           <div className="flex flex-col gap-4">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
                 Параметры договора
               </h4>
@@ -177,38 +177,38 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
             </div>
             <div className="bg-white border border-[#CCCCCC] rounded px-6 py-4 flex flex-col gap-4">
               {/* First row: Срок действия договора, Периодичность оплаты, Тип уплаты */}
-              <div className="flex gap-6">
-                <div className="flex-1 flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Срок действия договора в годах:</span>
                   <span className="text-sm text-[#191919]">{contractData?.contractTerm || '3'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Периодичность оплаты:</span>
                   <span className="text-sm text-[#191919]">{contractData?.paymentPeriod || 'Единовременно'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Тип уплаты:</span>
                   <span className="text-sm text-[#191919]">{contractData?.paymentType || 'Полный'}</span>
                 </div>
               </div>
               {/* Second row: Вариант страхования, Взнос по договору */}
-              <div className="flex gap-6">
-                <div className="flex-1 flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Вариант страхования:</span>
                   <span className="text-sm text-[#191919]">{contractData?.insuranceVariant || '3 года (профессионал)'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Взнос по договору:</span>
                   <span className="text-sm text-[#191919]">{contractData?.contribution || '20 000 руб.'}</span>
                 </div>
-                <div className="flex-1"></div>
+                <div className="w-full hidden sm:block"></div>
               </div>
             </div>
           </div>
 
           {/* Section: Риски */}
           <div className="flex flex-col gap-4">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
                 Риски
               </h4>
@@ -248,7 +248,7 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
 
           {/* Section: Агент */}
           <div className="flex flex-col gap-4">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
                 Агент
               </h4>
@@ -257,12 +257,12 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
               </Button>
             </div>
             <div className="bg-white border border-[#CCCCCC] rounded px-6 py-4 flex flex-col gap-3">
-              <div className="flex gap-6">
-                <div className="flex-1 flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Агент:</span>
                   <span className="text-sm text-[#191919]">{contractData?.agent || 'Aгент | MAGNUM-С-N007288 | ТЕСТ МАГНУМ ТЕСТ'}</span>
                 </div>
-                <div className="flex-1 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                   <span className="text-sm text-[#666]">Канал продаж:</span>
                   <span className="text-sm text-[#191919]">{contractData?.salesChannel || 'Банковский'}</span>
                 </div>
@@ -272,14 +272,14 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-4">
           <Button
             variant="ghost"
             size="large"
             state="resting"
             leadingIcon={<div className="w-10 h-10 flex items-center justify-center"><img src={showPolisIcon} alt="show-polis" className="w-full h-full" /></div>}
             showTrailingIcon={false}
-            className="w-48"
+            className="w-full sm:w-48"
           >
             Посмотреть полис
           </Button>
@@ -289,7 +289,7 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
             state="resting"
             leadingIcon={<div className="w-10 h-10 flex items-center justify-center"><img src={show2Icon} alt="show-2" className="w-full h-full" /></div>}
             showTrailingIcon={false}
-            className="w-56"
+            className="w-full sm:w-56"
           >
             Посмотреть заявление
           </Button>
@@ -297,25 +297,25 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
       </div>
 
       {/* Bottom Section */}
-      <div className="flex items-center justify-between w-full">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between w-full gap-4">
         <Button
           variant="ghost"
           size="large"
           state="resting"
           showTrailingIcon={false}
-          className="w-32"
+          className="w-full sm:w-32"
           onClick={onBack}
         >
           Назад
         </Button>
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
           <Button
             variant="outlined"
             size="large"
             state="resting"
             leadingIcon={null}
             showTrailingIcon={false}
-            className="w-48"
+            className="w-full sm:w-48"
             onClick={onSave}
           >
             Отменить договор
@@ -325,7 +325,7 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
             size="large"
             state="resting"
             showTrailingIcon={false}
-            className="w-56"
+            className="w-full sm:w-56"
             onClick={handleSignClick}
           >
             Согласен с условиями

@@ -153,9 +153,9 @@ const MainPage: React.FC<MainPageProps> = ({ onNavigateToContract }) => {
               </div>
 
               {/* Contract cards */}
-              <div className="w-full sm:w-full lg:w-[666px] flex gap-4 sm:gap-6 lg:gap-8 flex-wrap">
+              <div className="w-full sm:w-full lg:w-[666px] flex flex-col xl:flex-row xl:flex-wrap gap-4 sm:gap-6 lg:gap-8">
                 {contractCards.map((card, index) => (
-                  <div key={index} className="flex-1 min-w-[140px] sm:min-w-[180px] h-[120px] sm:h-[140px] px-2 sm:px-3 py-4 sm:py-6 border border-[#cccccc] rounded bg-white flex flex-col justify-center items-start gap-2 sm:gap-3 cursor-pointer hover:shadow-md transition-shadow">
+                  <div key={index} className="flex-1 xl:flex-1 xl:min-w-[140px] sm:min-w-[180px] w-full xl:w-auto h-[120px] sm:h-[140px] px-2 sm:px-3 py-4 sm:py-6 border border-[#cccccc] rounded bg-white flex flex-col justify-center items-start gap-2 sm:gap-3 cursor-pointer hover:shadow-md transition-shadow">
                     <div className="flex flex-col gap-2 sm:gap-3">
                       <img src={card.icon} alt={card.title} className="w-8 h-8" />
                       <div className="text-sm sm:text-lg lg:text-xl font-normal text-black leading-tight tracking-wide">
@@ -198,9 +198,9 @@ const MainPage: React.FC<MainPageProps> = ({ onNavigateToContract }) => {
             <h2 className="text-xl sm:text-2xl lg:text-[32px] font-normal text-black tracking-wide leading-tight m-0">
               Отчёты
             </h2>
-            <div className="w-full sm:w-full lg:w-[666px] flex gap-4 sm:gap-6 lg:gap-8 flex-wrap">
+            <div className="w-full sm:w-full lg:w-[666px] flex flex-col xl:flex-row xl:flex-wrap gap-4 sm:gap-6 lg:gap-8">
               {reportCards.map((report, index) => (
-                <div key={index} className="flex-1 min-w-[140px] sm:min-w-[200px] lg:w-[316px] lg:flex-none w-[316px] h-[316px] p-4 sm:p-6 border border-[#cccccc] rounded bg-white flex flex-col justify-center items-start gap-3 sm:gap-4 cursor-pointer hover:shadow-md transition-shadow">
+                <div key={index} className="w-full xl:w-[316px] xl:flex-none h-auto xl:h-[316px] p-4 sm:p-6 border border-[#cccccc] rounded bg-white flex flex-col justify-center items-start gap-3 sm:gap-4 cursor-pointer hover:shadow-md transition-shadow">
                   <div className="flex flex-col gap-3 sm:gap-4">
                     <img src={report.icon} alt={report.title} className="w-[60px] h-[60px]" />
                     <div className="text-sm sm:text-lg lg:text-xl font-normal text-black leading-tight tracking-wide">
@@ -222,9 +222,9 @@ const MainPage: React.FC<MainPageProps> = ({ onNavigateToContract }) => {
             <h2 className="text-xl sm:text-2xl lg:text-[32px] font-normal text-black tracking-wide leading-tight m-0">
               Сервисы
             </h2>
-            <div className="w-full sm:w-full lg:w-[664px] flex gap-4 sm:gap-6 lg:gap-8 flex-wrap">
+            <div className="w-full sm:w-full lg:w-[664px] flex flex-col xl:flex-row xl:flex-wrap gap-4 sm:gap-6 lg:gap-8">
               {serviceCards.map((service, index) => (
-                <div key={index} className="w-full sm:w-[calc(33.333%-16px)] lg:w-[200px] h-auto sm:h-[140px] px-2 sm:px-3 py-4 sm:py-6 bg-[#fafafa] rounded flex flex-row sm:flex-col justify-start sm:justify-center items-start gap-2 sm:gap-3 cursor-pointer hover:shadow-md transition-shadow">
+                <div key={index} className="w-full xl:w-[200px] h-auto sm:h-[140px] px-2 sm:px-3 py-4 sm:py-6 bg-[#fafafa] rounded flex flex-row sm:flex-col justify-start sm:justify-center items-start gap-2 sm:gap-3 cursor-pointer hover:shadow-md transition-shadow">
                   <div className="flex flex-row sm:flex-col gap-2 sm:gap-3">
                     <img src={service.icon} alt={service.title} className="w-8 h-8 flex-shrink-0" />
                     <div className="text-sm sm:text-lg lg:text-xl font-normal text-black leading-tight tracking-wide">
