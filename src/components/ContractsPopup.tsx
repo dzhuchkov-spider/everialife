@@ -93,7 +93,27 @@ const ContractsPopup: React.FC<ContractsPopupProps> = ({ isOpen, onClose, onNavi
                     <div className="flex items-center gap-3 sm:gap-4 min-w-0">
                       <img src={fileIcon} alt="File" className="w-8 h-8 flex-shrink-0" />
                       <div className="flex flex-col gap-1 min-w-0">
-                        <div className="flex items-center gap-2 flex-wrap">
+                        {/* Mobile: Status chip above, Desktop: Status chip beside */}
+                        <div className="sm:hidden">
+                          {/* Status chip */}
+                          <div
+                            className="inline-block px-3 py-1.5 rounded-full mb-2"
+                            style={{
+                              backgroundColor: contract.statusColor,
+                            }}
+                          >
+                            <p
+                              className="text-xs font-normal leading-tight tracking-wide whitespace-nowrap"
+                              style={{
+                                color: contract.statusTextColor,
+                              }}
+                            >
+                              {contract.status}
+                            </p>
+                          </div>
+                        </div>
+                        
+                        <div className="hidden sm:flex items-center gap-2 flex-wrap">
                           <p className="text-base sm:text-lg lg:text-xl font-normal text-black leading-tight truncate">
                             {contract.number}
                           </p>
@@ -114,6 +134,12 @@ const ContractsPopup: React.FC<ContractsPopupProps> = ({ isOpen, onClose, onNavi
                             </p>
                           </div>
                         </div>
+                        
+                        {/* Mobile: Contract number below status chip */}
+                        <p className="sm:hidden text-base font-normal text-black leading-tight truncate">
+                          {contract.number}
+                        </p>
+                        
                         <p className="text-sm sm:text-base text-[#666] leading-tight tracking-wide">
                           {contract.date}
                         </p>
