@@ -3,6 +3,8 @@ import Button from '../ui/Button';
 import Layout from '../layout/Layout';
 import SignContractPopup from '../ui/SignContractPopup';
 import editIcon from '../../assets/icons/edit.svg';
+import showPolisIcon from '../../assets/icons/show-polis.svg';
+import show2Icon from '../../assets/icons/show-2.svg';
 
 interface Step8Props {
   onBack?: () => void;
@@ -255,13 +257,15 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
               </Button>
             </div>
             <div className="bg-white border border-[#CCCCCC] rounded px-6 py-4 flex flex-col gap-3">
-              <div className="flex flex-col gap-3">
-                <span className="text-sm text-[#666]">Агент:</span>
-                <span className="text-sm text-[#191919]">{contractData?.agent || 'Aгент | MAGNUM-С-N007288 | ТЕСТ МАГНУМ ТЕСТ'}</span>
-              </div>
-              <div className="flex flex-col gap-3">
-                <span className="text-sm text-[#666]">Канал продаж:</span>
-                <span className="text-sm text-[#191919]">{contractData?.salesChannel || 'Банковский'}</span>
+              <div className="flex gap-6">
+                <div className="flex-1 flex flex-col gap-3">
+                  <span className="text-sm text-[#666]">Агент:</span>
+                  <span className="text-sm text-[#191919]">{contractData?.agent || 'Aгент | MAGNUM-С-N007288 | ТЕСТ МАГНУМ ТЕСТ'}</span>
+                </div>
+                <div className="flex-1 flex flex-col gap-3">
+                  <span className="text-sm text-[#666]">Канал продаж:</span>
+                  <span className="text-sm text-[#191919]">{contractData?.salesChannel || 'Банковский'}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -270,22 +274,24 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
         {/* Action Buttons */}
         <div className="flex gap-4">
           <Button
-            variant="outlined"
+            variant="ghost"
             size="large"
             state="resting"
+            leadingIcon={<div className="w-5 h-5 flex items-center justify-center"><img src={showPolisIcon} alt="show-polis" className="w-full h-full" /></div>}
             showTrailingIcon={false}
             className="w-48"
           >
-            Скачать PDF
+            Посмотреть полис
           </Button>
           <Button
-            variant="outlined"
+            variant="ghost"
             size="large"
             state="resting"
+            leadingIcon={<div className="w-5 h-5 flex items-center justify-center"><img src={show2Icon} alt="show-2" className="w-full h-full" /></div>}
             showTrailingIcon={false}
             className="w-56"
           >
-            Распечатать договор
+            Посмотреть заявление
           </Button>
         </div>
       </div>
@@ -293,7 +299,7 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
       {/* Bottom Section */}
       <div className="flex items-center justify-between w-full">
         <Button
-          variant="outlined"
+          variant="ghost"
           size="large"
           state="resting"
           showTrailingIcon={false}
@@ -307,11 +313,12 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
             variant="outlined"
             size="large"
             state="resting"
+            leadingIcon={null}
             showTrailingIcon={false}
             className="w-48"
             onClick={onSave}
           >
-            Сохранить черновик
+            Отменить договор
           </Button>
           <Button
             variant="contained"
@@ -321,7 +328,7 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
             className="w-56"
             onClick={handleSignClick}
           >
-            Подписать договор
+            Согласен с условиями
           </Button>
         </div>
       </div>
