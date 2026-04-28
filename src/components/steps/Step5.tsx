@@ -71,7 +71,7 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
           <div className="bg-[#f2f2f2] px-10 py-8">
             <div className="flex flex-col gap-6">
               {/* Checkbox - always checked */}
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2">
                 <div className="w-5 h-5 rounded border-2 border-[#437aec] bg-[#437aec] flex items-center justify-center cursor-not-allowed">
                   <img src={checkIcon} alt="check" className="w-3 h-3" />
                 </div>
@@ -81,8 +81,8 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
               </div>
 
               {/* Three inputs: Фамилия, Имя, Отчество */}
-              <div className="flex gap-6">
-                <div className="flex-1">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="w-full">
                   <InputSelect
                     label="Фамилия"
                     placeholder=""
@@ -92,7 +92,7 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
                     showTrailingIcon={false}
                   />
                 </div>
-                <div className="flex-1">
+                <div className="w-full">
                   <InputSelect
                     label="Имя"
                     placeholder=""
@@ -102,7 +102,7 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
                     showTrailingIcon={false}
                   />
                 </div>
-                <div className="flex-1">
+                <div className="w-full">
                   <InputSelect
                     label="Отчество"
                     placeholder=""
@@ -125,8 +125,8 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
           <div className="bg-[#f2f2f2] px-10 py-8">
             <div className="flex flex-col gap-6">
               {/* Date of birth + Gender selection */}
-              <div className="flex items-center gap-4">
-                <div className="w-[244px]">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                <div className="w-full sm:w-[244px]">
                   <InputSelect
                     label="Дата рождения"
                     placeholder=""
@@ -136,6 +136,7 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
                     showTrailingIcon={false}
                   />
                 </div>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                 <span className="text-base text-[#333] font-normal tracking-[0.5px] leading-[1.4]">
                   Пол:
                 </span>
@@ -157,10 +158,11 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
                   </div>
                 </div>
               </div>
+              </div>
 
               {/* Place of birth + Citizenship */}
-              <div className="flex gap-6">
-                <div className="flex-1">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="w-full">
                   <InputSelect
                     label="Место рождения"
                     placeholder=""
@@ -170,7 +172,7 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
                     showTrailingIcon={false}
                   />
                 </div>
-                <div className="flex-1">
+                <div className="w-full">
                   <InputSelect
                     label="Гражданство"
                     placeholder=""
@@ -207,8 +209,8 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
               </div>
 
               {/* Series, Number, Issue Date - Row */}
-              <div className="flex gap-6">
-                <div className="flex-1">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="w-full">
                   <InputSelect
                     label="Серия"
                     placeholder=""
@@ -218,7 +220,7 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
                     showTrailingIcon={false}
                   />
                 </div>
-                <div className="flex-1">
+                <div className="w-full">
                   <InputSelect
                     label="Номер"
                     placeholder=""
@@ -228,7 +230,7 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
                     showTrailingIcon={false}
                   />
                 </div>
-                <div className="flex-1">
+                <div className="w-full">
                   <InputSelect
                     label="Дата выдачи"
                     placeholder=""
@@ -241,8 +243,8 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
               </div>
 
               {/* Issued By and Department Code - Row */}
-              <div className="flex gap-6">
-                <div className="flex-1">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="w-full">
                   <InputSelect
                     label="Кем выдан"
                     placeholder=""
@@ -252,7 +254,7 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
                     showTrailingIcon={false}
                   />
                 </div>
-                <div className="w-[244px]">
+                <div className="w-full sm:w-[244px]">
                   <InputSelect
                     label="Код подразделения"
                     placeholder=""

@@ -90,10 +90,10 @@ const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
 
         {/* Dropdowns Block */}
         <div className="bg-[#f2f2f2] px-10 py-8">
-          <div className="flex items-center gap-6">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-6">
             {/* Вариант страхования */}
-            <div className="flex items-center gap-2 flex-1">
-              <div className="flex-1">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 w-full">
+              <div className="w-full">
                 <InputSelect
                   label="Вариант страхования"
                   placeholder="Выберите вариант"
@@ -103,11 +103,11 @@ const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
                   required
                 />
               </div>
-              <img src={helpIcon} alt="Help" className="w-6 h-6 flex-shrink-0" />
+              <img src={helpIcon} alt="Help" className="w-6 h-6 flex-shrink-0 sm:ml-2" />
             </div>
 
             {/* Срок действия договора в годах */}
-            <div className="flex-1">
+            <div className="w-full">
               <InputSelect
                 label="Срок действия договора в годах"
                 placeholder="Выберите срок"
@@ -119,7 +119,7 @@ const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
             </div>
 
             {/* Периодичность оплаты */}
-            <div className="flex-1">
+            <div className="w-full">
               <InputSelect
                 label="Периодичность оплаты"
                 placeholder="Выберите периодичность"
@@ -140,9 +140,9 @@ const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
         {/* Risks Inputs Block - показываем только если не выбраны все три дропдауна */}
         {!isFormValid ? (
           <div className="bg-[#f2f2f2] px-10 py-8">
-            <div className="flex items-center gap-6">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-6">
               {/* Наименование риска */}
-              <div className="flex-1">
+              <div className="w-full">
                 <InputSelect
                   label="Наименование риска"
                   placeholder="Введите наименование"
@@ -153,7 +153,7 @@ const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
               </div>
 
               {/* Сумма по риску */}
-              <div className="flex-1">
+              <div className="w-full">
                 <InputSelect
                   label="Сумма по риску"
                   placeholder="Введите сумму"
@@ -211,8 +211,8 @@ const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
               ))}
 
               {/* Взнос по договору */}
-              <div className="flex items-center justify-between mt-6">
-                <div className="flex items-center gap-2">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between mt-6 gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2">
                   <span className="text-base font-normal text-black tracking-wide">
                     Взнос по договору:
                   </span>

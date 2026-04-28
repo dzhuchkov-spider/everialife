@@ -103,8 +103,8 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
           {/* Phones and Email */}
           <div className="bg-[#f2f2f2] px-10 py-8 rounded-lg">
             <div className="flex flex-col gap-6">
-              <div className="flex gap-6">
-                <div className="flex-1">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="w-full">
                   <Input
                     label="Мобильный телефон"
                     placeholder="+7 (___) ___-__-__"
@@ -114,7 +114,7 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
                     type="tel"
                   />
                 </div>
-                <div className="flex-1">
+                <div className="w-full">
                   <Input
                     label="Дополнительный телефон"
                     placeholder="+7 (___) ___-__-__"
@@ -123,7 +123,7 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
                     type="tel"
                   />
                 </div>
-                <div className="flex-1">
+                <div className="w-full">
                   <Input
                     label="Email"
                     placeholder="example@mail.ru"
@@ -140,7 +140,7 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
           {/* Postal Address Section */}
           <div className="bg-[#f2f2f2] px-10 py-8 rounded-lg">
             <div className="flex flex-col gap-6">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
                   Почтовый адрес
                 </h4>
@@ -169,8 +169,8 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
                   onChange={setPostalRegion}
                 />
 
-                <div className="flex gap-6">
-                  <div className="flex-1">
+                <div className="flex flex-col sm:flex-row gap-6">
+                  <div className="w-full">
                     <Input
                       label="Район"
                       placeholder=""
@@ -178,7 +178,7 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
                       onChange={setPostalDistrict}
                     />
                   </div>
-                  <div className="flex-1">
+                  <div className="w-full">
                     <Input
                       label="Город"
                       placeholder=""
@@ -188,8 +188,8 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
                   </div>
                 </div>
 
-                <div className="flex gap-6">
-                  <div className="flex-1">
+                <div className="flex flex-col sm:flex-row gap-6">
+                  <div className="w-full">
                     <Input
                       label="Городской район"
                       placeholder=""
@@ -197,7 +197,7 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
                       onChange={setPostalCityDistrict}
                     />
                   </div>
-                  <div className="flex-1">
+                  <div className="w-full">
                     <Input
                       label="Населенный пункт"
                       placeholder=""
@@ -207,8 +207,8 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
                   </div>
                 </div>
 
-                <div className="flex gap-6">
-                  <div className="flex-1">
+                <div className="flex flex-col sm:flex-row gap-6">
+                  <div className="w-full">
                     <Input
                       label="Улица"
                       placeholder=""
@@ -216,7 +216,7 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
                       onChange={setPostalStreet}
                     />
                   </div>
-                  <div className="flex-1">
+                  <div className="w-full">
                     <Input
                       label="Доп. территория"
                       placeholder=""
@@ -226,8 +226,8 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
                   </div>
                 </div>
 
-                <div className="flex gap-6">
-                  <div className="flex-1">
+                <div className="flex flex-col sm:flex-row gap-6">
+                  <div className="w-full">
                     <Input
                       label="Дом"
                       placeholder=""
@@ -235,7 +235,7 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
                       onChange={setPostalHouse}
                     />
                   </div>
-                  <div className="flex-1">
+                  <div className="w-full">
                     <Input
                       label="Корпус"
                       placeholder=""
@@ -243,7 +243,7 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
                       onChange={setPostalBuilding}
                     />
                   </div>
-                  <div className="flex-1">
+                  <div className="w-full">
                     <Input
                       label="Строение"
                       placeholder=""
@@ -251,7 +251,7 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
                       onChange={setPostalStructure}
                     />
                   </div>
-                  <div className="flex-1">
+                  <div className="w-full">
                     <Input
                       label="Квартира"
                       placeholder=""
@@ -261,7 +261,7 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
                   </div>
                 </div>
 
-                <div className="w-1/2">
+                <div className="w-full sm:w-1/2">
                   <Input
                     label="Индекс"
                     placeholder=""
@@ -276,7 +276,7 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
           {/* Registration Address Section */}
           <div className="bg-[#f2f2f2] px-10 py-8 rounded-lg">
             <div className="flex flex-col gap-6">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <h4 className="text-lg font-normal text-black tracking-wide leading-tight m-0">
                   Адрес регистрации
                 </h4>

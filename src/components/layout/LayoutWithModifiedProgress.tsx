@@ -143,7 +143,7 @@ const LayoutWithModifiedProgress: React.FC<LayoutWithModifiedProgressProps> = ({
         </h2>
 
         {/* Modified Progress Bar */}
-        {showProgress && <NewProgressBarModified steps={displaySteps} progress={currentProgress} />}
+        {showProgress && <div className="hidden sm:block"><NewProgressBarModified steps={displaySteps} progress={currentProgress} /></div>}
 
         {/* Children Content */}
         {children}
