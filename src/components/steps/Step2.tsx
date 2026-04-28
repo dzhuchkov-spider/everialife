@@ -62,7 +62,7 @@ const Step2: React.FC<Step2Props> = ({ onBack, onNext }) => {
           <div className="flex flex-col gap-6">
             {/* Date of Birth with Gender */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-12">
-              <div className="w-full">
+              <div className="flex-1">
                 <InputSelect
                   label="Дата рождения"
                   placeholder="ДД.ММ.ГГГГ"
@@ -75,7 +75,7 @@ const Step2: React.FC<Step2Props> = ({ onBack, onNext }) => {
 
               {/* Gender Selection */}
               <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
-                <label className="text-base font-normal text-[#191919] tracking-wide">
+                <label className="text-base font-normal text-[#191919] tracking-wide whitespace-nowrap">
                   Пол <span className="text-[#437aec]">*</span>
                 </label>
                 <div className="flex items-center gap-4 sm:gap-8">
