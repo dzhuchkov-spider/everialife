@@ -1,7 +1,7 @@
 import React from 'react';
 import closeIcon from '../assets/icons/close.svg';
 import fileIcon from '../assets/icons/file_24.svg';
-import settingsIcon from '../assets/icons/Set_24.svg';
+import toolsIcon from '../assets/icons/Tools.svg';
 
 interface Contract {
   id: string;
@@ -93,36 +93,37 @@ const ContractsPopup: React.FC<ContractsPopupProps> = ({ isOpen, onClose, onNavi
                     <div className="flex items-center gap-3 sm:gap-4 min-w-0">
                       <img src={fileIcon} alt="File" className="w-8 h-8 flex-shrink-0" />
                       <div className="flex flex-col gap-1 min-w-0">
-                        <p className="text-base sm:text-lg lg:text-xl font-normal text-black leading-tight truncate">
-                          {contract.number}
-                        </p>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <p className="text-base sm:text-lg lg:text-xl font-normal text-black leading-tight truncate">
+                            {contract.number}
+                          </p>
+                          {/* Status chip */}
+                          <div
+                            className="flex-shrink-0 px-3 py-1.5 rounded-full"
+                            style={{
+                              backgroundColor: contract.statusColor,
+                            }}
+                          >
+                            <p
+                              className="text-sm font-normal leading-tight tracking-wide whitespace-nowrap"
+                              style={{
+                                color: contract.statusTextColor,
+                              }}
+                            >
+                              {contract.status}
+                            </p>
+                          </div>
+                        </div>
                         <p className="text-sm sm:text-base text-[#666] leading-tight tracking-wide">
                           {contract.date}
                         </p>
                       </div>
                     </div>
-
-                    {/* Status chip */}
-                    <div
-                      className="flex-shrink-0 px-3 py-1.5 rounded-full"
-                      style={{
-                        backgroundColor: contract.statusColor,
-                      }}
-                    >
-                      <p
-                        className="text-sm font-normal leading-tight tracking-wide whitespace-nowrap"
-                        style={{
-                          color: contract.statusTextColor,
-                        }}
-                      >
-                        {contract.status}
-                      </p>
-                    </div>
                   </div>
 
                   {/* Tools icon */}
                   <button className="flex-shrink-0 w-6 h-6 hover:opacity-70 transition-opacity">
-                    <img src={settingsIcon} alt="Tools" className="w-6 h-6" />
+                    <img src={toolsIcon} alt="Tools" className="w-6 h-6" />
                   </button>
                 </div>
               ))}
