@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../ui/Button';
-import Layout from '../layout/Layout';
+import LayoutStep8 from '../layout/LayoutStep8';
 import SignContractPopup from '../ui/SignContractPopup';
 import editIcon from '../../assets/icons/edit.svg';
 import showPolisIcon from '../../assets/icons/show-polis.svg';
@@ -61,7 +61,7 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
   ];
 
   return (
-    <Layout
+    <LayoutStep8
       title="Ввод договора"
       showProgress={true}
       steps={steps}
@@ -339,7 +339,7 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
         onClose={handlePopupClose}
         onConfirm={handlePopupConfirm}
       />
-    </Layout>
+    </LayoutStep8>
   );
 };
 
