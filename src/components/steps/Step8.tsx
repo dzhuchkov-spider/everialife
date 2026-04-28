@@ -123,31 +123,38 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
                 Изменить
               </Button>
             </div>
-            <div className="bg-white border border-[#CCCCCC] rounded px-6 py-4 flex flex-col gap-3">
-              <div className="flex flex-col gap-3">
-                <span className="text-sm text-[#666]">ФИО:</span>
-                <span className="text-sm text-[#191919]">{contractData?.fullName || 'Созонова Екатерина Валентиновна'}</span>
+            <div className="bg-white border border-[#CCCCCC] rounded px-6 py-4 flex flex-col gap-4">
+              {/* First row: ФИО, Дата рождения, Пол */}
+              <div className="flex gap-6">
+                <div className="flex-1 flex flex-col gap-3">
+                  <span className="text-sm text-[#666]">ФИО:</span>
+                  <span className="text-sm text-[#191919]">{contractData?.fullName || 'Созонова Екатерина Валентиновна'}</span>
+                </div>
+                <div className="flex-1 flex flex-col gap-3">
+                  <span className="text-sm text-[#666]">Дата рождения:</span>
+                  <span className="text-sm text-[#191919]">{contractData?.birthDate || '14.10.1976'}</span>
+                </div>
+                <div className="flex-1 flex flex-col gap-3">
+                  <span className="text-sm text-[#666]">Пол:</span>
+                  <span className="text-sm text-[#191919]">{contractData?.gender === 'male' ? 'Мужской' : contractData?.gender === 'female' ? 'Женский' : 'Женский'}</span>
+                </div>
               </div>
-              <div className="flex flex-col gap-3">
-                <span className="text-sm text-[#666]">Дата рождения:</span>
-                <span className="text-sm text-[#191919]">{contractData?.birthDate || '14.10.1976'}</span>
+              {/* Second row: Мобильный телефон, Дополнительный телефон, E-mail */}
+              <div className="flex gap-6">
+                <div className="flex-1 flex flex-col gap-3">
+                  <span className="text-sm text-[#666]">Мобильный телефон:</span>
+                  <span className="text-sm text-[#191919]">{contractData?.mobilePhone || '+7(905)458-45-56'}</span>
+                </div>
+                <div className="flex-1 flex flex-col gap-3">
+                  <span className="text-sm text-[#666]">Дополнительный телефон:</span>
+                  <span className="text-sm text-[#191919]">{contractData?.additionalPhone || '+7(905)478-22-44'}</span>
+                </div>
+                <div className="flex-1 flex flex-col gap-3">
+                  <span className="text-sm text-[#666]">E-mail:</span>
+                  <span className="text-sm text-[#191919]">{contractData?.email || 'sazonova79@yandex.ru'}</span>
+                </div>
               </div>
-              <div className="flex flex-col gap-3">
-                <span className="text-sm text-[#666]">Пол:</span>
-                <span className="text-sm text-[#191919]">{contractData?.gender === 'male' ? 'Мужской' : contractData?.gender === 'female' ? 'Женский' : 'Женский'}</span>
-              </div>
-              <div className="flex flex-col gap-3">
-                <span className="text-sm text-[#666]">Мобильный телефон:</span>
-                <span className="text-sm text-[#191919]">{contractData?.mobilePhone || '+7(905)458-45-56'}</span>
-              </div>
-              <div className="flex flex-col gap-3">
-                <span className="text-sm text-[#666]">Дополнительный телефон:</span>
-                <span className="text-sm text-[#191919]">{contractData?.additionalPhone || '+7(905)478-22-44'}</span>
-              </div>
-              <div className="flex flex-col gap-3">
-                <span className="text-sm text-[#666]">E-mail:</span>
-                <span className="text-sm text-[#191919]">{contractData?.email || 'sazonova79@yandex.ru'}</span>
-              </div>
+              {/* Third row: Дополнительные параметры */}
               <div className="flex flex-col gap-3">
                 <span className="text-sm text-[#666]">Дополнительные параметры:</span>
                 <span className="text-sm text-[#191919]">Код ОГРН; Дата регистрации; ОКВЭД;</span>
@@ -165,26 +172,33 @@ const Step8: React.FC<Step8Props> = ({ onBack, onSave, onSign, contractData }) =
                 Изменить
               </Button>
             </div>
-            <div className="bg-white border border-[#CCCCCC] rounded px-6 py-4 flex flex-col gap-3">
-              <div className="flex flex-col gap-3">
-                <span className="text-sm text-[#666]">Срок действия договора в годах:</span>
-                <span className="text-sm text-[#191919]">{contractData?.contractTerm || '3'}</span>
+            <div className="bg-white border border-[#CCCCCC] rounded px-6 py-4 flex flex-col gap-4">
+              {/* First row: Срок действия договора, Периодичность оплаты, Тип уплаты */}
+              <div className="flex gap-6">
+                <div className="flex-1 flex flex-col gap-3">
+                  <span className="text-sm text-[#666]">Срок действия договора в годах:</span>
+                  <span className="text-sm text-[#191919]">{contractData?.contractTerm || '3'}</span>
+                </div>
+                <div className="flex-1 flex flex-col gap-3">
+                  <span className="text-sm text-[#666]">Периодичность оплаты:</span>
+                  <span className="text-sm text-[#191919]">{contractData?.paymentPeriod || 'Единовременно'}</span>
+                </div>
+                <div className="flex-1 flex flex-col gap-3">
+                  <span className="text-sm text-[#666]">Тип уплаты:</span>
+                  <span className="text-sm text-[#191919]">{contractData?.paymentType || 'Полный'}</span>
+                </div>
               </div>
-              <div className="flex flex-col gap-3">
-                <span className="text-sm text-[#666]">Периодичность оплаты:</span>
-                <span className="text-sm text-[#191919]">{contractData?.paymentPeriod || 'Единовременно'}</span>
-              </div>
-              <div className="flex flex-col gap-3">
-                <span className="text-sm text-[#666]">Тип уплаты:</span>
-                <span className="text-sm text-[#191919]">{contractData?.paymentType || 'Полный'}</span>
-              </div>
-              <div className="flex flex-col gap-3">
-                <span className="text-sm text-[#666]">Вариант страхования:</span>
-                <span className="text-sm text-[#191919]">{contractData?.insuranceVariant || '3 года (профессионал)'}</span>
-              </div>
-              <div className="flex flex-col gap-3">
-                <span className="text-sm text-[#666]">Взнос по договору:</span>
-                <span className="text-sm text-[#191919]">{contractData?.contribution || '20 000 руб.'}</span>
+              {/* Second row: Вариант страхования, Взнос по договору */}
+              <div className="flex gap-6">
+                <div className="flex-1 flex flex-col gap-3">
+                  <span className="text-sm text-[#666]">Вариант страхования:</span>
+                  <span className="text-sm text-[#191919]">{contractData?.insuranceVariant || '3 года (профессионал)'}</span>
+                </div>
+                <div className="flex-1 flex flex-col gap-3">
+                  <span className="text-sm text-[#666]">Взнос по договору:</span>
+                  <span className="text-sm text-[#191919]">{contractData?.contribution || '20 000 руб.'}</span>
+                </div>
+                <div className="flex-1"></div>
               </div>
             </div>
           </div>
