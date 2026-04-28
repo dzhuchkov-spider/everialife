@@ -40,6 +40,29 @@ const Layout: React.FC<LayoutProps> = ({
 
   const displaySteps = steps || defaultSteps;
 
+  // Calculate progress based on steps
+  const calculateProgress = () => {
+    let currentStep = 0;
+    let hasCurrentStep = false;
+    
+    displaySteps.forEach((step) => {
+      if (step.current) {
+        currentStep = step.number;
+        hasCurrentStep = true;
+      }
+    });
+    
+    // If no current step found, calculate based on completed steps
+    if (!hasCurrentStep) {
+      const completedSteps = displaySteps.filter(step => step.completed).length;
+      currentStep = completedSteps + 1;
+    }
+    
+    return currentStep;
+  };
+
+  const currentProgress = calculateProgress();
+
   return (
     <div className="w-full min-h-screen bg-white flex flex-col font-[var(--font-helvetica)] relative">
       {/* Header */}
@@ -112,7 +135,7 @@ const Layout: React.FC<LayoutProps> = ({
         </h2>
 
         {/* Progress Bar */}
-        {showProgress && <NewProgressBar steps={displaySteps} />}
+        {showProgress && <NewProgressBar steps={displaySteps} progress={currentProgress} />}
 
         {/* Children Content */}
         {children}

@@ -10,143 +10,125 @@ interface Step {
 
 interface NewProgressBarProps {
   steps: Step[];
+  progress?: number; // Progress value (0-100) or step number with fraction (e.g., 2.5)
 }
 
-const NewProgressBar: React.FC<NewProgressBarProps> = ({ steps }) => {
+const NewProgressBar: React.FC<NewProgressBarProps> = ({ steps, progress = 0 }) => {
   // Only show for 5 steps as per the Figma design
   if (steps.length !== 5) {
     return null;
   }
 
-  return (
-    <div className="relative w-full h-[50px] overflow-hidden">
-      {/* Progress Lines */}
-      {/* Full line from step 1 to step 5 */}
-      <div 
-        className="absolute bg-[#c4703e] h-px"
-        style={{
-          top: '12px', // 24% of 50px
-          left: '2.74%',
-          right: '70.77%',
-          height: '1px'
-        }}
-      />
-      
-      {/* Completed line from step 1 to step 2 */}
-      <div 
-        className="absolute bg-[#ccc] h-px"
-        style={{
-          top: '12px', // 24% of 50px
-          left: '29.23%',
-          right: '13.34%',
-          height: '1px'
-        }}
-      />
+  // Calculate progress percentage
+  const calculateProgressPercentage = () => {
+    if (progress <= 0) return 0;
+    if (progress >= 5) return 100;
+    
+    // Convert step number to percentage
+    // Example: 2.5 steps = ((2.5) / 4) * 100 = 62.5%
+    const stepPercentage = (progress / 4) * 100;
+    return Math.min(Math.max(stepPercentage, 0), 100);
+  };
 
-      {/* Step 1 - Начало (completed with checkmark) */}
-      <div 
-        className="absolute flex flex-col gap-[4px] items-center"
-        style={{
-          left: '-7.5px',
-          top: '0px',
-          width: '98px'
-        }}
-      >
-        <div className="bg-[#c4703e] relative rounded-[99px] shrink-0 size-[25px]">
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 overflow-clip size-[16px]">
-            <div className="absolute inset-[22.06%_13.35%]">
-              <img src={checkIcon} alt="check" className="w-full h-full" />
+  const progressPercentage = calculateProgressPercentage();
+
+  return (
+    <div className="relative w-full">
+      {/* Container - Background Track Architecture */}
+      <div className="relative w-full h-16 flex items-center">
+        
+        {/* Gray Background Track Line */}
+        <div 
+          className="absolute top-1/2 -translate-y-1/2 h-[2px] bg-gray-200 z-0"
+          style={{
+            left: '20px', // Circle radius
+            right: '20px', // Circle radius
+          }}
+        />
+
+        {/* Brown Progress Line - Dynamic Width */}
+        <div 
+          className="absolute top-1/2 -translate-y-1/2 h-[2px] bg-[#b47a59] z-10"
+          style={{
+            left: '20px', // Circle radius
+            width: `${progressPercentage}%`, // Dynamic width calculation
+          }}
+        />
+
+        {/* Circles Container */}
+        <div className="relative z-20 flex justify-between items-center w-full px-5">
+          
+          {/* Step 1 Circle */}
+          <div className="relative">
+            <div className="bg-[#b47a59] rounded-[99px] shrink-0 size-[40px] flex items-center justify-center">
+              <img src={checkIcon} alt="check" className="w-[16px] h-[16px]" />
+            </div>
+          </div>
+
+          {/* Step 2 Circle */}
+          <div className="relative">
+            <div className="bg-[#b47a59] rounded-[99px] shrink-0 size-[40px] flex items-center justify-center">
+              <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] h-[16px] justify-center leading-[0] not-italic text-[16px] text-white text-center tracking-[0.5px] w-[24px]">
+                <p className="leading-[1.4]">2</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 3 Circle */}
+          <div className="relative">
+            <div className="bg-white border border-[#e5e7eb] border-solid rounded-[99px] shrink-0 size-[40px] flex items-center justify-center">
+              <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] h-[16px] justify-center leading-[0] not-italic text-[16px] text-[#191919] text-center tracking-[0.5px] w-[24px]">
+                <p className="leading-[1.4]">3</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 4 Circle */}
+          <div className="relative">
+            <div className="bg-white border border-[#e5e7eb] border-solid rounded-[99px] shrink-0 size-[40px] flex items-center justify-center">
+              <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] h-[16px] justify-center leading-[0] not-italic text-[16px] text-[#191919] text-center tracking-[0.5px] w-[24px]">
+                <p className="leading-[1.4]">4</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 5 Circle */}
+          <div className="relative">
+            <div className="bg-white border border-[#e5e7eb] border-solid rounded-[99px] shrink-0 size-[40px] flex items-center justify-center">
+              <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] h-[16px] justify-center leading-[0] not-italic text-[16px] text-[#191919] text-center tracking-[0.5px] w-[24px]">
+                <p className="leading-[1.4]">5</p>
+              </div>
             </div>
           </div>
         </div>
-        <div className="flex gap-[8px] h-[22px] items-center px-[24px] relative shrink-0 w-full">
-          <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-[#191919] tracking-[0.2px] whitespace-nowrap">
-            <p className="leading-[1.4]">Начало</p>
-          </div>
-        </div>
       </div>
 
-      {/* Step 2 - Расчёт (completed/current with number) */}
-      <div 
-        className="absolute flex flex-col gap-[4px] items-center"
-        style={{
-          left: '152.79px',
-          top: '0px',
-          width: '95px'
-        }}
-      >
-        <div className="bg-[#c4703e] relative rounded-[99px] shrink-0 size-[25px]">
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] h-[16px] justify-center leading-[0] not-italic text-[16px] text-white text-center tracking-[0.5px] w-[24px]" style={{ top: 'calc(50% + 1px)' }}>
-            <p className="leading-[1.4]">2</p>
-          </div>
+      {/* Text Labels Container - Separate from circles */}
+      <div className="relative flex justify-between items-center w-full px-5 mt-2">
+        
+        {/* Step 1 Label */}
+        <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-[#191919] tracking-[0.2px] whitespace-nowrap text-center">
+          <p className="leading-[1.4]">Начало</p>
         </div>
-        <div className="flex gap-[8px] h-[22px] items-center px-[24px] relative shrink-0 w-full">
-          <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-[#191919] tracking-[0.2px] whitespace-nowrap">
-            <p className="leading-[1.4]">Расчёт</p>
-          </div>
-        </div>
-      </div>
 
-      {/* Step 3 - Страхователь (inactive) */}
-      <div 
-        className="absolute flex flex-col gap-[4px] items-center"
-        style={{
-          left: '363.88px',
-          top: '0px',
-          width: '142px'
-        }}
-      >
-        <div className="bg-white border border-[#ccc] border-solid relative rounded-[99px] shrink-0 size-[25px]">
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] h-[16px] justify-center leading-[0] not-italic text-[16px] text-[#191919] text-center tracking-[0.5px] w-[24px]" style={{ top: 'calc(50% + 1px)' }}>
-            <p className="leading-[1.4]">3</p>
-          </div>
+        {/* Step 2 Label */}
+        <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-[#191919] tracking-[0.2px] whitespace-nowrap text-center">
+          <p className="leading-[1.4]">Расчёт</p>
         </div>
-        <div className="flex gap-[8px] h-[22px] items-center px-[24px] relative shrink-0 w-full">
-          <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-[#191919] tracking-[0.2px] whitespace-nowrap">
-            <p className="leading-[1.4]">Страхователь</p>
-          </div>
-        </div>
-      </div>
 
-      {/* Step 4 - Застрахованный (inactive) */}
-      <div 
-        className="absolute flex flex-col gap-[4px] items-center"
-        style={{
-          left: '588.96px',
-          top: '0px',
-          width: '161px'
-        }}
-      >
-        <div className="bg-white border border-[#ccc] border-solid relative rounded-[99px] shrink-0 size-[25px]">
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] h-[16px] justify-center leading-[0] not-italic text-[16px] text-[#191919] text-center tracking-[0.5px] w-[24px]" style={{ top: 'calc(50% + 1px)' }}>
-            <p className="leading-[1.4]">4</p>
-          </div>
+        {/* Step 3 Label */}
+        <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-[#191919] tracking-[0.2px] whitespace-nowrap text-center">
+          <p className="leading-[1.4]">Страхователь</p>
         </div>
-        <div className="flex gap-[8px] h-[22px] items-center px-[24px] relative shrink-0 w-full">
-          <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-[#191919] tracking-[0.2px] whitespace-nowrap">
-            <p className="leading-[1.4]">Застрахованный</p>
-          </div>
-        </div>
-      </div>
 
-      {/* Step 5 - Просмотр договора (inactive) */}
-      <div 
-        className="absolute flex flex-col gap-[4px] items-center"
-        style={{
-          left: '812.54px',
-          top: '0px',
-          width: '183px'
-        }}
-      >
-        <div className="bg-white border border-[#ccc] border-solid relative rounded-[99px] shrink-0 size-[25px]">
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] h-[16px] justify-center leading-[0] not-italic text-[16px] text-[#191919] text-center tracking-[0.5px] w-[24px]" style={{ top: 'calc(50% + 1px)' }}>
-            <p className="leading-[1.4]">5</p>
-          </div>
+        {/* Step 4 Label */}
+        <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-[#191919] tracking-[0.2px] whitespace-nowrap text-center">
+          <p className="leading-[1.4]">Застрахованный</p>
         </div>
-        <div className="flex gap-[8px] h-[22px] items-center px-[24px] relative shrink-0 w-full">
-          <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-[#191919] tracking-[0.2px] whitespace-nowrap">
-            <p className="leading-[1.4]">Просмотр договора</p>
-          </div>
+
+        {/* Step 5 Label */}
+        <div className="flex flex-col font-['HelveticaNeueCyr:Roman',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-[#191919] tracking-[0.2px] whitespace-nowrap text-center">
+          <p className="leading-[1.4]">Просмотр договора</p>
         </div>
       </div>
     </div>
