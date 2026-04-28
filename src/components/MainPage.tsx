@@ -155,14 +155,14 @@ const MainPage: React.FC<MainPageProps> = ({ onNavigateToContract }) => {
               {/* Contract cards */}
               <div className="w-full sm:w-full lg:w-[666px] flex flex-col xl:flex-row xl:flex-wrap gap-4 sm:gap-6 lg:gap-8">
                 {contractCards.map((card, index) => (
-                  <div key={index} className="flex-1 xl:flex-1 xl:min-w-[140px] sm:min-w-[180px] w-full xl:w-auto h-[120px] sm:h-[140px] px-2 sm:px-3 py-4 sm:py-6 border border-[#cccccc] rounded bg-white flex flex-col justify-center items-start gap-2 sm:gap-3 cursor-pointer hover:shadow-md transition-shadow">
-                    <div className="flex flex-col gap-2 sm:gap-3">
-                      <img src={card.icon} alt={card.title} className="w-8 h-8" />
-                      <div className="text-sm sm:text-lg lg:text-xl font-normal text-black leading-tight tracking-wide">
+                  <div key={index} className="w-full xl:w-auto xl:flex-1 xl:min-w-[140px] h-auto p-4 sm:p-6 sm:h-[140px] border border-[#cccccc] rounded bg-white flex flex-row justify-start items-start gap-2 sm:flex-col sm:justify-center sm:items-start sm:gap-3 cursor-pointer hover:shadow-md transition-shadow">
+                    <div className="flex flex-row gap-2 sm:flex-col sm:gap-3">
+                      <img src={card.icon} alt={card.title} className="w-8 h-8 sm:w-8 sm:h-8 flex-shrink-0" />
+                      <div className="text-base font-normal text-black leading-tight tracking-wide flex-1 self-center sm:flex-none sm:text-lg">
                         {card.title.split('\n').map((line, i) => (
                           <React.Fragment key={i}>
                             {line}
-                            {i < card.title.split('\n').length - 1 && <br />}
+                            {i < card.title.split('\n').length - 1 && <br className="hidden sm:block" />}
                           </React.Fragment>
                         ))}
                       </div>
@@ -177,13 +177,13 @@ const MainPage: React.FC<MainPageProps> = ({ onNavigateToContract }) => {
             <img className="hidden sm:block w-[150px] lg:w-[206px] h-auto lg:h-[268px] absolute left-4 lg:left-9 top-4 lg:top-[18px]" src={heroImage} alt="Contract illustration" />
             <div className="static sm:absolute left-0 sm:left-[200px] lg:left-[313px] top-0 sm:top-[31px] border border-[#fff9ef] rounded p-4 sm:p-6 flex flex-col gap-4 sm:gap-6 m-4 sm:m-0">
               <div className="flex flex-col gap-2 sm:gap-3">
-                <img src={newDocIcon} alt="New document" className="w-12 sm:w-[72px] h-12 sm:h-[72px]" />
+                <img src={newDocIcon} alt="New document" className="w-8 h-8 sm:w-12 sm:h-12 sm:w-[72px] sm:h-[72px]" />
                 <div className="text-xl sm:text-2xl lg:text-[32px] font-normal text-black leading-tight tracking-wide">
                   Ввод договора
                 </div>
               </div>
               <button className="h-12 sm:h-16 px-4 sm:px-8 bg-[#386df7] text-white rounded flex items-center justify-center gap-2 cursor-pointer text-sm sm:text-base font-normal tracking-wide hover:bg-[#2459e3] transition-colors">
-                <img src={addIcon} alt="Add" className="w-6 h-6" />
+                <img src={addIcon} alt="Add" className="w-6 h-6 sm:w-6 sm:h-6" />
                 Создать договор
               </button>
             </div>
@@ -200,14 +200,14 @@ const MainPage: React.FC<MainPageProps> = ({ onNavigateToContract }) => {
             </h2>
             <div className="w-full sm:w-full lg:w-[666px] flex flex-col xl:flex-row xl:flex-wrap gap-4 sm:gap-6 lg:gap-8">
               {reportCards.map((report, index) => (
-                <div key={index} className="w-full xl:w-[316px] xl:flex-none h-auto xl:h-[316px] p-4 sm:p-6 border border-[#cccccc] rounded bg-white flex flex-col justify-center items-start gap-3 sm:gap-4 cursor-pointer hover:shadow-md transition-shadow">
-                  <div className="flex flex-col gap-3 sm:gap-4">
-                    <img src={report.icon} alt={report.title} className="w-[60px] h-[60px]" />
-                    <div className="text-sm sm:text-lg lg:text-xl font-normal text-black leading-tight tracking-wide">
+                <div key={index} className="w-full h-auto p-4 xl:w-[316px] xl:flex-none xl:h-[316px] sm:p-6 border border-[#cccccc] rounded bg-white flex flex-col justify-start items-start gap-3 sm:justify-center sm:items-start sm:gap-4 cursor-pointer hover:shadow-md transition-shadow">
+                  <div className="flex flex-row gap-3 sm:flex-col sm:gap-4">
+                    <img src={report.icon} alt={report.title} className="w-8 h-8 sm:w-[60px] sm:h-[60px] flex-shrink-0" />
+                    <div className="text-base font-normal text-black leading-tight tracking-wide flex-1 self-center sm:flex-none sm:text-lg">
                       {report.title.split('\n').map((line, i) => (
                         <React.Fragment key={i}>
                           {line}
-                          {i < report.title.split('\n').length - 1 && <br />}
+                          {i < report.title.split('\n').length - 1 && <br className="hidden sm:block" />}
                         </React.Fragment>
                       ))}
                     </div>
@@ -224,14 +224,14 @@ const MainPage: React.FC<MainPageProps> = ({ onNavigateToContract }) => {
             </h2>
             <div className="w-full sm:w-full lg:w-[664px] flex flex-col xl:flex-row xl:flex-wrap gap-4 sm:gap-6 lg:gap-8">
               {serviceCards.map((service, index) => (
-                <div key={index} className="w-full xl:w-[200px] h-auto sm:h-[140px] px-2 sm:px-3 py-4 sm:py-6 bg-[#fafafa] rounded flex flex-row sm:flex-col justify-start sm:justify-center items-start gap-2 sm:gap-3 cursor-pointer hover:shadow-md transition-shadow">
-                  <div className="flex flex-row sm:flex-col gap-2 sm:gap-3">
-                    <img src={service.icon} alt={service.title} className="w-8 h-8 flex-shrink-0" />
-                    <div className="text-sm sm:text-lg lg:text-xl font-normal text-black leading-tight tracking-wide">
+                <div key={index} className="w-full h-auto p-4 xl:w-[200px] sm:h-[140px] sm:p-6 bg-[#fafafa] rounded flex flex-row justify-start items-start gap-2 sm:flex-col sm:justify-center sm:items-start sm:gap-3 cursor-pointer hover:shadow-md transition-shadow">
+                  <div className="flex flex-row gap-2 sm:flex-col sm:gap-3">
+                    <img src={service.icon} alt={service.title} className="w-8 h-8 sm:w-8 sm:h-8 flex-shrink-0" />
+                    <div className="text-base font-normal text-black leading-tight tracking-wide flex-1 self-center sm:text-lg">
                       {service.title.split('\n').map((line, i) => (
                         <React.Fragment key={i}>
                           {line}
-                          {i < service.title.split('\n').length - 1 && <br />}
+                          {i < service.title.split('\n').length - 1 && <br className="hidden sm:block" />}
                         </React.Fragment>
                       ))}
                     </div>
