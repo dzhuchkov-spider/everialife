@@ -2,6 +2,7 @@ import React from 'react';
 import arrowDown from '../../assets/icons/arrow down.svg';
 import groupIcon from '../../assets/icons/Group.svg';
 import logoWeb from '../../assets/logo/Web.svg';
+import NewProgressBar from '../ui/NewProgressBar';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -111,63 +112,7 @@ const Layout: React.FC<LayoutProps> = ({
         </h2>
 
         {/* Progress Bar */}
-        {showProgress && (
-          <div className="w-full h-[50px] overflow-hidden">
-            <div className="flex items-center h-full">
-              {displaySteps.map((step, index) => (
-                <React.Fragment key={step.number}>
-                  {/* Progress Bar Item */}
-                  <div className={`flex flex-col items-center gap-1 overflow-hidden ${index === 0 ? 'w-[160px] sm:w-[180px] lg:w-[187.667px]' : 'flex-1'} min-w-px`}>
-                    {/* Step Icon */}
-                    <div className="h-[25px] w-full relative">
-                      {/* Line */}
-                      {index < displaySteps.length - 1 && (
-                        <div className="absolute top-1/2 left-1/2 right-0 h-px -translate-y-1/2 overflow-hidden">
-                          <div 
-                            className="h-full w-full"
-                            style={{ 
-                              backgroundColor: step.completed ? '#c4703e' : '#e0e0e0'
-                            }}
-                          />
-                        </div>
-                      )}
-                      
-                      {/* Circle */}
-                      <div 
-                        className={`
-                          absolute left-1/2 -translate-x-1/2 top-0 w-[25px] h-[25px] rounded-full flex items-center justify-center
-                          ${step.current || step.completed 
-                            ? 'bg-[#c4703e]' 
-                            : 'bg-white border border-[#ccc] border-solid'
-                          }
-                        `}
-                      >
-                        {step.completed ? (
-                          <div className="w-4 h-4 flex items-center justify-center">
-                            <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-                              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="white"/>
-                            </svg>
-                          </div>
-                        ) : (
-                          <span className={`text-base font-normal tracking-[0.5px] ${step.current ? 'text-white' : 'text-[#191919]'}`}>
-                            {step.number}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Step Label */}
-                    <div className="px-6">
-                      <span className="text-sm font-normal text-[#191919] tracking-[0.2px] leading-[1.4]">
-                        {step.label}
-                      </span>
-                    </div>
-                  </div>
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
-        )}
+        {showProgress && <NewProgressBar steps={displaySteps} />}
 
         {/* Children Content */}
         {children}
