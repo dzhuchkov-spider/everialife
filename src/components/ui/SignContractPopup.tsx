@@ -11,7 +11,7 @@ const SignContractPopup: React.FC<SignContractPopupProps> = ({ isOpen, onClose, 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
       <div className="bg-white rounded-2xl p-3 w-full max-w-2xl">
         {/* Close Button */}
         <div className="flex justify-end">
