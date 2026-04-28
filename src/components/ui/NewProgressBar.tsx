@@ -39,7 +39,7 @@ const NewProgressBar: React.FC<NewProgressBarProps> = ({ steps, progress = 0 }) 
         
         {/* Gray Background Track Line */}
         <div 
-          className="absolute top-1/2 -translate-y-1/2 h-[2px] bg-gray-200 z-0"
+          className="absolute top-[12.5px] -translate-y-1/2 h-[2px] bg-gray-200 z-0"
           style={{
             left: '12.5px', // Circle radius (25px / 2)
             right: '12.5px', // Circle radius (25px / 2)
@@ -48,7 +48,7 @@ const NewProgressBar: React.FC<NewProgressBarProps> = ({ steps, progress = 0 }) 
 
         {/* Brown Progress Line - Dynamic Width */}
         <div 
-          className="absolute top-1/2 -translate-y-1/2 h-[2px] bg-[#b47a59] z-10"
+          className="absolute top-[12.5px] -translate-y-1/2 h-[2px] bg-[#b47a59] z-10"
           style={{
             left: '12.5px', // Circle radius
             width: `${progressPercentage}%`, // Dynamic width calculation
