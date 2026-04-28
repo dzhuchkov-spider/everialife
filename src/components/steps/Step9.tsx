@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '../ui/Button';
 import Layout from '../layout/Layout';
 import SignContractPopup from '../ui/SignContractPopup';
+import DocumentsSentPopup from '../ui/DocumentsSentPopup';
 import editIcon from '../../assets/icons/edit.svg';
 import showPolisIcon from '../../assets/icons/show-polis.svg';
 import show2Icon from '../../assets/icons/show-2.svg';
@@ -40,6 +41,7 @@ interface Step9Props {
 const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractData }) => {
   const [notificationVisible, setNotificationVisible] = React.useState(true);
   const [isPopupOpen, setIsPopupOpen] = React.useState(false);
+  const [isDocumentsSentOpen, setIsDocumentsSentOpen] = React.useState(false);
 
   const handleSignClick = () => {
     setIsPopupOpen(true);
@@ -52,6 +54,21 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
   const handlePopupConfirm = () => {
     setIsPopupOpen(false);
     onSign?.();
+  };
+
+  const handleSendDocuments = () => {
+    setIsDocumentsSentOpen(true);
+    
+    // Автоматический переход на главную страницу через 3 секунды
+    setTimeout(() => {
+      window.location.href = '/';
+    }, 3000);
+  };
+
+  const handleDocumentsSentClose = () => {
+    setIsDocumentsSentOpen(false);
+    // Немедленный переход на главную страницу при закрытии
+    window.location.href = '/';
   };
 
   const steps = [
@@ -318,7 +335,7 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
           state="resting"
           showTrailingIcon={false}
           className="w-80"
-          onClick={handleSignClick}
+          onClick={handleSendDocuments}
         >
           Отправить документы страхователю
         </Button>
@@ -329,6 +346,12 @@ const Step9: React.FC<Step9Props> = ({ onBack, onExit, onSave, onSign, contractD
         isOpen={isPopupOpen}
         onClose={handlePopupClose}
         onConfirm={handlePopupConfirm}
+      />
+
+      {/* Documents Sent Popup */}
+      <DocumentsSentPopup
+        isOpen={isDocumentsSentOpen}
+        onClose={handleDocumentsSentClose}
       />
     </Layout>
   );
