@@ -2,7 +2,7 @@ import React from 'react';
 import Input from '../ui/Input';
 import InputSelect from '../ui/InputSelect';
 import Button from '../ui/Button';
-import Layout from '../layout/Layout';
+import LayoutWithModifiedProgress from '../layout/LayoutWithModifiedProgress';
 import Checkbox from '../ui/Checkbox';
 
 interface Step6Props {
@@ -86,7 +86,7 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
   ];
 
   return (
-    <Layout
+    <LayoutWithModifiedProgress
       title="Ввод договора"
       showProgress={true}
       steps={steps}
@@ -339,7 +339,7 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
           </Button>
         </div>
       </div>
-    </Layout>
+    </LayoutWithModifiedProgress>
   );
 };
 

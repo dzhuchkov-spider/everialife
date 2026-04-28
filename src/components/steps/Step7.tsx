@@ -2,7 +2,7 @@ import React from 'react';
 import InputSelect from '../ui/InputSelect';
 import Input from '../ui/Input';
 import Button from '../ui/Button';
-import Layout from '../layout/Layout';
+import LayoutWithModifiedProgress from '../layout/LayoutWithModifiedProgress';
 
 interface Step7Props {
   onBack?: () => void;
@@ -35,7 +35,7 @@ const Step7: React.FC<Step7Props> = ({ onBack, onNext, onDataChange }) => {
   ];
 
   return (
-    <Layout
+    <LayoutWithModifiedProgress
       title="Ввод договора"
       showProgress={true}
       steps={steps}
@@ -125,7 +125,7 @@ const Step7: React.FC<Step7Props> = ({ onBack, onNext, onDataChange }) => {
           </Button>
         </div>
       </div>
-    </Layout>
+    </LayoutWithModifiedProgress>
   );
 };
 
