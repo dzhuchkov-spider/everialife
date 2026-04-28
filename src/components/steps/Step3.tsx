@@ -114,9 +114,6 @@ const Step3: React.FC<Step3Props> = ({ onBack, onNext, onDataChange }) => {
                 </div>
                 <img src={helpIcon} alt="Help" className="w-6 h-6 flex-shrink-0" />
               </div>
-              <div className="hidden sm:block">
-                <img src={helpIcon} alt="Help" className="w-6 h-6 flex-shrink-0 sm:ml-2" />
-              </div>
             </div>
 
             {/* Срок действия договора в годах */}
