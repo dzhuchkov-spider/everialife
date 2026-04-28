@@ -122,7 +122,7 @@ const Step2: React.FC<Step2Props> = ({ onBack, onNext }) => {
         {/* Buttons */}
         <div className="flex items-center justify-between w-full">
           <Button
-            variant="outlined"
+            variant="ghost"
             size="large"
             state="resting"
             showTrailingIcon={false}

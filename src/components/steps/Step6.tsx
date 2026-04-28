@@ -318,7 +318,7 @@ const Step6: React.FC<Step6Props> = ({ onBack, onNext, onDataChange }) => {
         {/* Buttons */}
         <div className="flex items-center justify-between w-full">
           <Button
-            variant="outlined"
+            variant="ghost"
             size="large"
             state="resting"
             showTrailingIcon={false}

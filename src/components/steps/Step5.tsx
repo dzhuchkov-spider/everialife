@@ -278,7 +278,7 @@ const Step5: React.FC<Step5Props> = ({ onBack, onSubmit, passportData }) => {
         {/* Buttons */}
         <div className="flex items-center justify-between w-full">
           <Button
-            variant="outlined"
+            variant="ghost"
             size="large"
             state="resting"
             showTrailingIcon={false}
